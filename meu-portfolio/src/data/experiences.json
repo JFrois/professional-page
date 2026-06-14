@@ -1,0 +1,86 @@
+[
+    {
+        "company": "IBM",
+        "role": "Estagiário · Análise de Dados & Automações",
+        "period": "Abr 2026 — Presente",
+        "current": true,
+        "bullets": [
+            "Dashboards gerenciais em Power BI, Cognos e Grafana para liderança executiva",
+            "Automações com IBM RPA e Power Automate eliminando tarefas manuais",
+            "Queries complexas em SQL para modelagem e mapeamento de processos"
+        ],
+        "tech": [
+            "Power BI",
+            "IBM RPA",
+            "SQL",
+            "Grafana",
+            "Python"
+        ]
+    },
+    {
+        "company": "99 (DiDi)",
+        "role": "Estagiário · Product Operations CX",
+        "period": "Dez 2025 — Abr 2026",
+        "current": false,
+        "bullets": [
+            "Análises quantitativas em SQL na vertical 99Food para root cause de atritos",
+            "Monitoramento de OKRs e KPIs de CX para stakeholders globais",
+            "Alinhamento arquitetural de sistemas para escalabilidade dos canais de suporte"
+        ],
+        "tech": [
+            "SQL",
+            "Excel",
+            "Data Analysis",
+            "Product Ops"
+        ]
+    },
+    {
+        "company": "VOSS Automotive",
+        "role": "Estagiário · Desenvolvimento & Inovação",
+        "period": "Jun 2025 — Dez 2025",
+        "current": false,
+        "bullets": [
+            "Ferramenta BI \"Análise Aftermarket\" (Python, Streamlit, SQL) para leads OEM",
+            "RPA Desktop para processamento de pedidos B2B em PDF",
+            "Automação de rotinas fabris com Power Platform"
+        ],
+        "tech": [
+            "Python",
+            "Streamlit",
+            "SQL",
+            "Power Automate"
+        ]
+    },
+    {
+        "company": "QuintoAndar",
+        "role": "Analista de Operações",
+        "period": "Out 2024 — Jun 2025",
+        "current": false,
+        "bullets": [
+            "Scripts Python para criação automática de casos via API",
+            "Manutenção de dashboards operacionais no Zendesk"
+        ],
+        "tech": [
+            "Python",
+            "API",
+            "Zendesk",
+            "SQL"
+        ]
+    },
+    {
+        "company": "Loft",
+        "role": "Analista Process & Insights",
+        "period": "Mai 2022 — Mar 2023",
+        "current": false,
+        "bullets": [
+            "Automações que reduziram 50% o tempo de processamento operacional",
+            "Dashboards em Salesforce, Looker e Jira — +25% precisão analítica"
+        ],
+        "tech": [
+            "Salesforce",
+            "Looker",
+            "Jira",
+            "Python"
+        ]
+    }
+]

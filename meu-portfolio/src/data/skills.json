@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Linguagens",
+    "color": "#e8963c",
+    "items": ["Python", "SQL", "JavaScript", "Java"]
+  },
+  {
+    "name": "Automação & RPA",
+    "color": "#c9622f",
+    "items": ["IBM RPA", "Selenium WebDriver", "Power Automate", "Power Apps"]
+  },
+  {
+    "name": "Dados & BI",
+    "color": "#6e9ecf",
+    "items": ["Pandas", "NumPy", "Power BI", "Streamlit", "Grafana", "Looker", "SQL Server", "PostgreSQL"]
+  },
+  {
+    "name": "Interfaces & Apps",
+    "color": "#e8963c",
+    "items": ["CustomTkinter", "Streamlit", "Excel / VBA", "ETL Pipelines"]
+  },
+  {
+    "name": "Ferramentas",
+    "color": "#6e9ecf",
+    "items": ["Git", "GitHub", "VS Code", "Linux", "Jira", "Monday", "Slack"]
+  },
+  {
+    "name": "Soft Skills",
+    "color": "#7a7060",
+    "items": ["Design Thinking", "Metodologias Ágeis", "Inglês Avançado", "Visão de Negócio"]
+  }
+]
