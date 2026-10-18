@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import profileData from '../data/profile.json'
+import profilePic from '../assets/perfillinkedin.jpeg'
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -65,7 +66,8 @@ export default function About() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Do operacional<br />
+            Do operacional
+            <br />
             <span className="f-serif g-amber" style={{ fontWeight: 400 }}>
               à engenharia.
             </span>
@@ -86,9 +88,9 @@ export default function About() {
                 marginBottom: 18,
               }}
             >
-              Comecei na área jurídica e operacional — Loft, contratos imobiliários, dashboards manuais.
-              Enxerguei os gargalos antes de saber que podia automatizá-los. Aprendi Python por necessidade.
-              Depois, por obsessão.
+              Comecei na área jurídica e operacional — Loft, contratos imobiliários,
+              dashboards manuais. Enxerguei os gargalos antes de saber que podia
+              automatizá-los. Aprendi Python por necessidade. Depois, por obsessão.
             </p>
             <p
               style={{
@@ -106,8 +108,8 @@ export default function About() {
               <strong style={{ color: 'var(--steel)', fontWeight: 600 }}>
                 Inteligência de Dados
               </strong>
-              . Construo ferramentas que resolvem dores reais — não apenas código elegante, mas soluções que geram
-              eficiência operacional e valor estratégico.
+              . Construo ferramentas que resolvem dores reais — não apenas código
+              elegante, mas soluções que geram eficiência operacional e valor estratégico.
             </p>
             <p
               style={{
@@ -116,9 +118,9 @@ export default function About() {
                 color: 'rgba(245,240,232,0.65)',
               }}
             >
-              Minha visão é híbrida: entendo o negócio, identifico o gargalo, e entrego a automação.
-              Passei pela IBM, 99 (DiDi), VOSS Automotive e QuintoAndar — sempre com o mesmo método:
-              observar, estruturar, construir.
+              Minha visão é híbrida: entendo o negócio, identifico o gargalo, e entrego a
+              automação. Passei pela IBM, 99 (DiDi), VOSS Automotive e QuintoAndar —
+              sempre com o mesmo método: observar, estruturar, construir.
             </p>
 
             <div
@@ -158,13 +160,58 @@ export default function About() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {/* Profile Header Card */}
+          <div
+            className="card reveal"
+            style={{
+              padding: '20px 24px',
+              transitionDelay: '180ms',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 18,
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            <img
+              src={profilePic}
+              alt={profileData.name}
+              style={{
+                width: 72,
+                height: 72,
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '2px solid var(--border-mid)',
+                boxShadow: '0 0 20px rgba(232, 140, 74, 0.25)',
+              }}
+            />
+            <div>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--t1)' }}>
+                {profileData.name}
+              </h3>
+              <p
+                style={{
+                  fontSize: 12,
+                  color: 'var(--amber)',
+                  fontFamily: 'JetBrains Mono',
+                  marginTop: 2,
+                }}
+              >
+                {profileData.headline}
+              </p>
+              <p style={{ fontSize: 11, color: 'var(--t2)', marginTop: 4 }}>
+                📍 {profileData.location}
+              </p>
+            </div>
+          </div>
+
+          {/* Key Metrics Stats */}
           <div
             className="reveal"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 12,
-              transitionDelay: '200ms',
+              transitionDelay: '220ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
@@ -199,6 +246,7 @@ export default function About() {
             ))}
           </div>
 
+          {/* Education & Languages */}
           <div
             className="card reveal"
             style={{
@@ -252,6 +300,7 @@ export default function About() {
             </div>
           </div>
 
+          {/* Certifications */}
           <div
             className="card reveal"
             style={{

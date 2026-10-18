@@ -54,7 +54,8 @@ export default function Skills() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Ferramentas que<br />
+        Ferramentas que
+        <br />
         <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
           operam em produção
         </span>

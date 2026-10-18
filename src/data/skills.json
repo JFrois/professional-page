@@ -12,7 +12,16 @@
   {
     "name": "Dados & BI",
     "color": "#6e9ecf",
-    "items": ["Pandas", "NumPy", "Power BI", "Streamlit", "Grafana", "Looker", "SQL Server", "PostgreSQL"]
+    "items": [
+      "Pandas",
+      "NumPy",
+      "Power BI",
+      "Streamlit",
+      "Grafana",
+      "Looker",
+      "SQL Server",
+      "PostgreSQL"
+    ]
   },
   {
     "name": "Interfaces & Apps",
@@ -27,6 +36,11 @@
   {
     "name": "Soft Skills",
     "color": "#7a7060",
-    "items": ["Design Thinking", "Metodologias Ágeis", "Inglês Avançado", "Visão de Negócio"]
+    "items": [
+      "Design Thinking",
+      "Metodologias Ágeis",
+      "Inglês Avançado",
+      "Visão de Negócio"
+    ]
   }
 ]

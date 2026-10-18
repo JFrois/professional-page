@@ -151,9 +151,12 @@ export default function BackgroundCanvas({ scrollPct = 0 }) {
         ctx.shadowBlur = 0
 
         for (let r = 0; r < 4; r++) {
-          const tMod = ((time * 0.25 + r * 0.25) % 1)
+          const tMod = (time * 0.25 + r * 0.25) % 1
           const sparkX = w * 0.06 + tMod * w * 0.88
-          const sparkY = lineY + Math.sin(sparkX * 0.014 + time) * 7 + Math.sin(sparkX * 0.028 + time * 1.6) * 3.5
+          const sparkY =
+            lineY +
+            Math.sin(sparkX * 0.014 + time) * 7 +
+            Math.sin(sparkX * 0.028 + time * 1.6) * 3.5
 
           ctx.globalAlpha = factor * 0.9
           ctx.fillStyle = '#ffffff'

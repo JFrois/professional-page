@@ -59,7 +59,8 @@ export default function Trajetoria() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        5 anos construindo<br />
+        5 anos construindo
+        <br />
         <span className="g-amber">soluções reais</span>
       </h2>
 
@@ -142,13 +143,9 @@ export default function Trajetoria() {
                       >
                         {exp.company}
                       </span>
-                      {exp.current && (
-                        <span className="badge present">ATUAL</span>
-                      )}
+                      {exp.current && <span className="badge present">ATUAL</span>}
                     </div>
-                    <p style={{ fontSize: 13, color: 'var(--t2)' }}>
-                      {exp.role}
-                    </p>
+                    <p style={{ fontSize: 13, color: 'var(--t2)' }}>{exp.role}</p>
                   </div>
 
                   <span

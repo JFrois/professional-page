@@ -31,7 +31,8 @@ export default function Hero({ scrollPct = 0 }) {
             marginBottom: 16,
           }}
         >
-          Desenvolvedor de<br />
+          Desenvolvedor de
+          <br />
           <span className="g-amber">Soluções</span>
         </h1>
 
@@ -45,7 +46,8 @@ export default function Hero({ scrollPct = 0 }) {
             lineHeight: 1.55,
           }}
         >
-          Do operacional à engenharia.<br />
+          Do operacional à engenharia.
+          <br />
           Automação, dados e arquitetura que geram resultado.
         </p>
 

@@ -55,7 +55,8 @@ export default function Projetos() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Soluções que<br />
+        Soluções que
+        <br />
         <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
           operam em produção
         </span>
@@ -72,7 +73,8 @@ export default function Projetos() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Cada sistema nasceu de uma dor real — de um processo lento, de dados invisíveis, de horas de trabalho manual.
+        Cada sistema nasceu de uma dor real — de um processo lento, de dados invisíveis,
+        de horas de trabalho manual.
       </p>
 
       <div

@@ -10,13 +10,7 @@
       "Automações com IBM RPA e Power Automate eliminando tarefas manuais",
       "Queries complexas em SQL para modelagem e mapeamento de processos"
     ],
-    "tech": [
-      "Power BI",
-      "IBM RPA",
-      "SQL",
-      "Grafana",
-      "Python"
-    ]
+    "tech": ["Power BI", "IBM RPA", "SQL", "Grafana", "Python"]
   },
   {
     "company": "99 (DiDi)",
@@ -29,12 +23,7 @@
       "Monitoramento de OKRs e KPIs de CX para stakeholders globais",
       "Alinhamento arquitetural de sistemas para escalabilidade dos canais de suporte"
     ],
-    "tech": [
-      "SQL",
-      "Excel",
-      "Data Analysis",
-      "Product Ops"
-    ]
+    "tech": ["SQL", "Excel", "Data Analysis", "Product Ops"]
   },
   {
     "company": "VOSS Automotive",
@@ -47,12 +36,7 @@
       "RPA Desktop para processamento de pedidos B2B em PDF",
       "Automação de rotinas fabris com Power Platform"
     ],
-    "tech": [
-      "Python",
-      "Streamlit",
-      "SQL",
-      "Power Automate"
-    ]
+    "tech": ["Python", "Streamlit", "SQL", "Power Automate"]
   },
   {
     "company": "QuintoAndar",
@@ -64,12 +48,7 @@
       "Scripts Python para criação automática de casos via API",
       "Manutenção de dashboards operacionais no Zendesk"
     ],
-    "tech": [
-      "Python",
-      "API",
-      "Zendesk",
-      "SQL"
-    ]
+    "tech": ["Python", "API", "Zendesk", "SQL"]
   },
   {
     "company": "Loft",
@@ -81,11 +60,6 @@
       "Automações que reduziram 50% o tempo de processamento operacional",
       "Dashboards em Salesforce, Looker e Jira — +25% precisão analítica"
     ],
-    "tech": [
-      "Salesforce",
-      "Looker",
-      "Jira",
-      "Python"
-    ]
+    "tech": ["Salesforce", "Looker", "Jira", "Python"]
   }
 ]

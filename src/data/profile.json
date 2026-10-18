@@ -36,13 +36,7 @@
     { "name": "Português", "level": "Nativo", "variant": "amber" },
     { "name": "English", "level": "Advanced", "variant": "steel" }
   ],
-  "certifications": [
-    "Python OOP",
-    "Git & GitHub",
-    "SQL",
-    "Agile Explorer",
-    "UX"
-  ],
+  "certifications": ["Python OOP", "Git & GitHub", "SQL", "Agile Explorer", "UX"],
   "codeSnippets": [
     { "text": "import pandas as pd", "color": "#c792ea" },
     { "text": "import numpy as np", "color": "#c792ea" },

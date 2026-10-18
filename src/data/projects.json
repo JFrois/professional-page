@@ -8,13 +8,7 @@
     "description": "Sistema autônomo de monitoramento de colônia marciana. 56 Sols simulados, quatro cenários operacionais — de nominal a recuperação orbital. Modelos de regressão ditam decisões energéticas em tempo real.",
     "impact": "56 Sols",
     "impactLabel": "Simulados",
-    "tech": [
-      "Python",
-      "Pandas",
-      "NumPy",
-      "Regressão Linear",
-      "FIAP"
-    ],
+    "tech": ["Python", "Pandas", "NumPy", "Regressão Linear", "FIAP"],
     "accentColor": "#e8963c",
     "team": "Flávia Pennachin · Pedro Toledo · Juan Frois"
   },
@@ -27,12 +21,7 @@
     "description": "Aplicação corporativa que cruza bases de dados de montadoras para revelar lacunas comerciais invisíveis. De ruído de dados a leads qualificados.",
     "impact": "OEM × Reposição",
     "impactLabel": "Cruzamento",
-    "tech": [
-      "Python",
-      "Streamlit",
-      "SQL",
-      "Pandas"
-    ],
+    "tech": ["Python", "Streamlit", "SQL", "Pandas"],
     "accentColor": "#6e9ecf",
     "team": "VOSS Automotive"
   },
@@ -45,12 +34,7 @@
     "description": "Bot escalável com tratamento robusto de exceções e logs estruturados. Leitura de Excel e input automático no ERP Protheus — zero intervenção manual.",
     "impact": "100%",
     "impactLabel": "Automatizado",
-    "tech": [
-      "Python",
-      "Selenium",
-      "Pandas",
-      "Protheus"
-    ],
+    "tech": ["Python", "Selenium", "Pandas", "Protheus"],
     "accentColor": "#c9622f",
     "team": "Projeto independente"
   },
@@ -63,12 +47,7 @@
     "description": "App CustomTkinter com busca inteligente e motor de scraping de PDFs B2B. Consolida, processa e exporta relatórios Excel com alertas automáticos.",
     "impact": "B2B",
     "impactLabel": "Pipeline Completo",
-    "tech": [
-      "CustomTkinter",
-      "PDF Scraping",
-      "Python",
-      "Email"
-    ],
+    "tech": ["CustomTkinter", "PDF Scraping", "Python", "Email"],
     "accentColor": "#6e9ecf",
     "team": "VOSS Automotive"
   }

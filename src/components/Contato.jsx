@@ -94,7 +94,8 @@ export default function Contato() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Entre em<br />
+            Entre em
+            <br />
             <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
               contato
             </span>
@@ -112,7 +113,8 @@ export default function Contato() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Conecte-se comigo pelo LinkedIn — é o canal principal onde mantenho minha rede profissional e acompanho oportunidades.
+            Conecte-se comigo pelo LinkedIn — é o canal principal onde mantenho minha rede
+            profissional e acompanho oportunidades.
           </p>
 
           <div
@@ -198,9 +200,7 @@ export default function Contato() {
                   {item.value}
                 </a>
               ) : (
-                <span style={{ fontSize: 13, color: 'var(--t2)' }}>
-                  {item.value}
-                </span>
+                <span style={{ fontSize: 13, color: 'var(--t2)' }}>{item.value}</span>
               )}
             </div>
           ))}
