@@ -360,17 +360,34 @@ export default function About() {
             </div>
           </div>
 
-          {/* Key Metrics Stats: Responsive 3 column compact grid */}
+          {/* Key Metrics Stats: Responsive horizontal cards stack */}
           <div
             className="reveal"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 10,
               transitionDelay: '220ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
+            <p
+              className="s-label"
+              style={{
+                marginBottom: 2,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <Zap
+                size={13}
+                stroke="currentColor"
+                style={{ color: 'var(--accent-primary)' }}
+              />
+              <span>{t('about.impactMetrics')}</span>
+            </p>
+
             {profileData.stats.map((stat, sIdx) => {
               const StatIcon = sIdx === 0 ? TrendingUp : sIdx === 1 ? Zap : Clock
               const statNum = localize(stat.num)
@@ -379,58 +396,63 @@ export default function About() {
               return (
                 <div
                   key={sIdx}
-                  className="card"
+                  className="card stat-card"
                   style={{
-                    padding: '14px 8px',
-                    textAlign: 'center',
+                    padding: '14px 18px',
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    gap: 16,
+                    borderLeft: `3px solid ${stat.color}`,
                   }}
                 >
                   <div
                     style={{
-                      width: 26,
-                      height: 26,
-                      borderRadius: 6,
-                      background: `${stat.color}18`,
+                      width: 42,
+                      height: 42,
+                      borderRadius: 10,
+                      background: `${stat.color}15`,
+                      border: `1px solid ${stat.color}30`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: 8,
                       color: stat.color,
+                      flexShrink: 0,
                     }}
                   >
-                    <StatIcon size={13} stroke="currentColor" />
+                    <StatIcon size={20} stroke="currentColor" />
                   </div>
-                  <div
-                    className="stat-num"
-                    style={{
-                      background: `linear-gradient(135deg, var(--text-primary), ${stat.color})`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      fontSize: 'clamp(15px, 2.2vw, 22px)',
-                      fontWeight: 800,
-                      lineHeight: 1.1,
-                      letterSpacing: '-0.02em',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {statNum}
+
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      className="stat-num"
+                      style={{
+                        background: `linear-gradient(135deg, var(--text-primary), ${stat.color})`,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        fontSize: 'clamp(17px, 1.4vw, 20px)',
+                        fontWeight: 800,
+                        lineHeight: 1.25,
+                        letterSpacing: '-0.02em',
+                        marginBottom: 3,
+                        whiteSpace: 'normal',
+                        wordBreak: 'break-word',
+                      }}
+                    >
+                      {statNum}
+                    </div>
+                    <p
+                      style={{
+                        fontSize: 12.5,
+                        color: 'var(--text-secondary)',
+                        fontFamily: 'Outfit, sans-serif',
+                        lineHeight: 1.45,
+                        margin: 0,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {statLabel}
+                    </p>
                   </div>
-                  <p
-                    style={{
-                      fontSize: 10,
-                      color: 'var(--text-secondary)',
-                      fontFamily: 'JetBrains Mono',
-                      letterSpacing: '0.02em',
-                      marginTop: 4,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {statLabel}
-                  </p>
                 </div>
               )
             })}

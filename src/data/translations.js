@@ -87,6 +87,7 @@ export const translations = {
       hybridVisionText:
         'entendimento profundo da regra de negócio somado ao rigor de engenharia de software para transformar gargalos em soluções automatizadas de alto impacto.',
       academicBackground: 'FORMAÇÃO ACADÊMICA',
+      impactMetrics: 'MÉTRICAS DE IMPACTO',
       languages: 'IDIOMAS',
       certifications: 'CERTIFICAÇÕES',
       certificationsWithIssuer: 'CERTIFICAÇÕES',
@@ -232,6 +233,7 @@ export const translations = {
       hybridVisionText:
         'deep understanding of business rules combined with software engineering rigor to turn bottlenecks into high-impact automated solutions.',
       academicBackground: 'ACADEMIC BACKGROUND',
+      impactMetrics: 'KEY IMPACT METRICS',
       languages: 'LANGUAGES',
       certifications: 'CERTIFICATIONS',
       certificationsWithIssuer: 'CERTIFICATIONS',

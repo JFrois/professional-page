@@ -675,6 +675,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
             style={{
               fontWeight: 800,
               fontFamily: 'Outfit, sans-serif',
+              fontSize: 'clamp(22px, 2.6vw, 38px)',
+              lineHeight: 1.15,
+              wordBreak: 'break-word',
               background: 'linear-gradient(135deg, var(--text-primary), var(--accent-impact))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -751,6 +754,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
             style={{
               fontWeight: 800,
               fontFamily: 'Outfit, sans-serif',
+              fontSize: 'clamp(20px, 2.4vw, 34px)',
+              lineHeight: 1.15,
+              wordBreak: 'break-word',
               background: 'linear-gradient(135deg, var(--text-primary), var(--accent-primary))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -827,6 +833,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
             style={{
               fontWeight: 800,
               fontFamily: 'Outfit, sans-serif',
+              fontSize: 'clamp(22px, 2.6vw, 38px)',
+              lineHeight: 1.15,
+              wordBreak: 'break-word',
               background: 'linear-gradient(135deg, var(--text-primary), var(--accent-secondary))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',

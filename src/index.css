@@ -2183,6 +2183,16 @@ body {
   font-weight: 800;
 }
 
+.stat-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateX(4px) !important;
+  border-color: var(--border-high);
+  box-shadow: var(--card-shadow-hover);
+}
+
 .tl-dot {
   background: var(--accent-primary);
   width: 7px;
