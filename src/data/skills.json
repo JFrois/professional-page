@@ -1,0 +1,82 @@
+[
+  {
+    "id": "languages",
+    "icon": "code",
+    "name": {
+      "pt": "Linguagens",
+      "en": "Languages"
+    },
+    "color": "#e8963c",
+    "items": [
+      {
+        "name": "Python",
+        "context": {
+          "pt": "foco em automação e dados",
+          "en": "focus on automation and data"
+        }
+      },
+      { "name": "SQL", "context": "IBM / 99 / VOSS" },
+      { "name": "JavaScript", "context": null },
+      { "name": "Java", "context": null }
+    ]
+  },
+  {
+    "id": "data",
+    "icon": "database",
+    "name": {
+      "pt": "Engenharia de Dados & BI",
+      "en": "Data & BI"
+    },
+    "color": "#6e9ecf",
+    "items": [
+      { "name": "PostgreSQL", "context": "IBM" },
+      { "name": "SQL Server", "context": "VOSS" },
+      { "name": "Pandas", "context": "IBM / VOSS" },
+      { "name": "Pandera", "context": "IBM" },
+      { "name": "SQLAlchemy", "context": "IBM" },
+      { "name": "Streamlit", "context": "IBM / VOSS" },
+      { "name": "Power BI", "context": "IBM" },
+      { "name": "IBM Cognos", "context": "IBM" },
+      { "name": "Grafana", "context": "IBM" },
+      { "name": "Looker", "context": "Loft" }
+    ]
+  },
+  {
+    "id": "ai-backend",
+    "icon": "cpu",
+    "name": {
+      "pt": "IA, Backend & DevOps",
+      "en": "AI, Backend & DevOps"
+    },
+    "color": "#4589ff",
+    "items": [
+      { "name": "FastMCP", "context": "IBM" },
+      { "name": "asyncpg", "context": "IBM" },
+      { "name": "Pydantic", "context": "IBM" },
+      { "name": "Keycloak OAuth2/OIDC", "context": "IBM" },
+      { "name": "Red Hat OpenShift", "context": "IBM" },
+      { "name": "Podman", "context": "IBM" },
+      { "name": "Pytest", "context": "IBM" },
+      { "name": "uv", "context": "IBM" },
+      { "name": "Linux", "context": null },
+      { "name": "Git & GitHub", "context": null }
+    ]
+  },
+  {
+    "id": "automation",
+    "icon": "workflow",
+    "name": {
+      "pt": "Automação, RPA & Ferramentas",
+      "en": "Automation, RPA & Tools"
+    },
+    "color": "#c9622f",
+    "items": [
+      { "name": "IBM RPA", "context": "IBM" },
+      { "name": "Selenium", "context": "VOSS" },
+      { "name": "CustomTkinter", "context": "VOSS" },
+      { "name": "Power Automate", "context": "IBM / VOSS" },
+      { "name": "Zendesk & APIs REST", "context": "QuintoAndar" },
+      { "name": "Salesforce & Jira", "context": "Loft" }
+    ]
+  }
+]

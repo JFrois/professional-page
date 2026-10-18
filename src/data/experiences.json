@@ -1,0 +1,184 @@
+[
+  {
+    "company": "IBM",
+    "role": {
+      "pt": "Estagiário de Análise de Dados e Automações",
+      "en": "Data Analysis and Automation Intern"
+    },
+    "period": {
+      "pt": "Abr 2026 — Presente",
+      "en": "Apr 2026 — Present"
+    },
+    "current": true,
+    "color": "#e8963c",
+    "bullets": {
+      "pt": [
+        "Nexus-Status (Servidor MCP para IA): reduziu o tempo de obtenção de métricas pelos Center Leaders de 2h–4h de fila para geração instantânea via agentes de IA.",
+        "Cognos ETL Engine: plataforma de ingestão e qualidade de dados em PostgreSQL com 7 workflows (RH, Finanças e Operações), economizando 1h/arquivo manual a cada execução semanal/mensal.",
+        "BI Executivo & RPA: desenvolvimento de dashboards em Power BI, Cognos e Grafana para a liderança executiva e automações em Python, IBM RPA e Power Automate."
+      ],
+      "en": [
+        "Nexus-Status (AI MCP Server): reduced metrics retrieval time for Center Leaders from a 2h–4h queue to instant generation via AI agents.",
+        "Cognos ETL Engine: data ingestion and data quality platform on PostgreSQL with 7 workflows (HR, Finance, and Operations), saving 1h per manual file on weekly and monthly runs.",
+        "Executive BI & RPA: developed dashboards in Power BI, Cognos, and Grafana for executive leadership alongside automations in Python, IBM RPA, and Power Automate."
+      ]
+    },
+    "tech": [
+      "Python 3.13",
+      "FastMCP",
+      "PostgreSQL",
+      "asyncpg",
+      "IBM RPA",
+      "Power BI",
+      "Cognos",
+      "Grafana",
+      "Red Hat OpenShift",
+      "uv"
+    ]
+  },
+  {
+    "company": "99 (DiDi)",
+    "role": {
+      "pt": "Estagiário de Product Operations CX (foco em dados)",
+      "en": "CX Product Operations Intern (data focus)"
+    },
+    "period": {
+      "pt": "Dez 2025 — Abr 2026",
+      "en": "Dec 2025 — Apr 2026"
+    },
+    "current": false,
+    "color": "#6e9ecf",
+    "bullets": {
+      "pt": [
+        "Análises quantitativas e diagnóstico de causa raiz em SQL (SQL root cause) na operação 99Food (Brasil e SSL) para mapear atritos técnicos na jornada do usuário e priorizar correções de bugs junto à engenharia.",
+        "Estruturação do monitoramento e reporte de OKRs e KPIs de CX para stakeholders globais e escalabilidade de fluxos do Help Center."
+      ],
+      "en": [
+        "Quantitative analysis and SQL root cause diagnosis across 99Food operations (Brazil & SSL) to map technical friction points in the user journey and prioritize bug fixes with engineering.",
+        "Structured monitoring and reporting of CX OKRs and KPIs for global stakeholders, driving Help Center flow scalability."
+      ]
+    },
+    "tech": [
+      "SQL",
+      "Product Operations",
+      "Data Analysis",
+      "KPIs & OKRs",
+      "Root Cause Analysis"
+    ]
+  },
+  {
+    "company": "VOSS Automotive Brasil",
+    "role": {
+      "pt": "Estagiário de Desenvolvimento & Inovação",
+      "en": "Development & Innovation Intern"
+    },
+    "period": {
+      "pt": "Jun 2025 — Dez 2025",
+      "en": "Jun 2025 — Dec 2025"
+    },
+    "current": false,
+    "color": "#c9622f",
+    "bullets": {
+      "pt": [
+        "Redução de -93% no tempo de processamento manual das rotinas atendidas com aplicações Python, RPA e Power Platform.",
+        "Automatizador de Pedidos B2B: eliminou de 18h a 36h de trabalho manual por ciclo (18h–36h poupadas a cada rodada de pedidos reduzidos ao login).",
+        "BI Aftermarket: reduziu a análise de oportunidades por planta de 3h para 10–20min (de ~3 horas para 10 a 20 minutos).",
+        "RPA TOTVS Protheus & Buscador VOSS: cadastro reduzido de 5 min para 20s por produto e consultas de estoque reduzidas de horas/dias para segundos."
+      ],
+      "en": [
+        "-93% reduction in manual processing time across automated routines using Python applications, RPA, and Power Platform.",
+        "B2B Order Automation: eliminated 18h to 36h of manual effort per cycle (18h–36h saved on every order run reduced to login).",
+        "Aftermarket BI: cut opportunity analysis per plant from 3h down to 10–20 min (from ~3 hours to 10–20 minutes).",
+        "TOTVS Protheus RPA & VOSS Search: slashed product registration from 5 min to 20s and inventory lookups from hours/days to seconds."
+      ]
+    },
+    "tech": [
+      "Python",
+      "Streamlit",
+      "Selenium WebDriver",
+      "CustomTkinter",
+      "SQL Server",
+      "Power Automate"
+    ]
+  },
+  {
+    "company": "Grupo QuintoAndar",
+    "role": {
+      "pt": "Analista de Operações (foco em automação e Python)",
+      "en": "Operations Analyst (automation and Python focus)"
+    },
+    "period": {
+      "pt": "Out 2024 — Jun 2025",
+      "en": "Oct 2024 — Jun 2025"
+    },
+    "current": false,
+    "color": "#6e9ecf",
+    "bullets": {
+      "pt": [
+        "Desenvolvimento de automação via API e scripts Python para criação automática de casos internos e disparo de comunicações estruturadas em massa, além de manutenção de dashboards operacionais no Zendesk."
+      ],
+      "en": [
+        "Developed API automations and Python scripts for automatic case creation and bulk structured notifications, alongside maintaining operational Zendesk dashboards."
+      ]
+    },
+    "tech": ["Python", "APIs REST", "Zendesk", "SQL", "Automação Operacional"]
+  },
+  {
+    "company": "Transição de Carreira",
+    "companyLabel": {
+      "pt": "Transição de Carreira",
+      "en": "Career Transition"
+    },
+    "role": {
+      "pt": "Transição de Carreira & Dedicação Acadêmica em Tecnologia",
+      "en": "Career Transition & Academic Focus in Technology"
+    },
+    "period": {
+      "pt": "Mar 2023 — Set 2024",
+      "en": "Mar 2023 — Sep 2024"
+    },
+    "current": false,
+    "isTransition": true,
+    "color": "#8b9bb4",
+    "bullets": {
+      "pt": [
+        "Dedicação integral à graduação em Análise e Desenvolvimento de Sistemas (UNINTER) e construção de projetos práticos em Python, SQL, Automação (RPA) e Engenharia de Dados para transição definitiva da área de Operações Jurídicas para Tecnologia."
+      ],
+      "en": [
+        "Full-time commitment to Systems Analysis and Development (UNINTER) degree, building practical projects in Python, SQL, RPA automation, and Data Engineering to complete transition from Legal Operations to Technology."
+      ]
+    },
+    "tech": [
+      "Python",
+      "SQL",
+      "Automação (RPA)",
+      "Engenharia de Dados",
+      "Git & GitHub",
+      "UNINTER"
+    ]
+  },
+  {
+    "company": "Loft",
+    "role": {
+      "pt": "Analista de Process & Insights / Analista e Assistente Jurídico Imobiliário",
+      "en": "Process & Insights Analyst / Real Estate Legal Analyst & Assistant"
+    },
+    "period": {
+      "pt": "Nov 2019 — Mar 2023",
+      "en": "Nov 2019 — Mar 2023"
+    },
+    "current": false,
+    "color": "#7a7060",
+    "bullets": {
+      "pt": [
+        "Implementação de fluxos automatizados de dados contratuais que reduziram em -50% o tempo de processamento operacional e geraram ganho de 10% em eficiência contratual.",
+        "Construção de pipelines e dashboards em Salesforce, Looker e Jira, elevando em +25% a precisão da análise de dados do setor."
+      ],
+      "en": [
+        "Implemented automated contract data workflows cutting operational processing time by -50% and improving contract efficiency by 10%.",
+        "Built pipelines and dashboards in Salesforce, Looker, and Jira, increasing departmental data precision by +25%."
+      ]
+    },
+    "tech": ["Salesforce", "Looker", "Jira", "Python", "Process & Insights"]
+  }
+]
