@@ -7,24 +7,21 @@ export default function Footer() {
     <footer
       style={{
         borderTop: '1px solid var(--border-subtle)',
-        padding: '32px clamp(24px, 6vw, 80px)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        padding: 'clamp(24px, 4vh, 36px) clamp(16px, 4vw, 40px)',
         position: 'relative',
         zIndex: 5,
-        flexWrap: 'wrap',
-        gap: 16,
+        width: '100%',
+        boxSizing: 'border-box',
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         <span
           className="f-mono"
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: 'var(--text-primary)',
-            fontWeight: 600,
-            letterSpacing: '0.04em',
+            fontWeight: 700,
+            letterSpacing: '0.06em',
           }}
         >
           {profileData.name.toUpperCase()}
@@ -44,8 +41,9 @@ export default function Footer() {
       <div
         style={{
           display: 'flex',
-          gap: 16,
+          gap: 'clamp(10px, 2vw, 18px)',
           alignItems: 'center',
+          justifyContent: 'center',
           flexWrap: 'wrap',
         }}
       >
@@ -53,17 +51,20 @@ export default function Footer() {
           href={profileData.social.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="f-mono footer-link"
+          className="f-mono footer-link touch-target"
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: 'var(--text-muted)',
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: 5,
+            padding: '6px 8px',
+            minHeight: 44,
           }}
+          title="LinkedIn de Juan Frois"
         >
-          <LinkedinIcon size={12} />
+          <LinkedinIcon size={13} />
           <span>LINKEDIN</span>
         </a>
 
@@ -71,38 +72,45 @@ export default function Footer() {
           href={profileData.social.github}
           target="_blank"
           rel="noreferrer"
-          className="f-mono footer-link"
+          className="f-mono footer-link touch-target"
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: 'var(--text-muted)',
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: 5,
+            padding: '6px 8px',
+            minHeight: 44,
           }}
+          title="GitHub de Juan Frois"
         >
-          <GithubIcon size={12} />
+          <GithubIcon size={13} />
           <span>GITHUB</span>
         </a>
 
         <a
           href={`mailto:${profileData.email}`}
-          className="f-mono footer-link"
+          className="f-mono footer-link touch-target"
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: 'var(--text-muted)',
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: 5,
+            padding: '6px 8px',
+            minHeight: 44,
+            overflowWrap: 'anywhere',
           }}
           title={profileData.email}
         >
-          <Mail size={12} stroke="currentColor" />
+          <Mail size={13} stroke="currentColor" />
           <span>{profileData.email}</span>
         </a>
 
         <span
+          className="hide-on-mobile"
           style={{
             width: 1,
             height: 12,
@@ -115,36 +123,40 @@ export default function Footer() {
         <a
           href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
           download="juan-frois-cv-pt.pdf"
-          className="f-mono footer-link"
+          className="f-mono footer-link touch-target"
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: 'var(--text-muted)',
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: 5,
+            padding: '6px 8px',
+            minHeight: 44,
           }}
           title="Baixar Currículo em PDF (Português)"
         >
-          <Download size={11} stroke="currentColor" />
+          <Download size={12} stroke="currentColor" />
           <span>CV (PT)</span>
         </a>
 
         <a
           href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
           download="juan-frois-resume-en.pdf"
-          className="f-mono footer-link"
+          className="f-mono footer-link touch-target"
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: 'var(--text-muted)',
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: 5,
+            padding: '6px 8px',
+            minHeight: 44,
           }}
           title="Download Resume in PDF (English)"
         >
-          <Download size={11} stroke="currentColor" />
+          <Download size={12} stroke="currentColor" />
           <span>CV (EN)</span>
         </a>
       </div>

@@ -35,13 +35,7 @@ export default function Contato() {
     <section
       id="contato"
       ref={sectionRef}
-      style={{
-        padding: 'clamp(80px, 10vh, 140px) clamp(24px, 6vw, 80px)',
-        position: 'relative',
-        zIndex: 5,
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}
+      className="section-container"
     >
       {/* Anchor for backward compatibility with #contact */}
       <span
@@ -50,23 +44,16 @@ export default function Contato() {
         aria-hidden="true"
       />
 
-      <div className="energy-line" style={{ maxWidth: 200, marginBottom: 64 }} />
+      <div className="energy-line" style={{ maxWidth: 200, marginBottom: 'clamp(32px, 5vh, 48px)' }} />
 
-      <div
-        className="two-col"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 0.95fr)',
-          gap: 'clamp(40px, 6vw, 80px)',
-          alignItems: 'start',
-        }}
-      >
+      {/* Two Column Layout: 1 col on Mobile/Tablet, 2 col on Desktop */}
+      <div className="two-col">
         {/* Left Column: Heading, Context & Direct Buttons */}
         <div>
           <p
             className="s-label reveal"
             style={{
-              marginBottom: 20,
+              marginBottom: 16,
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
@@ -74,11 +61,10 @@ export default function Contato() {
           </p>
 
           <h2
-            className="f-display reveal"
+            className="f-display f-h2 reveal"
             style={{
-              fontSize: 'clamp(30px, 4vw, 56px)',
               color: 'var(--text-primary)',
-              marginBottom: 20,
+              marginBottom: 16,
               transitionDelay: '80ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -93,11 +79,11 @@ export default function Contato() {
           <p
             className="reveal"
             style={{
-              fontSize: 15.5,
-              lineHeight: 1.75,
+              fontSize: 'clamp(14px, 1.25vw, 15.5px)',
+              lineHeight: 1.7,
               color: 'var(--text-secondary)',
               maxWidth: 480,
-              marginBottom: 32,
+              marginBottom: 24,
               transitionDelay: '140ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -111,7 +97,7 @@ export default function Contato() {
             className="reveal"
             style={{
               display: 'flex',
-              gap: 12,
+              gap: 10,
               flexWrap: 'wrap',
               transitionDelay: '200ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
@@ -121,16 +107,30 @@ export default function Contato() {
               href={profileData.social.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="btn-primary"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
+              className="btn-primary touch-target"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                flex: '1 1 auto',
+                justifyContent: 'center',
+                minHeight: 44,
+              }}
             >
               <LinkedinIcon size={14} />
               <span>Conectar no LinkedIn ↗</span>
             </a>
             <a
               href={`mailto:${profileData.email}`}
-              className="btn-ghost"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
+              className="btn-ghost touch-target"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                flex: '1 1 auto',
+                justifyContent: 'center',
+                minHeight: 44,
+              }}
             >
               <Mail size={14} stroke="currentColor" />
               <span>Enviar E-mail</span>
@@ -150,17 +150,8 @@ export default function Contato() {
           }}
         >
           {/* Card: E-mail */}
-          <div
-            className="card"
-            style={{
-              padding: '18px 22px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 14,
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
+          <div className="card contact-card">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, width: '100%' }}>
               <div
                 style={{
                   width: 36,
@@ -176,7 +167,7 @@ export default function Contato() {
               >
                 <Mail size={16} stroke="currentColor" />
               </div>
-              <div style={{ minWidth: 0 }}>
+              <div style={{ minWidth: 0, flex: 1 }}>
                 <span
                   className="f-mono"
                   style={{
@@ -187,71 +178,54 @@ export default function Contato() {
                 >
                   E-MAIL DIRETO
                 </span>
-                <p
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: 'var(--text-primary)',
-                    marginTop: 2,
-                    wordBreak: 'break-all',
-                  }}
-                >
+                <p className="email-address-text">
                   {profileData.email}
                 </p>
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+            <div className="contact-card-actions">
               <button
                 type="button"
                 onClick={copyEmail}
-                className="chip"
+                className="chip touch-target"
                 title="Copiar endereço de e-mail"
                 style={{
-                  padding: '6px 10px',
+                  padding: '8px 12px',
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 5,
-                  fontSize: 11,
+                  fontSize: 12,
                   background: copiedEmail ? 'var(--ember-glow)' : 'var(--bg-surface)',
                   color: copiedEmail ? 'var(--accent-impact)' : 'var(--text-secondary)',
                   borderColor: copiedEmail ? 'var(--accent-impact)' : 'var(--border)',
                 }}
               >
-                {copiedEmail ? <Check size={12} /> : <Copy size={12} />}
+                {copiedEmail ? <Check size={13} /> : <Copy size={13} />}
                 <span>{copiedEmail ? 'Copiado!' : 'Copiar'}</span>
               </button>
 
               <a
                 href={`mailto:${profileData.email}`}
-                className="btn-ghost"
+                className="btn-ghost touch-target"
                 style={{
-                  padding: '6px 12px',
-                  fontSize: 12,
+                  padding: '8px 14px',
+                  fontSize: 12.5,
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 4,
+                  gap: 5,
                 }}
               >
                 <span>Escrever</span>
-                <ExternalLink size={11} />
+                <ExternalLink size={12} />
               </a>
             </div>
           </div>
 
           {/* Card: LinkedIn */}
-          <div
-            className="card"
-            style={{
-              padding: '18px 22px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 14,
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
+          <div className="card contact-card">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, width: '100%' }}>
               <div
                 style={{
                   width: 36,
@@ -267,7 +241,7 @@ export default function Contato() {
               >
                 <LinkedinIcon size={16} />
               </div>
-              <div style={{ minWidth: 0 }}>
+              <div style={{ minWidth: 0, flex: 1 }}>
                 <span
                   className="f-mono"
                   style={{
@@ -280,10 +254,13 @@ export default function Contato() {
                 </span>
                 <p
                   style={{
-                    fontSize: 14,
+                    fontSize: 'clamp(13px, 1.4vw, 14px)',
                     fontWeight: 600,
                     color: 'var(--text-primary)',
                     marginTop: 2,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {profileData.social?.linkedinLabel || 'linkedin.com/in/jfrois'}
@@ -291,37 +268,29 @@ export default function Contato() {
               </div>
             </div>
 
-            <a
-              href={profileData.social.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-ghost"
-              style={{
-                padding: '6px 12px',
-                fontSize: 12,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 5,
-                flexShrink: 0,
-              }}
-            >
-              <span>Acessar</span>
-              <ExternalLink size={11} />
-            </a>
+            <div className="contact-card-actions">
+              <a
+                href={profileData.social.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost touch-target"
+                style={{
+                  padding: '8px 16px',
+                  fontSize: 12.5,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                }}
+              >
+                <span>Acessar Perfil</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
           </div>
 
           {/* Card: GitHub */}
-          <div
-            className="card"
-            style={{
-              padding: '18px 22px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 14,
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
+          <div className="card contact-card">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, width: '100%' }}>
               <div
                 style={{
                   width: 36,
@@ -337,7 +306,7 @@ export default function Contato() {
               >
                 <GithubIcon size={16} />
               </div>
-              <div style={{ minWidth: 0 }}>
+              <div style={{ minWidth: 0, flex: 1 }}>
                 <span
                   className="f-mono"
                   style={{
@@ -350,10 +319,13 @@ export default function Contato() {
                 </span>
                 <p
                   style={{
-                    fontSize: 14,
+                    fontSize: 'clamp(13px, 1.4vw, 14px)',
                     fontWeight: 600,
                     color: 'var(--text-primary)',
                     marginTop: 2,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {profileData.social?.githubLabel || 'github.com/JFrois'}
@@ -361,30 +333,31 @@ export default function Contato() {
               </div>
             </div>
 
-            <a
-              href={profileData.social.github}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-ghost"
-              style={{
-                padding: '6px 12px',
-                fontSize: 12,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 5,
-                flexShrink: 0,
-              }}
-            >
-              <span>Ver código</span>
-              <ExternalLink size={11} />
-            </a>
+            <div className="contact-card-actions">
+              <a
+                href={profileData.social.github}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost touch-target"
+                style={{
+                  padding: '8px 16px',
+                  fontSize: 12.5,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                }}
+              >
+                <span>Ver Repositórios</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
           </div>
 
           {/* Card: Download Direto de Currículo em PDF (PT-BR e EN) */}
           <div
             className="card"
             style={{
-              padding: '20px 22px',
+              padding: 'clamp(16px, 2.5vw, 20px)',
               display: 'flex',
               flexDirection: 'column',
               gap: 12,
@@ -415,37 +388,41 @@ export default function Contato() {
               <a
                 href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
                 download="juan-frois-cv-pt.pdf"
-                className="btn-primary"
+                className="btn-primary touch-target"
                 style={{
-                  flex: '1 1 180px',
+                  flex: '1 1 140px',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: 7,
                   fontSize: 12.5,
-                  padding: '9px 16px',
+                  padding: '10px 16px',
+                  minHeight: 44,
                 }}
               >
+                <span>🇧🇷</span>
                 <Download size={13} stroke="currentColor" />
-                <span>Currículo em Português</span>
+                <span>Currículo (PT)</span>
               </a>
 
               <a
                 href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
                 download="juan-frois-resume-en.pdf"
-                className="btn-ghost"
+                className="btn-ghost touch-target"
                 style={{
-                  flex: '1 1 180px',
+                  flex: '1 1 140px',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: 7,
                   fontSize: 12.5,
-                  padding: '9px 16px',
+                  padding: '10px 16px',
+                  minHeight: 44,
                 }}
               >
+                <span>🇺🇸</span>
                 <Download size={13} stroke="currentColor" />
-                <span>Resume in English</span>
+                <span>Resume (EN)</span>
               </a>
             </div>
           </div>
@@ -456,7 +433,7 @@ export default function Contato() {
               display: 'flex',
               alignItems: 'center',
               gap: 8,
-              padding: '8px 12px',
+              padding: '6px 10px',
               color: 'var(--text-muted)',
               fontSize: 12,
             }}

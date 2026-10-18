@@ -3,9 +3,14 @@ import { useEffect, useRef, useState } from 'react'
 export default function Cursor({ theme = 'dark' }) {
   const dotRef = useRef(null)
   const ringRef = useRef(null)
+
   const [isTouchDevice, setIsTouchDevice] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.matchMedia('(pointer: coarse)').matches
+      return (
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(hover: none)').matches ||
+        window.innerWidth < 1024
+      )
     }
     return false
   })
@@ -13,27 +18,42 @@ export default function Cursor({ theme = 'dark' }) {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const mq = window.matchMedia('(pointer: coarse)')
-    const handleChange = (e) => {
-      setIsTouchDevice(e.matches)
+    const checkDevice = () => {
+      const isTouch =
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(hover: none)').matches ||
+        window.innerWidth < 1024
+
+      setIsTouchDevice(isTouch)
     }
 
-    if (mq.addEventListener) {
-      mq.addEventListener('change', handleChange)
+    const mqCoarse = window.matchMedia('(pointer: coarse)')
+    const mqHover = window.matchMedia('(hover: none)')
+
+    if (mqCoarse.addEventListener) {
+      mqCoarse.addEventListener('change', checkDevice)
+      mqHover.addEventListener('change', checkDevice)
     } else {
-      mq.addListener(handleChange)
+      mqCoarse.addListener(checkDevice)
+      mqHover.addListener(checkDevice)
     }
+
+    window.addEventListener('resize', checkDevice)
 
     return () => {
-      if (mq.removeEventListener) {
-        mq.removeEventListener('change', handleChange)
+      if (mqCoarse.removeEventListener) {
+        mqCoarse.removeEventListener('change', checkDevice)
+        mqHover.removeEventListener('change', checkDevice)
       } else {
-        mq.removeListener(handleChange)
+        mqCoarse.removeListener(checkDevice)
+        mqHover.removeListener(checkDevice)
       }
+      window.removeEventListener('resize', checkDevice)
     }
   }, [])
 
   useEffect(() => {
+    // If it's a touch device or mobile screen, do not run animation loop or attach mouse listener
     if (isTouchDevice) return
 
     let rx = -100

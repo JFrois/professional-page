@@ -34,18 +34,12 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      style={{
-        padding: 'clamp(80px, 10vh, 120px) clamp(24px, 6vw, 80px)',
-        position: 'relative',
-        zIndex: 5,
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}
+      className="section-container"
     >
       <p
         className="s-label reveal"
         style={{
-          marginBottom: 20,
+          marginBottom: 16,
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
@@ -53,11 +47,10 @@ export default function Skills() {
       </p>
 
       <h2
-        className="f-display reveal"
+        className="f-display f-h2 reveal"
         style={{
-          fontSize: 'clamp(28px, 3.5vw, 48px)',
           color: 'var(--text-primary)',
-          marginBottom: 48,
+          marginBottom: 'clamp(28px, 5vh, 48px)',
           transitionDelay: '80ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
@@ -69,14 +62,8 @@ export default function Skills() {
         </span>
       </h2>
 
-      <div
-        className="skills-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: 16,
-        }}
-      >
+      {/* Responsive Skills Grid: 1 col on Mobile, 2 col on Tablet, 2x2 on Desktop */}
+      <div className="skills-grid">
         {skillsData.map((category, idx) => {
           const CategoryIcon = CATEGORY_ICONS[category.name] || Code2
 
@@ -85,8 +72,9 @@ export default function Skills() {
               key={category.name}
               className="card reveal"
               style={{
-                padding: '22px 24px',
+                padding: 'clamp(18px, 2.5vw, 24px)',
                 transitionDelay: `${idx * 60}ms`,
+                boxSizing: 'border-box',
                 ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
               }}
             >
@@ -100,14 +88,15 @@ export default function Skills() {
               >
                 <div
                   style={{
-                    width: 26,
-                    height: 26,
-                    borderRadius: 6,
+                    width: 28,
+                    height: 28,
+                    borderRadius: 7,
                     background: `${category.color}15`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: category.color,
+                    flexShrink: 0,
                   }}
                 >
                   <CategoryIcon size={14} stroke="currentColor" />
@@ -115,9 +104,9 @@ export default function Skills() {
                 <span
                   className="f-mono"
                   style={{
-                    fontSize: 10.5,
+                    fontSize: 11,
                     color: category.color,
-                    letterSpacing: '0.12em',
+                    letterSpacing: '0.1em',
                     fontWeight: 600,
                   }}
                 >
@@ -125,7 +114,7 @@ export default function Skills() {
                 </span>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {category.items.map((item, itemIdx) => {
                   const isObj = typeof item === 'object' && item !== null
                   const skillName = isObj ? item.name : item
@@ -147,11 +136,12 @@ export default function Skills() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: 5,
-                        padding: '6px 11px',
-                        fontSize: 12.5,
+                        padding: '6px 10px',
+                        fontSize: 12,
+                        maxWidth: '100%',
                       }}
                     >
-                      <span style={{ fontWeight: 600 }}>{skillName}</span>
+                      <span style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{skillName}</span>
                       {skillContext && (
                         <span
                           style={{

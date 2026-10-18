@@ -8,7 +8,6 @@ export default function BackgroundCanvas({ scrollPct = 0, theme = 'dark' }) {
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
   const animFrameRef = useRef(0)
-  const initializedRef = useRef(false)
   const themeRef = useRef(theme)
 
   useEffect(() => {
@@ -21,10 +20,14 @@ export default function BackgroundCanvas({ scrollPct = 0, theme = 'dark' }) {
     const w = canvas.width
     const h = canvas.height
     const particles = []
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
     profileData.codeSnippets.forEach((snippet, rowIdx) => {
       snippet.text.split('').forEach((char, colIdx) => {
         if (char !== ' ') {
+          // On mobile screens (< 768px), reduce particles by 50% for 60fps performance and battery conservation
+          if (isMobile && (rowIdx + colIdx) % 2 === 1) return
+
           particles.push({
             x: Math.random() * w,
             y: -80 - Math.random() * h * 0.6,
@@ -47,18 +50,25 @@ export default function BackgroundCanvas({ scrollPct = 0, theme = 'dark' }) {
     const canvas = canvasRef.current
     if (!canvas) return
 
+    let timer = null
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-      if (!initializedRef.current) {
-        initParticles()
-        initializedRef.current = true
-      }
+      initParticles()
     }
 
     handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+
+    const onResize = () => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(handleResize, 150)
+    }
+
+    window.addEventListener('resize', onResize)
+    return () => {
+      if (timer) clearTimeout(timer)
+      window.removeEventListener('resize', onResize)
+    }
   }, [initParticles])
 
   useEffect(() => {

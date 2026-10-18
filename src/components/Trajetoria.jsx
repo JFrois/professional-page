@@ -72,18 +72,12 @@ export default function Trajetoria() {
     <section
       id="trajetoria"
       ref={sectionRef}
-      style={{
-        padding: 'clamp(80px, 10vh, 120px) clamp(24px, 6vw, 80px)',
-        position: 'relative',
-        zIndex: 5,
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}
+      className="section-container"
     >
       <p
         className="s-label reveal"
         style={{
-          marginBottom: 20,
+          marginBottom: 16,
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
@@ -91,11 +85,10 @@ export default function Trajetoria() {
       </p>
 
       <h2
-        className="f-display reveal"
+        className="f-display f-h2 reveal"
         style={{
-          fontSize: 'clamp(28px, 3.5vw, 48px)',
           color: 'var(--text-primary)',
-          marginBottom: 48,
+          marginBottom: 'clamp(28px, 5vh, 48px)',
           transitionDelay: '80ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
@@ -112,19 +105,21 @@ export default function Trajetoria() {
           return (
             <div
               key={exp.company}
-              className="reveal"
+              className="reveal timeline-row"
               style={{
                 transitionDelay: `${idx * 80}ms`,
                 ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
                 display: 'flex',
-                gap: 20,
+                gap: 'clamp(10px, 2.5vw, 18px)',
               }}
             >
+              {/* Left Lateral Timeline Line */}
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
+                  flexShrink: 0,
                 }}
               >
                 {exp.isTransition ? (
@@ -160,6 +155,7 @@ export default function Trajetoria() {
                 )}
               </div>
 
+              {/* Experience Card taking 100% of usable width */}
               <div
                 className="card"
                 onClick={() => toggleCompany(exp.company)}
@@ -174,7 +170,7 @@ export default function Trajetoria() {
                 style={{
                   flex: 1,
                   marginBottom: 12,
-                  padding: '20px 24px',
+                  padding: 'clamp(14px, 2.2vw, 22px)',
                   cursor: 'pointer',
                   borderColor: isExpanded
                     ? `${exp.color}55`
@@ -185,22 +181,16 @@ export default function Trajetoria() {
                   background: exp.isTransition
                     ? 'linear-gradient(180deg, var(--bg-surface), var(--bg-elevated))'
                     : undefined,
+                  minWidth: 0,
                 }}
               >
-                <div
-                  className="tl-inner"
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  <div>
+                <div className="tl-inner">
+                  <div style={{ minWidth: 0 }}>
                     <div
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: 10,
+                        gap: 8,
                         marginBottom: 4,
                         flexWrap: 'wrap',
                       }}
@@ -252,10 +242,10 @@ export default function Trajetoria() {
                   <span
                     className="f-mono tl-period"
                     style={{
-                      fontSize: 10,
+                      fontSize: 10.5,
                       color: 'var(--text-muted)',
                       whiteSpace: 'nowrap',
-                      paddingLeft: 16,
+                      flexShrink: 0,
                     }}
                   >
                     {exp.period}
@@ -265,8 +255,8 @@ export default function Trajetoria() {
                 {isExpanded && (
                   <div
                     style={{
-                      marginTop: 16,
-                      paddingTop: 16,
+                      marginTop: 14,
+                      paddingTop: 14,
                       borderTop: '1px solid var(--border-subtle)',
                     }}
                   >
@@ -275,7 +265,9 @@ export default function Trajetoria() {
                         listStyle: 'none',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: 10,
+                        gap: 9,
+                        padding: 0,
+                        margin: 0,
                       }}
                     >
                       {exp.bullets.map((bullet) => (
@@ -283,10 +275,10 @@ export default function Trajetoria() {
                           key={bullet}
                           style={{
                             display: 'flex',
-                            gap: 10,
+                            gap: 8,
                             fontSize: 13,
                             color: 'var(--text-secondary)',
-                            lineHeight: 1.6,
+                            lineHeight: 1.55,
                           }}
                         >
                           <ChevronRight
@@ -298,7 +290,7 @@ export default function Trajetoria() {
                               marginTop: 3,
                             }}
                           />
-                          <div>
+                          <div style={{ minWidth: 0 }}>
                             <HighlightedBullet text={bullet} color={exp.color} />
                           </div>
                         </li>
@@ -310,7 +302,7 @@ export default function Trajetoria() {
                         display: 'flex',
                         flexWrap: 'wrap',
                         gap: 6,
-                        marginTop: 16,
+                        marginTop: 14,
                       }}
                     >
                       {exp.tech.map((t) => (
@@ -339,8 +331,8 @@ export default function Trajetoria() {
       <div
         className="reveal"
         style={{
-          marginTop: 56,
-          paddingTop: 36,
+          marginTop: 'clamp(36px, 6vh, 56px)',
+          paddingTop: 28,
           borderTop: '1px solid var(--border-subtle)',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
@@ -350,7 +342,7 @@ export default function Trajetoria() {
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            marginBottom: 20,
+            marginBottom: 16,
           }}
         >
           <GraduationCap
@@ -371,19 +363,14 @@ export default function Trajetoria() {
           </h3>
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 14,
-          }}
-        >
+        {/* Responsive Education Grid: 1 col on Mobile, 2 col on Tablet/Desktop */}
+        <div className="education-grid">
           {profileData.education.map((edu) => (
             <div
               key={edu.institution}
               className="card"
               style={{
-                padding: '20px 24px',
+                padding: '18px 20px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -400,11 +387,12 @@ export default function Trajetoria() {
                     alignItems: 'flex-start',
                     marginBottom: 6,
                     gap: 8,
+                    flexWrap: 'wrap',
                   }}
                 >
                   <span
                     style={{
-                      fontSize: 15,
+                      fontSize: 14.5,
                       fontWeight: 700,
                       color: 'var(--text-primary)',
                     }}
@@ -435,6 +423,7 @@ export default function Trajetoria() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: 8,
+                  flexWrap: 'wrap',
                 }}
               >
                 <span

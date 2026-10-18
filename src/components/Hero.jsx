@@ -72,30 +72,146 @@ const Hero = forwardRef(function Hero(_props, ref) {
       style={{
         position: 'relative',
         zIndex: 5,
-        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: 'clamp(96px, 11vh, 128px) clamp(20px, 5vw, 64px) clamp(40px, 6vh, 60px)',
-        maxWidth: 1240,
-        margin: '0 auto',
         width: '100%',
         boxSizing: 'border-box',
       }}
     >
-      {/* Top Main Section: 2 Columns (Content & Profile Photo) */}
-      <div
-        className="hero-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 0.75fr)',
-          gap: 'clamp(32px, 5vw, 64px)',
-          alignItems: 'center',
-          marginBottom: 'clamp(36px, 6vh, 64px)',
-        }}
-      >
-        {/* Left Column: Headline, Value Proposition & CTAs */}
-        <div style={{ textAlign: 'left' }}>
+      {/* Top Main Section: 2 Columns on Desktop, Stacked on Mobile/Tablet */}
+      <div className="hero-grid">
+        {/* Profile Photo Column (Order 1 on Mobile/Tablet < 1024px, Order 2 on Desktop) */}
+        <div className="hero-photo-col">
+          {/* Ambient Glow Backdrop */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '100%',
+              maxWidth: 300,
+              height: '100%',
+              borderRadius: '50%',
+              background:
+                'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
+              filter: 'blur(30px)',
+              opacity: 0.8,
+              pointerEvents: 'none',
+            }}
+          />
+
+          {/* High-Contrast Frame Container */}
+          <div
+            className="hero-photo-frame"
+            style={{
+              position: 'relative',
+              width: 'clamp(130px, 34vw, 280px)',
+              aspectRatio: '1 / 1',
+              borderRadius: 'clamp(20px, 3.5vw, 36px)',
+              padding: 4,
+              background:
+                'linear-gradient(135deg, var(--accent-primary) 0%, rgba(255,255,255,0.1) 40%, var(--accent-impact) 100%)',
+              boxShadow:
+                '0 20px 48px -12px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--border-mid)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            }}
+          >
+            {/* Inner Recessed Frame */}
+            <div
+              style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: 'clamp(18px, 3.2vw, 32px)',
+                overflow: 'hidden',
+                background: 'var(--bg-surface)',
+                position: 'relative',
+              }}
+            >
+              <img
+                src={profilePic}
+                alt={profileData.name}
+                loading="eager"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                  filter: 'contrast(1.05) brightness(1.02)',
+                  transition: 'transform 0.4s ease',
+                }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.12)',
+                  borderRadius: 'clamp(18px, 3.2vw, 32px)',
+                  pointerEvents: 'none',
+                }}
+              />
+            </div>
+
+            {/* Floating Top Badge */}
+            <div
+              style={{
+                position: 'absolute',
+                top: -8,
+                right: -6,
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-mid)',
+                borderRadius: 20,
+                padding: '4px 10px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 5,
+                boxShadow: 'var(--card-shadow)',
+                fontSize: 10,
+                fontFamily: 'JetBrains Mono, monospace',
+                fontWeight: 600,
+                color: 'var(--accent-impact)',
+                backdropFilter: 'blur(8px)',
+              }}
+            >
+              <Zap size={11} stroke="currentColor" />
+              <span>Em Produção</span>
+            </div>
+
+            {/* Floating Bottom Badge */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: -8,
+                left: -6,
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-mid)',
+                borderRadius: 20,
+                padding: '5px 11px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 5,
+                boxShadow: 'var(--card-shadow)',
+                fontSize: 10,
+                fontFamily: 'JetBrains Mono, monospace',
+                fontWeight: 600,
+                color: 'var(--text-primary)',
+                backdropFilter: 'blur(8px)',
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: 'var(--accent-primary)',
+                  boxShadow: '0 0 8px var(--accent-primary)',
+                }}
+              />
+              <span>Full Lifecycle</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Content Column: Headline, Value Proposition & CTAs */}
+        <div className="hero-content-col" style={{ textAlign: 'left' }}>
           {/* Status Badge */}
           <div
             style={{
@@ -106,8 +222,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
               borderRadius: 20,
               background: 'var(--bg-elevated)',
               border: '1px solid var(--border-mid)',
-              marginBottom: 20,
+              marginBottom: 16,
               boxShadow: 'var(--card-shadow)',
+              maxWidth: '100%',
             }}
           >
             <span
@@ -118,6 +235,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
                 background: 'var(--accent-impact)',
                 boxShadow: '0 0 10px var(--accent-impact)',
                 display: 'inline-block',
+                flexShrink: 0,
               }}
             />
             <span
@@ -128,21 +246,21 @@ const Hero = forwardRef(function Hero(_props, ref) {
                 color: 'var(--text-secondary)',
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
               }}
             >
               {profileData.shortName || profileData.name} · São Paulo, BR
             </span>
           </div>
 
-          {/* Main Title */}
+          {/* Main Title with Fluid clamp() */}
           <h1
-            className="f-display"
+            className="f-display f-h1"
             style={{
-              fontSize: 'clamp(36px, 5vw, 64px)',
-              lineHeight: 1.08,
               color: 'var(--text-primary)',
-              letterSpacing: '-0.03em',
-              marginBottom: 16,
+              marginBottom: 14,
               fontWeight: 800,
             }}
           >
@@ -164,11 +282,11 @@ const Hero = forwardRef(function Hero(_props, ref) {
           <p
             style={{
               fontFamily: 'Outfit, sans-serif',
-              fontSize: 'clamp(17px, 2.1vw, 22px)',
+              fontSize: 'clamp(16px, 2vw, 22px)',
               fontWeight: 600,
               color: 'var(--text-primary)',
-              marginBottom: 16,
-              lineHeight: 1.4,
+              marginBottom: 14,
+              lineHeight: 1.35,
               letterSpacing: '-0.01em',
             }}
           >
@@ -178,11 +296,11 @@ const Hero = forwardRef(function Hero(_props, ref) {
           {/* Impact Value Proposition */}
           <p
             style={{
-              fontSize: 'clamp(14.5px, 1.3vw, 16.5px)',
+              fontSize: 'clamp(14px, 1.25vw, 16px)',
               color: 'var(--text-secondary)',
-              lineHeight: 1.7,
+              lineHeight: 1.68,
               maxWidth: 620,
-              marginBottom: 28,
+              marginBottom: 24,
             }}
           >
             Transformo gargalos operacionais em{' '}
@@ -201,7 +319,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               display: 'flex',
               gap: 8,
               flexWrap: 'wrap',
-              marginBottom: 32,
+              marginBottom: 28,
             }}
           >
             <span
@@ -269,37 +387,32 @@ const Hero = forwardRef(function Hero(_props, ref) {
             </span>
           </div>
 
-          {/* Action CTAs */}
-          <div
-            style={{
-              display: 'flex',
-              gap: 14,
-              flexWrap: 'wrap',
-              alignItems: 'center',
-            }}
-          >
+          {/* Action CTAs: Responsive Stack on Mobile < 640px, Row on Tablet/Desktop */}
+          <div className="hero-ctas-container">
             {/* Primary CTA (Solid highlight): Ver Projetos em Produção */}
             <button
               type="button"
               onClick={scrollToProjects}
-              className="btn-primary"
+              className="btn-primary touch-target"
               style={{
                 padding: '12px 24px',
                 fontSize: 14,
                 fontWeight: 600,
                 display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: 8,
                 cursor: 'pointer',
                 borderRadius: 11,
+                minHeight: 46,
               }}
             >
               <span>Ver Projetos em Produção</span>
               <ArrowDown size={15} stroke="currentColor" />
             </button>
 
-            {/* Secondary CTA (Outline/surface with download icon): Baixar Currículo (PDF) */}
-            <div ref={menuRef} style={{ position: 'relative' }}>
+            {/* Secondary CTA: Baixar Currículo (PDF) with Dropdown */}
+            <div ref={menuRef} className="hero-cv-wrapper" style={{ position: 'relative' }}>
               <div
                 style={{
                   display: 'inline-flex',
@@ -310,16 +423,19 @@ const Hero = forwardRef(function Hero(_props, ref) {
                   boxShadow: 'var(--card-shadow)',
                   transition: 'all 0.2s ease',
                   overflow: 'hidden',
+                  width: '100%',
                 }}
               >
                 <a
                   href={activeCv.url}
                   download={activeCv.name}
-                  className="btn-ghost-hero"
+                  className="btn-ghost-hero touch-target"
                   title={`Baixar Currículo (${activeCv.title})`}
                   style={{
+                    flex: 1,
                     display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: 8,
                     padding: '11px 18px',
                     color: 'var(--text-primary)',
@@ -331,6 +447,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
+                    minHeight: 46,
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = 'var(--accent-primary)'
@@ -353,15 +470,17 @@ const Hero = forwardRef(function Hero(_props, ref) {
                     border: 'none',
                     borderLeft: '1px solid var(--border-mid)',
                     color: 'var(--text-secondary)',
-                    padding: '0 10px',
+                    padding: '0 12px',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: 4,
                     fontSize: 11.5,
                     fontFamily: 'JetBrains Mono, monospace',
                     fontWeight: 600,
                     transition: 'background 0.2s ease',
+                    minHeight: 46,
                   }}
                   title="Alternar entre PT-BR e EN"
                 >
@@ -385,6 +504,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
                     position: 'absolute',
                     top: 'calc(100% + 8px)',
                     left: 0,
+                    right: 0,
                     minWidth: 220,
                     background: 'var(--bg-surface)',
                     border: '1px solid var(--border-mid)',
@@ -427,17 +547,18 @@ const Hero = forwardRef(function Hero(_props, ref) {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          padding: '8px 10px',
+                          padding: '10px 12px',
                           borderRadius: 6,
                           background: isSelected ? 'var(--bg-elevated)' : 'transparent',
                           color: isSelected
                             ? 'var(--accent-primary)'
                             : 'var(--text-primary)',
                           textDecoration: 'none',
-                          fontSize: 12.5,
+                          fontSize: 13,
                           fontFamily: 'Outfit, sans-serif',
                           fontWeight: isSelected ? 600 : 500,
                           cursor: 'pointer',
+                          minHeight: 44,
                         }}
                       >
                         <span
@@ -469,158 +590,15 @@ const Hero = forwardRef(function Hero(_props, ref) {
             </div>
           </div>
         </div>
-
-        {/* Right Column: Profile Photo with Professional High-Contrast Frame */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'relative',
-          }}
-        >
-          {/* Ambient Glow Backdrop */}
-          <div
-            style={{
-              position: 'absolute',
-              width: '100%',
-              maxWidth: 320,
-              height: '100%',
-              borderRadius: '50%',
-              background:
-                'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
-              filter: 'blur(30px)',
-              opacity: 0.8,
-              pointerEvents: 'none',
-            }}
-          />
-
-          {/* High-Contrast Frame Container */}
-          <div
-            style={{
-              position: 'relative',
-              width: 'clamp(200px, 24vw, 300px)',
-              aspectRatio: '1 / 1',
-              borderRadius: 'clamp(24px, 3.5vw, 36px)',
-              padding: 4,
-              background:
-                'linear-gradient(135deg, var(--accent-primary) 0%, rgba(255,255,255,0.1) 40%, var(--accent-impact) 100%)',
-              boxShadow:
-                '0 20px 48px -12px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--border-mid)',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-            }}
-          >
-            {/* Inner Recessed Frame */}
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                borderRadius: 'clamp(20px, 3.2vw, 32px)',
-                overflow: 'hidden',
-                background: 'var(--bg-surface)',
-                position: 'relative',
-              }}
-            >
-              <img
-                src={profilePic}
-                alt={profileData.name}
-                loading="eager"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                  filter: 'contrast(1.05) brightness(1.02)',
-                  transition: 'transform 0.4s ease',
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.12)',
-                  borderRadius: 'clamp(20px, 3.2vw, 32px)',
-                  pointerEvents: 'none',
-                }}
-              />
-            </div>
-
-            {/* Floating Top Badge */}
-            <div
-              style={{
-                position: 'absolute',
-                top: -10,
-                right: -10,
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-mid)',
-                borderRadius: 20,
-                padding: '5px 12px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-                boxShadow: 'var(--card-shadow)',
-                fontSize: 11,
-                fontFamily: 'JetBrains Mono, monospace',
-                fontWeight: 600,
-                color: 'var(--accent-impact)',
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              <Zap size={11} stroke="currentColor" />
-              <span>Em Produção</span>
-            </div>
-
-            {/* Floating Bottom Badge */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: -12,
-                left: -10,
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-mid)',
-                borderRadius: 20,
-                padding: '6px 14px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-                boxShadow: 'var(--card-shadow)',
-                fontSize: 11,
-                fontFamily: 'JetBrains Mono, monospace',
-                fontWeight: 600,
-                color: 'var(--text-primary)',
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              <span
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: '50%',
-                  background: 'var(--accent-primary)',
-                  boxShadow: '0 0 8px var(--accent-primary)',
-                }}
-              />
-              <span>Full Lifecycle</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Bar: 3 Big Numbers (KPIs) of Impact */}
-      <div
-        className="kpi-banner-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 16,
-          width: '100%',
-        }}
-      >
+      <div className="kpi-banner-grid">
         {/* KPI 1 */}
         <div
           className="card"
           style={{
-            padding: '20px 22px',
+            padding: '18px 20px',
             borderRadius: 14,
             display: 'flex',
             flexDirection: 'column',
@@ -635,7 +613,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: 4,
+              marginBottom: 2,
             }}
           >
             <span
@@ -659,11 +637,8 @@ const Hero = forwardRef(function Hero(_props, ref) {
           <div
             className="stat-num"
             style={{
-              fontSize: 'clamp(28px, 3.2vw, 38px)',
               fontWeight: 800,
               fontFamily: 'Outfit, sans-serif',
-              lineHeight: 1,
-              letterSpacing: '-0.03em',
               background: 'linear-gradient(135deg, var(--text-primary), var(--accent-impact))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -677,7 +652,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               fontSize: 13,
               fontWeight: 600,
               color: 'var(--text-primary)',
-              lineHeight: 1.4,
+              lineHeight: 1.35,
               marginTop: 2,
             }}
           >
@@ -688,7 +663,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
             style={{
               fontSize: 11.5,
               color: 'var(--text-muted)',
-              lineHeight: 1.5,
+              lineHeight: 1.45,
             }}
           >
             Rotinas de horas substituídas por robôs e pipelines estruturados em Python.
@@ -699,7 +674,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
         <div
           className="card"
           style={{
-            padding: '20px 22px',
+            padding: '18px 20px',
             borderRadius: 14,
             display: 'flex',
             flexDirection: 'column',
@@ -714,7 +689,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: 4,
+              marginBottom: 2,
             }}
           >
             <span
@@ -738,11 +713,8 @@ const Hero = forwardRef(function Hero(_props, ref) {
           <div
             className="stat-num"
             style={{
-              fontSize: 'clamp(28px, 3.2vw, 38px)',
               fontWeight: 800,
               fontFamily: 'Outfit, sans-serif',
-              lineHeight: 1,
-              letterSpacing: '-0.03em',
               background: 'linear-gradient(135deg, var(--text-primary), var(--accent-primary))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -756,18 +728,18 @@ const Hero = forwardRef(function Hero(_props, ref) {
               fontSize: 13,
               fontWeight: 600,
               color: 'var(--text-primary)',
-              lineHeight: 1.4,
+              lineHeight: 1.35,
               marginTop: 2,
             }}
           >
-            De 2h–4h para segundos no acesso a métricas com IA (MCP) e SQL
+            De 2h–4h para segundos com IA (MCP) e SQL
           </p>
 
           <p
             style={{
               fontSize: 11.5,
               color: 'var(--text-muted)',
-              lineHeight: 1.5,
+              lineHeight: 1.45,
             }}
           >
             Servidor corporativo MCP conectando Watsonx Orchestrate a bancos analíticos.
@@ -778,7 +750,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
         <div
           className="card"
           style={{
-            padding: '20px 22px',
+            padding: '18px 20px',
             borderRadius: 14,
             display: 'flex',
             flexDirection: 'column',
@@ -793,7 +765,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: 4,
+              marginBottom: 2,
             }}
           >
             <span
@@ -817,11 +789,8 @@ const Hero = forwardRef(function Hero(_props, ref) {
           <div
             className="stat-num"
             style={{
-              fontSize: 'clamp(28px, 3.2vw, 38px)',
               fontWeight: 800,
               fontFamily: 'Outfit, sans-serif',
-              lineHeight: 1,
-              letterSpacing: '-0.03em',
               background: 'linear-gradient(135deg, var(--text-primary), var(--accent-secondary))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -835,18 +804,18 @@ const Hero = forwardRef(function Hero(_props, ref) {
               fontSize: 13,
               fontWeight: 600,
               color: 'var(--text-primary)',
-              lineHeight: 1.4,
+              lineHeight: 1.35,
               marginTop: 2,
             }}
           >
-            Passagens por IBM, 99 (DiDi), VOSS Automotive, QuintoAndar e Loft
+            IBM, 99 (DiDi), VOSS Automotive, QuintoAndar e Loft
           </p>
 
           <p
             style={{
               fontSize: 11.5,
               color: 'var(--text-muted)',
-              lineHeight: 1.5,
+              lineHeight: 1.45,
             }}
           >
             Trajetória híbrida conectando dores de operações críticas à engenharia robusta.
@@ -858,4 +827,3 @@ const Hero = forwardRef(function Hero(_props, ref) {
 })
 
 export default Hero
-

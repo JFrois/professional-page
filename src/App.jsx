@@ -57,6 +57,9 @@ export default function App() {
         background: 'var(--bg-primary)',
         color: 'var(--text-primary)',
         minHeight: '100vh',
+        width: '100%',
+        maxWidth: '100vw',
+        overflowX: 'hidden',
         transition: 'background-color 0.3s ease, color 0.3s ease',
       }}
     >

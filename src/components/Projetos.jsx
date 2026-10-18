@@ -27,13 +27,7 @@ export default function Projetos() {
     <section
       id="projetos"
       ref={sectionRef}
-      style={{
-        padding: 'clamp(80px, 10vh, 120px) clamp(24px, 6vw, 80px)',
-        position: 'relative',
-        zIndex: 5,
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}
+      className="section-container"
     >
       {/* Anchor for backward compatibility with #projects */}
       <span
@@ -45,7 +39,7 @@ export default function Projetos() {
       <p
         className="s-label reveal"
         style={{
-          marginBottom: 20,
+          marginBottom: 16,
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
@@ -53,9 +47,8 @@ export default function Projetos() {
       </p>
 
       <h2
-        className="f-display reveal"
+        className="f-display f-h2 reveal"
         style={{
-          fontSize: 'clamp(28px, 3.5vw, 48px)',
           color: 'var(--text-primary)',
           marginBottom: 12,
           transitionDelay: '80ms',
@@ -81,11 +74,11 @@ export default function Projetos() {
       <p
         className="reveal"
         style={{
-          fontSize: 15.5,
+          fontSize: 'clamp(14px, 1.25vw, 15.5px)',
           color: 'var(--text-secondary)',
-          maxWidth: 600,
-          lineHeight: 1.65,
-          marginBottom: 48,
+          maxWidth: 620,
+          lineHeight: 1.68,
+          marginBottom: 'clamp(28px, 5vh, 48px)',
           transitionDelay: '140ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
@@ -95,15 +88,7 @@ export default function Projetos() {
         a esteiras transacionais de Data Quality e robôs RPA industriais.
       </p>
 
-      <div
-        className="projects-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gridAutoRows: 'auto',
-          gap: 16,
-        }}
-      >
+      <div className="projects-grid">
         {projectsData.map((project, idx) => (
           <ProjectCard
             key={project.id}
@@ -116,4 +101,3 @@ export default function Projetos() {
     </section>
   )
 }
-

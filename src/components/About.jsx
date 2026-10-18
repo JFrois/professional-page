@@ -66,13 +66,7 @@ export default function About() {
     <section
       id="sobre"
       ref={sectionRef}
-      style={{
-        padding: 'clamp(100px, 12vh, 160px) clamp(24px, 6vw, 80px)',
-        position: 'relative',
-        zIndex: 5,
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}
+      className="section-container"
     >
       {/* Anchor for backward compatibility with #about */}
       <span
@@ -84,7 +78,7 @@ export default function About() {
       <p
         className="s-label reveal"
         style={{
-          marginBottom: 20,
+          marginBottom: 16,
           transitionDelay: '0ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
@@ -92,23 +86,15 @@ export default function About() {
         04 — SOBRE MIM
       </p>
 
-      <div
-        className="two-col"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
-          gap: 'clamp(40px, 6vw, 80px)',
-          alignItems: 'start',
-        }}
-      >
+      {/* Two Column Layout: 1 col on Mobile/Tablet, 2 col on Desktop */}
+      <div className="two-col">
         {/* Left Column: Escaneable Narrative */}
         <div>
           <h2
-            className="f-display reveal"
+            className="f-display f-h2 reveal"
             style={{
-              fontSize: 'clamp(32px, 4.5vw, 56px)',
               color: 'var(--text-primary)',
-              marginBottom: 20,
+              marginBottom: 16,
               transitionDelay: '80ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -123,10 +109,10 @@ export default function About() {
           <p
             className="reveal"
             style={{
-              fontSize: 15.5,
-              lineHeight: 1.7,
+              fontSize: 'clamp(14px, 1.25vw, 15.5px)',
+              lineHeight: 1.68,
               color: 'var(--text-secondary)',
-              marginBottom: 28,
+              marginBottom: 24,
               transitionDelay: '120ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -143,7 +129,7 @@ export default function About() {
               display: 'flex',
               flexDirection: 'column',
               gap: 12,
-              marginBottom: 28,
+              marginBottom: 24,
               transitionDelay: '160ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -153,7 +139,7 @@ export default function About() {
                 key={pillar.step}
                 className="card"
                 style={{
-                  padding: '16px 20px',
+                  padding: 'clamp(14px, 2vw, 18px)',
                   borderLeft: `3px solid ${pillar.color}`,
                 }}
               >
@@ -164,13 +150,14 @@ export default function About() {
                     justifyContent: 'space-between',
                     marginBottom: 6,
                     gap: 8,
+                    flexWrap: 'wrap',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span
                       className="f-mono"
                       style={{
-                        fontSize: 10,
+                        fontSize: 10.5,
                         color: pillar.color,
                         fontWeight: 700,
                       }}
@@ -182,6 +169,7 @@ export default function About() {
                         fontSize: 14,
                         fontWeight: 700,
                         color: 'var(--text-primary)',
+                        margin: 0,
                       }}
                     >
                       {pillar.title}
@@ -205,7 +193,7 @@ export default function About() {
                   style={{
                     fontSize: 13,
                     color: 'var(--text-secondary)',
-                    lineHeight: 1.6,
+                    lineHeight: 1.55,
                     margin: 0,
                   }}
                 >
@@ -219,10 +207,10 @@ export default function About() {
           <div
             className="card reveal"
             style={{
-              padding: '16px 20px',
+              padding: '16px 18px',
               background: 'var(--bg-elevated)',
               borderColor: 'var(--border-mid)',
-              marginBottom: 32,
+              marginBottom: 24,
               transitionDelay: '200ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -230,7 +218,7 @@ export default function About() {
             <p
               style={{
                 fontSize: 13.5,
-                lineHeight: 1.65,
+                lineHeight: 1.6,
                 color: 'var(--text-primary)',
                 margin: 0,
               }}
@@ -246,7 +234,7 @@ export default function About() {
             className="reveal"
             style={{
               display: 'flex',
-              gap: 12,
+              gap: 10,
               flexWrap: 'wrap',
               transitionDelay: '240ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
@@ -256,8 +244,15 @@ export default function About() {
               href={profileData.social.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="btn-primary"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+              className="btn-primary touch-target"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                flex: '1 1 auto',
+                justifyContent: 'center',
+                minHeight: 44,
+              }}
             >
               <LinkedinIcon size={14} />
               <span>LinkedIn ↗</span>
@@ -266,8 +261,15 @@ export default function About() {
               href={profileData.social.github}
               target="_blank"
               rel="noreferrer"
-              className="btn-ghost"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+              className="btn-ghost touch-target"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                flex: '1 1 auto',
+                justifyContent: 'center',
+                minHeight: 44,
+              }}
             >
               <GithubIcon size={14} />
               <span>GitHub ↗</span>
@@ -275,9 +277,16 @@ export default function About() {
             <a
               href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
               download="juan-frois-cv-pt.pdf"
-              className="btn-ghost"
+              className="btn-ghost touch-target"
               title="Baixar Currículo em PDF (Português)"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                flex: '1 1 auto',
+                justifyContent: 'center',
+                minHeight: 44,
+              }}
             >
               <Download size={14} stroke="currentColor" />
               <span>Currículo (PT)</span>
@@ -285,9 +294,16 @@ export default function About() {
             <a
               href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
               download="juan-frois-resume-en.pdf"
-              className="btn-ghost"
+              className="btn-ghost touch-target"
               title="Download Resume in PDF (English)"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                flex: '1 1 auto',
+                justifyContent: 'center',
+                minHeight: 44,
+              }}
             >
               <Download size={14} stroke="currentColor" />
               <span>Resume (EN)</span>
@@ -296,16 +312,16 @@ export default function About() {
         </div>
 
         {/* Right Column: Profile, Stats, Education & Certifications */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           {/* Profile Header Card */}
           <div
             className="card reveal"
             style={{
-              padding: '20px 24px',
+              padding: '16px 20px',
               transitionDelay: '180ms',
               display: 'flex',
               alignItems: 'center',
-              gap: 18,
+              gap: 16,
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
@@ -313,30 +329,35 @@ export default function About() {
               src={profilePic}
               alt={profileData.name}
               style={{
-                width: 72,
-                height: 72,
+                width: 64,
+                height: 64,
                 borderRadius: '50%',
                 objectFit: 'cover',
                 border: '2px solid var(--border-mid)',
-                boxShadow: '0 0 20px var(--accent-glow)',
+                boxShadow: '0 0 16px var(--accent-glow)',
+                flexShrink: 0,
               }}
             />
-            <div>
+            <div style={{ minWidth: 0 }}>
               <h3
                 style={{
-                  fontSize: 18,
+                  fontSize: 17,
                   fontWeight: 700,
                   color: 'var(--text-primary)',
+                  margin: 0,
                 }}
               >
                 {profileData.name}
               </h3>
               <p
                 style={{
-                  fontSize: 12,
+                  fontSize: 11.5,
                   color: 'var(--accent-primary)',
                   fontFamily: 'JetBrains Mono',
                   marginTop: 2,
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                 }}
               >
                 {profileData.headline}
@@ -345,7 +366,7 @@ export default function About() {
                 style={{
                   fontSize: 11,
                   color: 'var(--text-secondary)',
-                  marginTop: 5,
+                  marginTop: 4,
                   display: 'flex',
                   alignItems: 'center',
                   gap: 4,
@@ -361,13 +382,13 @@ export default function About() {
             </div>
           </div>
 
-          {/* Key Metrics Stats */}
+          {/* Key Metrics Stats: Responsive 3 column compact grid */}
           <div
             className="reveal"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 12,
+              gap: 8,
               transitionDelay: '220ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -380,27 +401,28 @@ export default function About() {
                   key={stat.label}
                   className="card"
                   style={{
-                    padding: '20px 16px',
+                    padding: '14px 8px',
                     textAlign: 'center',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   <div
                     style={{
-                      width: 28,
-                      height: 28,
+                      width: 26,
+                      height: 26,
                       borderRadius: 6,
                       background: `${stat.color}18`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: 10,
+                      marginBottom: 8,
                       color: stat.color,
                     }}
                   >
-                    <StatIcon size={14} stroke="currentColor" />
+                    <StatIcon size={13} stroke="currentColor" />
                   </div>
                   <div
                     className="stat-num"
@@ -408,25 +430,23 @@ export default function About() {
                       background: `linear-gradient(135deg, var(--text-primary), ${stat.color})`,
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
-                      fontSize:
-                        stat.num.length > 7
-                          ? 'clamp(18px, 2.2vw, 24px)'
-                          : undefined,
-                      whiteSpace: stat.num.length > 7 ? 'normal' : 'nowrap',
-                      lineHeight: stat.num.length > 7 ? 1.2 : undefined,
-                      marginBottom: stat.num.length > 7 ? 6 : undefined,
+                      fontSize: 'clamp(15px, 2.2vw, 22px)',
+                      fontWeight: 800,
+                      lineHeight: 1.1,
+                      letterSpacing: '-0.02em',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     {stat.num}
                   </div>
                   <p
                     style={{
-                      fontSize: 11,
+                      fontSize: 10,
                       color: 'var(--text-secondary)',
                       fontFamily: 'JetBrains Mono',
-                      letterSpacing: '0.04em',
+                      letterSpacing: '0.02em',
                       marginTop: 4,
-                      lineHeight: 1.4,
+                      lineHeight: 1.3,
                     }}
                   >
                     {stat.label}
@@ -440,7 +460,7 @@ export default function About() {
           <div
             className="card reveal"
             style={{
-              padding: '24px',
+              padding: 'clamp(16px, 2.5vw, 22px)',
               transitionDelay: '280ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -448,7 +468,7 @@ export default function About() {
             <p
               className="s-label"
               style={{
-                marginBottom: 16,
+                marginBottom: 14,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
@@ -469,9 +489,11 @@ export default function About() {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'flex-start',
-                  paddingBottom: 14,
-                  marginBottom: 14,
+                  paddingBottom: 12,
+                  marginBottom: 12,
                   borderBottom: '1px solid var(--border)',
+                  flexWrap: 'wrap',
+                  gap: 6,
                 }}
               >
                 <div>
@@ -506,7 +528,7 @@ export default function About() {
             <p
               className="s-label"
               style={{
-                marginBottom: 14,
+                marginBottom: 12,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
@@ -519,7 +541,7 @@ export default function About() {
               />
               <span>IDIOMAS</span>
             </p>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {profileData.languages.map((lang) => (
                 <span key={lang.name} className={`chip ${lang.variant}`}>
                   {lang.name} — {lang.level}
@@ -532,7 +554,7 @@ export default function About() {
           <div
             className="card reveal"
             style={{
-              padding: '24px',
+              padding: 'clamp(16px, 2.5vw, 22px)',
               transitionDelay: '340ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -540,7 +562,7 @@ export default function About() {
             <p
               className="s-label"
               style={{
-                marginBottom: 16,
+                marginBottom: 14,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
@@ -558,7 +580,7 @@ export default function About() {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 10,
+                gap: 8,
               }}
             >
               {profileData.certifications.map((cert) => {
@@ -597,11 +619,12 @@ export default function About() {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      padding: '10px 14px',
+                      padding: '9px 12px',
                       background: 'var(--bg-elevated)',
                       borderRadius: 8,
                       border: '1px solid var(--border-subtle)',
-                      gap: 12,
+                      gap: 8,
+                      flexWrap: 'wrap',
                     }}
                   >
                     <div
@@ -622,7 +645,7 @@ export default function About() {
                       />
                       <span
                         style={{
-                          fontSize: 13,
+                          fontSize: 12.5,
                           fontWeight: 600,
                           color: 'var(--text-primary)',
                           lineHeight: 1.3,
@@ -641,7 +664,7 @@ export default function About() {
                           color: style.color,
                           background: style.bg,
                           border: `1px solid ${style.border}`,
-                          padding: '3px 8px',
+                          padding: '2px 7px',
                           borderRadius: 4,
                           whiteSpace: 'nowrap',
                           flexShrink: 0,
