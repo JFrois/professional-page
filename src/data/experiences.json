@@ -1,65 +1,101 @@
 [
   {
     "company": "IBM",
-    "role": "Estagiário · Análise de Dados & Automações",
+    "role": "Estagiário de Análise de Dados e Automações",
     "period": "Abr 2026 — Presente",
     "current": true,
     "color": "#e8963c",
     "bullets": [
-      "Dashboards gerenciais em Power BI, Cognos e Grafana para liderança executiva",
-      "Automações com IBM RPA e Power Automate eliminando tarefas manuais",
-      "Queries complexas em SQL para modelagem e mapeamento de processos"
+      "Nexus-Status (Servidor MCP para IA): reduziu o tempo de obtenção de métricas pelos Center Leaders de 2h–4h de fila para geração instantânea via agentes de IA.",
+      "Cognos ETL Engine: plataforma de ingestão e qualidade de dados em PostgreSQL com 7 workflows (RH, Finanças e Operações), economizando 1 hora manual por arquivo a cada execução semanal/mensal.",
+      "BI Executivo & RPA: desenvolvimento de dashboards em Power BI, Cognos e Grafana para a liderança executiva e automações em Python, IBM RPA e Power Automate."
     ],
-    "tech": ["Power BI", "IBM RPA", "SQL", "Grafana", "Python"]
+    "tech": [
+      "Python 3.13",
+      "FastMCP",
+      "PostgreSQL",
+      "asyncpg",
+      "IBM RPA",
+      "Power BI",
+      "Cognos",
+      "Grafana",
+      "Red Hat OpenShift",
+      "uv"
+    ]
   },
   {
     "company": "99 (DiDi)",
-    "role": "Estagiário · Product Operations CX",
+    "role": "Estagiário de Product Operations CX — Foco em Dados",
     "period": "Dez 2025 — Abr 2026",
     "current": false,
     "color": "#6e9ecf",
     "bullets": [
-      "Análises quantitativas em SQL na vertical 99Food para root cause de atritos",
-      "Monitoramento de OKRs e KPIs de CX para stakeholders globais",
-      "Alinhamento arquitetural de sistemas para escalabilidade dos canais de suporte"
+      "Análises quantitativas e diagnóstico de causa raiz em SQL na operação 99Food (Brasil e SSL) para mapear atritos técnicos na jornada do usuário e priorizar correções de bugs junto à engenharia.",
+      "Estruturação do monitoramento e reporte de OKRs e KPIs de CX para stakeholders globais e escalabilidade de fluxos do Help Center."
     ],
-    "tech": ["SQL", "Excel", "Data Analysis", "Product Ops"]
+    "tech": ["SQL", "Product Operations", "Data Analysis", "KPIs & OKRs", "Root Cause Analysis"]
   },
   {
-    "company": "VOSS Automotive",
-    "role": "Estagiário · Desenvolvimento & Inovação",
+    "company": "VOSS Automotive Brasil",
+    "role": "Estagiário de Desenvolvimento & Inovação",
     "period": "Jun 2025 — Dez 2025",
     "current": false,
     "color": "#c9622f",
     "bullets": [
-      "Ferramenta BI \"Análise Aftermarket\" (Python, Streamlit, SQL) para leads OEM",
-      "RPA Desktop para processamento de pedidos B2B em PDF",
-      "Automação de rotinas fabris com Power Platform"
+      "Redução superior a 90% no tempo de processamento manual das rotinas atendidas com aplicações Python, RPA e Power Platform.",
+      "Automatizador de Pedidos B2B: eliminou de 18h a 36h de trabalho manual por ciclo (3 dias úteis de 1 a 2 estagiários a 6h/dia reduzidos ao login).",
+      "BI Aftermarket: reduziu a análise de oportunidades por planta de ~3 horas para 10 a 20 minutos.",
+      "RPA TOTVS Protheus & Buscador VOSS: cadastro reduzido de 5 min para 20s por produto e consultas de estoque reduzidas de horas/dias para segundos."
     ],
-    "tech": ["Python", "Streamlit", "SQL", "Power Automate"]
+    "tech": [
+      "Python",
+      "Streamlit",
+      "Selenium WebDriver",
+      "CustomTkinter",
+      "SQL Server",
+      "Power Automate"
+    ]
   },
   {
-    "company": "QuintoAndar",
-    "role": "Analista de Operações",
+    "company": "Grupo QuintoAndar",
+    "role": "Analista de Operações — Automação e Python",
     "period": "Out 2024 — Jun 2025",
     "current": false,
     "color": "#6e9ecf",
     "bullets": [
-      "Scripts Python para criação automática de casos via API",
-      "Manutenção de dashboards operacionais no Zendesk"
+      "Desenvolvimento de scripts Python integrados via API para criação automática de casos internos e disparo de comunicações estruturadas em massa, além de manutenção de dashboards operacionais no Zendesk."
     ],
-    "tech": ["Python", "API", "Zendesk", "SQL"]
+    "tech": ["Python", "APIs REST", "Zendesk", "SQL", "Automação Operacional"]
+  },
+  {
+    "company": "Transição de Carreira",
+    "role": "Transição de Carreira & Imersão em Engenharia de Software",
+    "period": "Mar 2023 — Set 2024",
+    "current": false,
+    "isTransition": true,
+    "color": "#8b9bb4",
+    "bullets": [
+      "Dedicação integral à graduação em Análise e Desenvolvimento de Sistemas (UNINTER) e construção de projetos práticos em Python, SQL, Automação (RPA) e Engenharia de Dados para transição definitiva da área de Operações Jurídicas para Tecnologia."
+    ],
+    "tech": [
+      "Python",
+      "SQL",
+      "Automação (RPA)",
+      "Engenharia de Dados",
+      "Git & GitHub",
+      "UNINTER"
+    ]
   },
   {
     "company": "Loft",
-    "role": "Analista Process & Insights",
-    "period": "Mai 2022 — Mar 2023",
+    "role": "Analista de Process & Insights / Jurídico Imobiliário",
+    "period": "Nov 2019 — Mar 2023",
     "current": false,
     "color": "#7a7060",
     "bullets": [
-      "Automações que reduziram 50% o tempo de processamento operacional",
-      "Dashboards em Salesforce, Looker e Jira — +25% precisão analítica"
+      "Implementação de fluxos automatizados de dados contratuais que reduziram em 50% o tempo de processamento operacional e geraram ganho de 10% em eficiência contratual.",
+      "Construção de pipelines e dashboards em Salesforce, Looker e Jira, elevando em 25% a precisão da análise de dados do setor."
     ],
-    "tech": ["Salesforce", "Looker", "Jira", "Python"]
+    "tech": ["Salesforce", "Looker", "Jira", "Python", "Process & Insights"]
   }
 ]

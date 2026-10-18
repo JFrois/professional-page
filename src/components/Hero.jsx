@@ -1,3 +1,4 @@
+import { Terminal, Cpu, Database, Briefcase, ChevronDown } from 'lucide-react'
 import profileData from '../data/profile.json'
 
 export default function Hero({ scrollPct = 0 }) {
@@ -27,7 +28,7 @@ export default function Hero({ scrollPct = 0 }) {
           className="f-display"
           style={{
             fontSize: 'clamp(48px, 8vw, 100px)',
-            color: '#f5f0e8',
+            color: 'var(--text-primary)',
             marginBottom: 16,
           }}
         >
@@ -60,10 +61,34 @@ export default function Hero({ scrollPct = 0 }) {
             flexWrap: 'wrap',
           }}
         >
-          <span className="chip amber">Python</span>
-          <span className="chip amber">RPA · Automação</span>
-          <span className="chip steel">SQL · BI</span>
-          <span className="chip ember">IBM · 99 · VOSS · Loft</span>
+          <span
+            className="chip amber"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <Terminal size={12} stroke="currentColor" />
+            <span>Python</span>
+          </span>
+          <span
+            className="chip amber"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <Cpu size={12} stroke="currentColor" />
+            <span>RPA · Automação</span>
+          </span>
+          <span
+            className="chip steel"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <Database size={12} stroke="currentColor" />
+            <span>SQL · BI</span>
+          </span>
+          <span
+            className="chip ember"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <Briefcase size={12} stroke="currentColor" />
+            <span>IBM · 99 · VOSS · Loft</span>
+          </span>
         </div>
       </div>
 
@@ -75,23 +100,17 @@ export default function Hero({ scrollPct = 0 }) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 8,
+          gap: 6,
           opacity,
         }}
       >
         <span
           className="f-mono"
-          style={{ fontSize: 9, color: 'var(--t3)', letterSpacing: '0.2em' }}
+          style={{ fontSize: 9, color: 'var(--text-muted)', letterSpacing: '0.2em' }}
         >
           SCROLL
         </span>
-        <div
-          style={{
-            width: 1,
-            height: 32,
-            background: 'linear-gradient(to bottom, var(--amber), transparent)',
-          }}
-        />
+        <ChevronDown size={14} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
       </div>
 
       {scrollPct > 0.62 && (
@@ -112,7 +131,7 @@ export default function Hero({ scrollPct = 0 }) {
               opacity: 0.7,
             }}
           >
-            ↑ ENERGIA PREVISTA — AURORA PRIME · SOL 01→56
+            ↑ ARQUITETURA DE DADOS & IA — AGENTES AUTÔNOMOS (MCP) & ETL
           </p>
         </div>
       )}

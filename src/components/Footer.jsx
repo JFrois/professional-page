@@ -1,3 +1,5 @@
+import { Mail } from 'lucide-react'
+import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
 
 export default function Footer() {
@@ -15,7 +17,7 @@ export default function Footer() {
         gap: 12,
       }}
     >
-      <span className="f-mono" style={{ fontSize: 10, color: 'var(--t3)' }}>
+      <span className="f-mono" style={{ fontSize: 10, color: 'var(--text-muted)' }}>
         {profileData.name.toUpperCase()} — {profileData.headline.toUpperCase()}
       </span>
 
@@ -27,18 +29,22 @@ export default function Footer() {
           className="f-mono footer-link"
           style={{
             fontSize: 10,
-            color: 'var(--t3)',
+            color: 'var(--text-muted)',
             textDecoration: 'none',
             transition: 'color 0.2s ease',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 5,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = 'var(--amber)'
+            e.currentTarget.style.color = 'var(--accent-primary)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'var(--t3)'
+            e.currentTarget.style.color = 'var(--text-muted)'
           }}
         >
-          LINKEDIN
+          <LinkedinIcon size={11} />
+          <span>LINKEDIN</span>
         </a>
 
         <a
@@ -48,18 +54,22 @@ export default function Footer() {
           className="f-mono footer-link"
           style={{
             fontSize: 10,
-            color: 'var(--t3)',
+            color: 'var(--text-muted)',
             textDecoration: 'none',
             transition: 'color 0.2s ease',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 5,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = 'var(--amber)'
+            e.currentTarget.style.color = 'var(--accent-primary)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'var(--t3)'
+            e.currentTarget.style.color = 'var(--text-muted)'
           }}
         >
-          GITHUB
+          <GithubIcon size={11} />
+          <span>GITHUB</span>
         </a>
 
         <a
@@ -67,18 +77,22 @@ export default function Footer() {
           className="f-mono footer-link"
           style={{
             fontSize: 10,
-            color: 'var(--t3)',
+            color: 'var(--text-muted)',
             textDecoration: 'none',
             transition: 'color 0.2s ease',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 5,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = 'var(--amber)'
+            e.currentTarget.style.color = 'var(--accent-primary)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'var(--t3)'
+            e.currentTarget.style.color = 'var(--text-muted)'
           }}
         >
-          EMAIL
+          <Mail size={11} stroke="currentColor" />
+          <span>EMAIL</span>
         </a>
       </div>
     </footer>

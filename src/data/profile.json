@@ -2,54 +2,129 @@
   "name": "Juan de Lucas Frois",
   "shortName": "Juan Frois",
   "initials": "JF",
-  "headline": "Desenvolvedor de Soluções",
+  "headline": "Desenvolvedor de Soluções | Automação (RPA) | Engenharia de Dados & IA",
+  "title": {
+    "pt": "Desenvolvedor de Soluções | Automação (RPA) | Engenharia de Dados & IA",
+    "en": "Solutions Developer | Automation (RPA) | Data Engineering & AI"
+  },
+  "titlePt": "Desenvolvedor de Soluções | Automação (RPA) | Engenharia de Dados & IA",
+  "titleEn": "Solutions Developer | Automation (RPA) | Data Engineering & AI",
   "subtitle": "Do operacional à engenharia. Automação, dados e arquitetura que geram resultado.",
-  "location": "Diadema, São Paulo — SP",
+  "location": "Diadema, São Paulo, Brasil",
+  "locationDetails": {
+    "pt": "Diadema, São Paulo, Brasil",
+    "en": "Diadema, Sao Paulo, Brazil"
+  },
   "email": "contatoJuanFrois@gmail.com",
-  "phone": "+55 (11) 98683-4909",
   "social": {
-    "linkedin": "https://www.linkedin.com/in/jfrois/",
+    "linkedin": "https://www.linkedin.com/in/jfrois",
     "linkedinLabel": "linkedin.com/in/jfrois",
     "github": "https://github.com/JFrois",
-    "githubLabel": "github.com/JFrois"
+    "githubLabel": "github.com/JFrois",
+    "portfolio": "https://jfrois.vercel.app/",
+    "portfolioLabel": "jfrois.vercel.app"
+  },
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/jfrois",
+    "github": "https://github.com/JFrois",
+    "portfolio": "https://jfrois.vercel.app/",
+    "cvPt": "/curriculos/juan-frois-cv-pt.pdf",
+    "cvEn": "/curriculos/juan-frois-resume-en.pdf"
+  },
+  "cv": {
+    "pt": "/curriculos/juan-frois-cv-pt.pdf",
+    "en": "/curriculos/juan-frois-resume-en.pdf"
   },
   "stats": [
-    { "num": "5+", "label": "Empresas", "color": "#e8963c" },
-    { "num": "4", "label": "Projetos", "color": "#6e9ecf" },
-    { "num": "2028", "label": "FIAP", "color": "#c9622f" }
+    {
+      "num": "+90%",
+      "label": "Redução no tempo de processos manuais com Python e RPA",
+      "color": "#e8963c"
+    },
+    {
+      "num": "2h–4h → Segundos",
+      "label": "Acesso instantâneo a métricas executivas com IA (MCP) e SQL",
+      "color": "#6e9ecf"
+    },
+    {
+      "num": "5+ Anos",
+      "label": "Experiência híbrida conectando Operações e Engenharia em IBM, 99, VOSS, QuintoAndar e Loft",
+      "color": "#c9622f"
+    }
+  ],
+  "heroMetrics": [
+    {
+      "metric": "+90%",
+      "label": "Redução no tempo de processos manuais com Python e RPA",
+      "color": "#e8963c"
+    },
+    {
+      "metric": "2h–4h → Segundos",
+      "label": "Acesso instantâneo a métricas executivas com IA (MCP) e SQL",
+      "color": "#6e9ecf"
+    },
+    {
+      "metric": "5+ Anos",
+      "label": "Experiência híbrida conectando Operações e Engenharia em IBM, 99, VOSS, QuintoAndar e Loft",
+      "color": "#c9622f"
+    }
   ],
   "education": [
     {
       "institution": "FIAP",
-      "course": "Ciência da Computação",
-      "period": "2025 – 2028",
+      "course": "Bacharelado em Ciência da Computação",
+      "degree": "Bacharelado",
+      "period": "Fev 2025 – Dez 2028",
+      "status": "Em andamento",
       "current": true
     },
     {
       "institution": "UNINTER",
-      "course": "Análise e Desenvolvimento de Sistemas",
-      "period": "2022 – 2024",
+      "course": "Tecnólogo em Análise e Desenvolvimento de Sistemas (ADS)",
+      "degree": "Tecnólogo",
+      "period": "Jul 2022 – Dez 2024",
+      "status": "Concluído",
       "current": false
     }
   ],
   "languages": [
     { "name": "Português", "level": "Nativo", "variant": "amber" },
-    { "name": "English", "level": "Advanced", "variant": "steel" }
+    { "name": "English", "level": "Advanced (Profissional)", "variant": "steel" }
   ],
-  "certifications": ["Python OOP", "Git & GitHub", "SQL", "Agile Explorer", "UX"],
+  "certifications": [
+    {
+      "name": "Agile Explorer",
+      "issuer": "IBM SkillsBuild"
+    },
+    {
+      "name": "Python: Aplicando a Orientação a Objetos",
+      "issuer": "Alura"
+    },
+    {
+      "name": "SQL e Modelagem de Dados",
+      "issuer": "Alura"
+    },
+    {
+      "name": "User Experience (UX)",
+      "issuer": "FIAP / Alura"
+    },
+    {
+      "name": "O Básico de Git e GitHub",
+      "issuer": "Alura"
+    }
+  ],
   "codeSnippets": [
-    { "text": "import pandas as pd", "color": "#c792ea" },
-    { "text": "import numpy as np", "color": "#c792ea" },
-    { "text": "df = pd.read_csv(\"colony_data.csv\")", "color": "#a8d98f" },
-    { "text": "model.fit(X_train, y_train)", "color": "#6e9ecf" },
-    { "text": "energy = predict_output(sol)", "color": "#e8963c" },
-    { "text": "if energy < threshold:", "color": "#c792ea" },
-    { "text": "    trigger_backup_cells()", "color": "#a8d98f" },
-    { "text": "for sol in range(56):", "color": "#c792ea" },
-    { "text": "    simulate_scenario(sol)", "color": "#e8963c" },
-    { "text": "# Aurora Prime Control System", "color": "#4a4540" },
-    { "text": "colony.status = \"NOMINAL\"", "color": "#a8d98f" },
-    { "text": "driver = webdriver.Chrome()", "color": "#6e9ecf" },
-    { "text": "df.to_excel(\"report.xlsx\")", "color": "#a8d98f" }
+    { "text": "@mcp.tool()", "color": "#e8963c" },
+    { "text": "async def query_metrics(ctx: Context) -> dict:", "color": "#6e9ecf" },
+    { "text": "    async with pool.acquire() as conn:", "color": "#c792ea" },
+    { "text": "        return await conn.fetch(sql, *params)", "color": "#a8d98f" },
+    { "text": "schema = DataFrameSchema({ 'kpi': Column(Float) })", "color": "#6e9ecf" },
+    { "text": "validated_df = schema.validate(df)", "color": "#a8d98f" },
+    { "text": "pipeline.execute_transaction(conn)", "color": "#e8963c" },
+    { "text": "metrics = calculate_speedup(before='4h', after='instant')", "color": "#c792ea" },
+    { "text": "# Nexus-Status MCP Server · IBM Watsonx", "color": "#4a4540" },
+    { "text": "system.status = \"OPTIMIZED_NOMINAL\"", "color": "#a8d98f" },
+    { "text": "bot = SeleniumRPA(target='Protheus ERP')", "color": "#6e9ecf" },
+    { "text": "bot.process_orders(efficiency='+90%')", "color": "#a8d98f" }
   ]
 }

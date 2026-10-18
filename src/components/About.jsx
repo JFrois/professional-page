@@ -1,4 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
+import {
+  Download,
+  MapPin,
+  GraduationCap,
+  Languages as LanguagesIcon,
+  Award,
+  Zap,
+  Clock,
+  TrendingUp,
+} from 'lucide-react'
+import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
 import profilePic from '../assets/perfillinkedin.jpeg'
 
@@ -136,24 +147,40 @@ export default function About() {
                 target="_blank"
                 rel="noreferrer"
                 className="btn-primary"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
               >
-                LinkedIn ↗
+                <LinkedinIcon size={14} />
+                <span>LinkedIn ↗</span>
               </a>
               <a
                 href={profileData.social.github}
                 target="_blank"
                 rel="noreferrer"
                 className="btn-ghost"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
               >
-                GitHub ↗
+                <GithubIcon size={14} />
+                <span>GitHub ↗</span>
               </a>
               <a
-                href="/curriculos/Juan%20Frois%20%E2%80%94%20Curr%C3%ADculo%20(PT-BR).pdf"
-                download
+                href={profileData.links?.cvPt || "/curriculos/juan-frois-cv-pt.pdf"}
+                download="juan-frois-cv-pt.pdf"
                 className="btn-ghost"
-                title="Baixar Currículo em PDF"
+                title="Baixar Currículo em PDF (Português)"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
               >
-                Currículo PDF ↓
+                <Download size={14} stroke="currentColor" />
+                <span>Currículo (PT)</span>
+              </a>
+              <a
+                href={profileData.links?.cvEn || "/curriculos/juan-frois-resume-en.pdf"}
+                download="juan-frois-resume-en.pdf"
+                className="btn-ghost"
+                title="Download Resume in PDF (English)"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+              >
+                <Download size={14} stroke="currentColor" />
+                <span>Resume (EN)</span>
               </a>
             </div>
           </div>
@@ -185,21 +212,31 @@ export default function About() {
               }}
             />
             <div>
-              <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--t1)' }}>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)' }}>
                 {profileData.name}
               </h3>
               <p
                 style={{
                   fontSize: 12,
-                  color: 'var(--amber)',
+                  color: 'var(--accent-primary)',
                   fontFamily: 'JetBrains Mono',
                   marginTop: 2,
                 }}
               >
                 {profileData.headline}
               </p>
-              <p style={{ fontSize: 11, color: 'var(--t2)', marginTop: 4 }}>
-                📍 {profileData.location}
+              <p
+                style={{
+                  fontSize: 11,
+                  color: 'var(--text-secondary)',
+                  marginTop: 5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                }}
+              >
+                <MapPin size={12} stroke="currentColor" style={{ color: 'var(--accent-primary)', flexShrink: 0 }} />
+                <span>{profileData.location}</span>
               </p>
             </div>
           </div>
@@ -215,35 +252,66 @@ export default function About() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            {profileData.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="card"
-                style={{ padding: '20px 16px', textAlign: 'center' }}
-              >
+            {profileData.stats.map((stat, sIdx) => {
+              const StatIcon =
+                sIdx === 0 ? TrendingUp : sIdx === 1 ? Zap : Clock
+
+              return (
                 <div
-                  className="stat-num"
+                  key={stat.label}
+                  className="card"
                   style={{
-                    background: `linear-gradient(135deg, #fff, ${stat.color})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    padding: '20px 16px',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                   }}
                 >
-                  {stat.num}
+                  <div
+                    style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: 6,
+                      background: `${stat.color}18`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 10,
+                      color: stat.color,
+                    }}
+                  >
+                    <StatIcon size={14} stroke="currentColor" />
+                  </div>
+                  <div
+                    className="stat-num"
+                    style={{
+                      background: `linear-gradient(135deg, #fff, ${stat.color})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      fontSize: stat.num.length > 7 ? 'clamp(18px, 2.2vw, 24px)' : undefined,
+                      whiteSpace: stat.num.length > 7 ? 'normal' : 'nowrap',
+                      lineHeight: stat.num.length > 7 ? 1.2 : undefined,
+                      marginBottom: stat.num.length > 7 ? 6 : undefined,
+                    }}
+                  >
+                    {stat.num}
+                  </div>
+                  <p
+                    style={{
+                      fontSize: 11,
+                      color: 'var(--text-secondary)',
+                      fontFamily: 'JetBrains Mono',
+                      letterSpacing: '0.04em',
+                      marginTop: 4,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {stat.label}
+                  </p>
                 </div>
-                <p
-                  style={{
-                    fontSize: 11,
-                    color: 'var(--t2)',
-                    fontFamily: 'JetBrains Mono',
-                    letterSpacing: '0.06em',
-                    marginTop: 4,
-                  }}
-                >
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
           {/* Education & Languages */}
@@ -255,8 +323,17 @@ export default function About() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            <p className="s-label" style={{ marginBottom: 16 }}>
-              FORMAÇÃO
+            <p
+              className="s-label"
+              style={{
+                marginBottom: 16,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <GraduationCap size={13} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+              <span>FORMAÇÃO</span>
             </p>
 
             {profileData.education.map((edu) => (
@@ -272,10 +349,10 @@ export default function About() {
                 }}
               >
                 <div>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--t1)' }}>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>
                     {edu.institution}
                   </p>
-                  <p style={{ fontSize: 11, color: 'var(--t2)', marginTop: 2 }}>
+                  <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 2 }}>
                     {edu.course}
                   </p>
                 </div>
@@ -288,10 +365,19 @@ export default function About() {
               </div>
             ))}
 
-            <p className="s-label" style={{ marginBottom: 14 }}>
-              IDIOMAS
+            <p
+              className="s-label"
+              style={{
+                marginBottom: 14,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <LanguagesIcon size={13} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+              <span>IDIOMAS</span>
             </p>
-            <div style={{ display: 'flex', gap: 8 }}>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {profileData.languages.map((lang) => (
                 <span key={lang.name} className={`chip ${lang.variant}`}>
                   {lang.name} — {lang.level}
@@ -309,15 +395,49 @@ export default function About() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            <p className="s-label" style={{ marginBottom: 14 }}>
-              CERTIFICAÇÕES
+            <p
+              className="s-label"
+              style={{
+                marginBottom: 14,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <Award size={13} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+              <span>CERTIFICAÇÕES</span>
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {profileData.certifications.map((cert) => (
-                <span key={cert} className="chip">
-                  {cert}
-                </span>
-              ))}
+              {profileData.certifications.map((cert, idx) => {
+                const isObj = typeof cert === 'object' && cert !== null
+                const certName = isObj ? cert.name : cert
+                const certIssuer = isObj ? cert.issuer : null
+                return (
+                  <span
+                    key={isObj ? cert.name : idx}
+                    className="chip"
+                    title={certIssuer ? `Emissor: ${certIssuer}` : undefined}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                    }}
+                  >
+                    <span>{certName}</span>
+                    {certIssuer && (
+                      <span
+                        style={{
+                          fontSize: 9.5,
+                          opacity: 0.6,
+                          fontFamily: 'JetBrains Mono',
+                        }}
+                      >
+                        · {certIssuer}
+                      </span>
+                    )}
+                  </span>
+                )
+              })}
             </div>
           </div>
         </div>

@@ -1673,6 +1673,26 @@ video {
   --t3: #2e2920;
   --r: 14px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Semantic UI Tokens for Theme and Vector Icon Support */
+  --accent-primary: var(--amber);
+  --accent-secondary: var(--steel);
+  --accent-ember: var(--ember);
+  --text-primary: var(--t1);
+  --text-secondary: var(--t2);
+  --text-muted: var(--t3);
+  --bg-primary: var(--void);
+  --bg-surface: var(--surface);
+}
+
+[data-theme='light'] {
+  --accent-primary: #d97706;
+  --accent-secondary: #2563eb;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --bg-primary: #f9fafb;
+  --bg-surface: #ffffff;
 }
 
 *,

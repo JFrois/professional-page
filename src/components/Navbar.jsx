@@ -1,3 +1,4 @@
+import { LinkedinIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
 
 const NAV_ITEMS = [
@@ -54,7 +55,7 @@ export default function Navbar({ active = 'hero' }) {
             fontFamily: 'JetBrains Mono',
             fontSize: 12,
             fontWeight: 600,
-            color: '#f5f0e8',
+            color: 'var(--text-primary)',
             letterSpacing: '0.12em',
           }}
         >
@@ -79,9 +80,16 @@ export default function Navbar({ active = 'hero' }) {
           target="_blank"
           rel="noreferrer"
           className="btn-ghost"
-          style={{ padding: '7px 16px', fontSize: 12 }}
+          style={{
+            padding: '7px 16px',
+            fontSize: 12,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+          }}
         >
-          LinkedIn ↗
+          <LinkedinIcon size={13} />
+          <span>LinkedIn</span>
         </a>
       </div>
     </nav>

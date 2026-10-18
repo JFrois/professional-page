@@ -1,46 +1,56 @@
 [
   {
-    "name": "Linguagens",
+    "name": "Linguagens & Core",
     "color": "#e8963c",
-    "items": ["Python", "SQL", "JavaScript", "Java"]
-  },
-  {
-    "name": "Automação & RPA",
-    "color": "#c9622f",
-    "items": ["IBM RPA", "Selenium WebDriver", "Power Automate", "Power Apps"]
-  },
-  {
-    "name": "Dados & BI",
-    "color": "#6e9ecf",
     "items": [
-      "Pandas",
-      "NumPy",
-      "Power BI",
-      "Streamlit",
-      "Grafana",
-      "Looker",
-      "SQL Server",
-      "PostgreSQL"
+      { "name": "Python", "context": "IBM, VOSS, QuintoAndar" },
+      { "name": "SQL", "context": "IBM, 99, VOSS" },
+      { "name": "JavaScript", "context": null },
+      { "name": "Java", "context": null }
     ]
   },
   {
-    "name": "Interfaces & Apps",
-    "color": "#e8963c",
-    "items": ["CustomTkinter", "Streamlit", "Excel / VBA", "ETL Pipelines"]
-  },
-  {
-    "name": "Ferramentas",
+    "name": "Engenharia de Dados & BI",
     "color": "#6e9ecf",
-    "items": ["Git", "GitHub", "VS Code", "Linux", "Jira", "Monday", "Slack"]
+    "items": [
+      { "name": "PostgreSQL", "context": "IBM" },
+      { "name": "SQL Server", "context": "VOSS" },
+      { "name": "Pandas", "context": "IBM, VOSS" },
+      { "name": "Pandera", "context": "IBM" },
+      { "name": "SQLAlchemy", "context": "IBM" },
+      { "name": "Streamlit", "context": "IBM, VOSS" },
+      { "name": "Power BI", "context": "IBM" },
+      { "name": "IBM Cognos", "context": "IBM" },
+      { "name": "Grafana", "context": "IBM" },
+      { "name": "Looker", "context": "Loft" }
+    ]
   },
   {
-    "name": "Soft Skills",
-    "color": "#7a7060",
+    "name": "IA, Backend & DevOps",
+    "color": "#4589ff",
     "items": [
-      "Design Thinking",
-      "Metodologias Ágeis",
-      "Inglês Avançado",
-      "Visão de Negócio"
+      { "name": "FastMCP / Model Context Protocol", "context": "IBM" },
+      { "name": "asyncpg", "context": "IBM" },
+      { "name": "Pydantic", "context": "IBM" },
+      { "name": "Keycloak OAuth2/OIDC", "context": "IBM" },
+      { "name": "Red Hat OpenShift", "context": "IBM" },
+      { "name": "Podman", "context": "IBM" },
+      { "name": "Pytest", "context": "IBM" },
+      { "name": "uv", "context": "IBM" },
+      { "name": "Linux", "context": null },
+      { "name": "Git & GitHub", "context": null }
+    ]
+  },
+  {
+    "name": "Automação, RPA & Plataformas",
+    "color": "#c9622f",
+    "items": [
+      { "name": "IBM RPA", "context": "IBM" },
+      { "name": "Selenium WebDriver", "context": "VOSS" },
+      { "name": "CustomTkinter", "context": "VOSS" },
+      { "name": "Power Automate & Power Apps", "context": "IBM, VOSS" },
+      { "name": "Zendesk & APIs REST", "context": "QuintoAndar" },
+      { "name": "Salesforce & Jira", "context": "Loft" }
     ]
   }
 ]

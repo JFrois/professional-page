@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react'
+import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
 
 export default function Contato() {
@@ -25,28 +27,37 @@ export default function Contato() {
   const contactDetails = [
     {
       label: 'Email',
+      icon: Mail,
       value: profileData.email,
       href: `mailto:${profileData.email}`,
     },
-    {
-      label: 'Telefone',
-      value: profileData.phone,
-      href: `tel:${profileData.phone.replace(/[^0-9+]/g, '')}`,
-    },
+    ...(profileData.phone
+      ? [
+          {
+            label: 'Telefone',
+            icon: Phone,
+            value: profileData.phone,
+            href: `tel:${profileData.phone.replace(/[^0-9+]/g, '')}`,
+          },
+        ]
+      : []),
     {
       label: 'Localização',
+      icon: MapPin,
       value: profileData.location,
       href: undefined,
     },
     {
       label: 'LinkedIn',
-      value: profileData.social.linkedinLabel,
-      href: profileData.social.linkedin,
+      icon: LinkedinIcon,
+      value: profileData.social?.linkedinLabel || 'linkedin.com/in/jfrois',
+      href: profileData.social?.linkedin,
     },
     {
       label: 'GitHub',
-      value: profileData.social.githubLabel,
-      href: profileData.social.github,
+      icon: GithubIcon,
+      value: profileData.social?.githubLabel || 'github.com/JFrois',
+      href: profileData.social?.github,
     },
   ]
 
@@ -132,16 +143,20 @@ export default function Contato() {
               target="_blank"
               rel="noreferrer"
               className="btn-primary"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
             >
-              Ver perfil no LinkedIn ↗
+              <LinkedinIcon size={14} />
+              <span>Ver perfil no LinkedIn ↗</span>
             </a>
             <a
               href={profileData.social.github}
               target="_blank"
               rel="noreferrer"
               className="btn-ghost"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
             >
-              GitHub ↗
+              <GithubIcon size={14} />
+              <span>GitHub ↗</span>
             </a>
           </div>
         </div>
@@ -164,7 +179,7 @@ export default function Contato() {
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'baseline',
+                alignItems: 'center',
                 paddingBottom: idx < contactDetails.length - 1 ? 16 : 0,
                 marginBottom: idx < contactDetails.length - 1 ? 16 : 0,
                 borderBottom:
@@ -173,9 +188,23 @@ export default function Contato() {
             >
               <span
                 className="f-mono"
-                style={{ fontSize: 10, color: 'var(--t3)', letterSpacing: '0.1em' }}
+                style={{
+                  fontSize: 10,
+                  color: 'var(--text-muted)',
+                  letterSpacing: '0.1em',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                }}
               >
-                {item.label.toUpperCase()}
+                {item.icon && (
+                  <item.icon
+                    size={13}
+                    stroke="currentColor"
+                    style={{ color: 'var(--accent-primary)', flexShrink: 0 }}
+                  />
+                )}
+                <span>{item.label.toUpperCase()}</span>
               </span>
 
               {item.href ? (

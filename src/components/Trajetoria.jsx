@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ChevronRight, Sparkles, ArrowRightLeft } from 'lucide-react'
 import experiencesData from '../data/experiences.json'
 
 export default function Trajetoria() {
@@ -53,7 +54,7 @@ export default function Trajetoria() {
         className="f-display reveal"
         style={{
           fontSize: 'clamp(28px, 3.5vw, 48px)',
-          color: '#f5f0e8',
+          color: 'var(--text-primary)',
           marginBottom: 48,
           transitionDelay: '80ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
@@ -132,18 +133,47 @@ export default function Trajetoria() {
                         alignItems: 'center',
                         gap: 10,
                         marginBottom: 4,
+                        flexWrap: 'wrap',
                       }}
                     >
                       <span
                         style={{
                           fontSize: 15,
                           fontWeight: 700,
-                          color: 'var(--t1)',
+                          color: 'var(--text-primary)',
                         }}
                       >
                         {exp.company}
                       </span>
-                      {exp.current && <span className="badge present">ATUAL</span>}
+                      {exp.current && (
+                        <span
+                          className="badge present"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 4,
+                          }}
+                        >
+                          <Sparkles size={10} stroke="currentColor" />
+                          <span>ATUAL</span>
+                        </span>
+                      )}
+                      {exp.isTransition && (
+                        <span
+                          className="badge"
+                          style={{
+                            background: 'rgba(139, 155, 180, 0.15)',
+                            color: '#8b9bb4',
+                            border: '1px solid rgba(139, 155, 180, 0.3)',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 4,
+                          }}
+                        >
+                          <ArrowRightLeft size={10} stroke="currentColor" />
+                          <span>TRANSIÇÃO</span>
+                        </span>
+                      )}
                     </div>
                     <p style={{ fontSize: 13, color: 'var(--t2)' }}>{exp.role}</p>
                   </div>
@@ -188,16 +218,16 @@ export default function Trajetoria() {
                             lineHeight: 1.55,
                           }}
                         >
-                          <span
+                          <ChevronRight
+                            size={13}
+                            stroke="currentColor"
                             style={{
                               color: exp.color,
                               flexShrink: 0,
                               marginTop: 2,
                             }}
-                          >
-                            ▸
-                          </span>
-                          {bullet}
+                          />
+                          <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
