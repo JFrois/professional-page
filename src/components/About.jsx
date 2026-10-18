@@ -8,6 +8,7 @@ import {
   Zap,
   Clock,
   TrendingUp,
+  CheckCircle2,
 } from 'lucide-react'
 import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
@@ -33,6 +34,33 @@ export default function About() {
 
     return () => observer.disconnect()
   }, [])
+
+  const narrativePillars = [
+    {
+      step: '01',
+      title: 'Origem Operacional & Negócio',
+      company: 'Loft',
+      color: '#7a7060',
+      description:
+        'Vivência direta em operações jurídicas e contratos imobiliários. Identificação na prática de ineficiências manuais e o aprendizado de Python para automatizar fluxos com -50% no tempo de processamento.',
+    },
+    {
+      step: '02',
+      title: 'Automação em Escala & RPA',
+      company: 'QuintoAndar & VOSS Automotive',
+      color: '#c9622f',
+      description:
+        'Transição definitiva para tecnologia: desenvolvimento de automações via API e robôs RPA que reduziram rotinas em até 93% e pouparam centenas de horas de trabalho repetitivo.',
+    },
+    {
+      step: '03',
+      title: 'Engenharia de Dados & Servidores de IA',
+      company: '99 (DiDi) & IBM',
+      color: '#e8963c',
+      description:
+        'Diagnóstico de causa raiz em SQL na operação crítica da 99Food e desenvolvimento de servidores MCP (FastMCP) para inteligência artificial e pipelines de dados com PostgreSQL e BI na IBM.',
+    },
+  ]
 
   return (
     <section
@@ -68,18 +96,19 @@ export default function About() {
         className="two-col"
         style={{
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 0.9fr)',
+          gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
           gap: 'clamp(40px, 6vw, 80px)',
           alignItems: 'start',
         }}
       >
+        {/* Left Column: Escaneable Narrative */}
         <div>
           <h2
             className="f-display reveal"
             style={{
-              fontSize: 'clamp(32px, 4.5vw, 58px)',
+              fontSize: 'clamp(32px, 4.5vw, 56px)',
               color: 'var(--text-primary)',
-              marginBottom: 28,
+              marginBottom: 20,
               transitionDelay: '80ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -91,108 +120,182 @@ export default function About() {
             </span>
           </h2>
 
+          <p
+            className="reveal"
+            style={{
+              fontSize: 15.5,
+              lineHeight: 1.7,
+              color: 'var(--text-secondary)',
+              marginBottom: 28,
+              transitionDelay: '120ms',
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            Minha trajetória une o olhar analítico de quem viveu a dor operacional à
+            capacidade técnica de construir arquiteturas robustas em automação, dados e
+            inteligência artificial.
+          </p>
+
+          {/* Scannable Narrative Cards */}
           <div
             className="reveal"
             style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 12,
+              marginBottom: 28,
               transitionDelay: '160ms',
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            {narrativePillars.map((pillar) => (
+              <div
+                key={pillar.step}
+                className="card"
+                style={{
+                  padding: '16px 20px',
+                  borderLeft: `3px solid ${pillar.color}`,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: 6,
+                    gap: 8,
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span
+                      className="f-mono"
+                      style={{
+                        fontSize: 10,
+                        color: pillar.color,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {pillar.step}
+                    </span>
+                    <h3
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                      }}
+                    >
+                      {pillar.title}
+                    </h3>
+                  </div>
+                  <span
+                    className="chip"
+                    style={{
+                      fontSize: 9.5,
+                      fontFamily: 'JetBrains Mono',
+                      borderColor: `${pillar.color}44`,
+                      color: pillar.color,
+                      background: `${pillar.color}11`,
+                      padding: '2px 8px',
+                    }}
+                  >
+                    {pillar.company}
+                  </span>
+                </div>
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.6,
+                    margin: 0,
+                  }}
+                >
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Synthesis quote box */}
+          <div
+            className="card reveal"
+            style={{
+              padding: '16px 20px',
+              background: 'var(--bg-elevated)',
+              borderColor: 'var(--border-mid)',
+              marginBottom: 32,
+              transitionDelay: '200ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
             <p
               style={{
-                fontSize: 16,
-                lineHeight: 1.8,
-                color: 'var(--text-secondary)',
-                marginBottom: 18,
+                fontSize: 13.5,
+                lineHeight: 1.65,
+                color: 'var(--text-primary)',
+                margin: 0,
               }}
             >
-              Comecei na área jurídica e operacional — Loft, contratos imobiliários,
-              dashboards manuais. Enxerguei os gargalos antes de saber que podia
-              automatizá-los. Aprendi Python por necessidade. Depois, por obsessão.
+              <strong style={{ color: 'var(--accent-primary)' }}>Visão híbrida:</strong>{' '}
+              entendimento profundo da regra de negócio somado ao rigor de engenharia de
+              software para transformar gargalos em soluções automatizadas de alto impacto.
             </p>
-            <p
-              style={{
-                fontSize: 16,
-                lineHeight: 1.8,
-                color: 'var(--text-secondary)',
-                marginBottom: 18,
-              }}
-            >
-              Hoje atuo na interseção entre{' '}
-              <strong style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>
-                Engenharia de Software
-              </strong>{' '}
-              e{' '}
-              <strong style={{ color: 'var(--steel)', fontWeight: 600 }}>
-                Inteligência de Dados
-              </strong>
-              . Construo ferramentas que resolvem dores reais — não apenas código
-              elegante, mas soluções que geram eficiência operacional e valor estratégico.
-            </p>
-            <p
-              style={{
-                fontSize: 16,
-                lineHeight: 1.8,
-                color: 'var(--text-secondary)',
-              }}
-            >
-              Minha visão é híbrida: entendo o negócio, identifico o gargalo, e entrego a
-              automação. Passei pela IBM, 99 (DiDi), VOSS Automotive e QuintoAndar —
-              sempre com o mesmo método: observar, estruturar, construir.
-            </p>
+          </div>
 
-            <div
-              style={{
-                marginTop: 32,
-                display: 'flex',
-                gap: 12,
-                flexWrap: 'wrap',
-              }}
+          {/* Action Links */}
+          <div
+            className="reveal"
+            style={{
+              display: 'flex',
+              gap: 12,
+              flexWrap: 'wrap',
+              transitionDelay: '240ms',
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            <a
+              href={profileData.social.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
             >
-              <a
-                href={profileData.social.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
-              >
-                <LinkedinIcon size={14} />
-                <span>LinkedIn ↗</span>
-              </a>
-              <a
-                href={profileData.social.github}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ghost"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
-              >
-                <GithubIcon size={14} />
-                <span>GitHub ↗</span>
-              </a>
-              <a
-                href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
-                download="juan-frois-cv-pt.pdf"
-                className="btn-ghost"
-                title="Baixar Currículo em PDF (Português)"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
-              >
-                <Download size={14} stroke="currentColor" />
-                <span>Currículo (PT)</span>
-              </a>
-              <a
-                href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
-                download="juan-frois-resume-en.pdf"
-                className="btn-ghost"
-                title="Download Resume in PDF (English)"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
-              >
-                <Download size={14} stroke="currentColor" />
-                <span>Resume (EN)</span>
-              </a>
-            </div>
+              <LinkedinIcon size={14} />
+              <span>LinkedIn ↗</span>
+            </a>
+            <a
+              href={profileData.social.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+            >
+              <GithubIcon size={14} />
+              <span>GitHub ↗</span>
+            </a>
+            <a
+              href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
+              download="juan-frois-cv-pt.pdf"
+              className="btn-ghost"
+              title="Baixar Currículo em PDF (Português)"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+            >
+              <Download size={14} stroke="currentColor" />
+              <span>Currículo (PT)</span>
+            </a>
+            <a
+              href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
+              download="juan-frois-resume-en.pdf"
+              className="btn-ghost"
+              title="Download Resume in PDF (English)"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+            >
+              <Download size={14} stroke="currentColor" />
+              <span>Resume (EN)</span>
+            </a>
           </div>
         </div>
 
+        {/* Right Column: Profile, Stats, Education & Certifications */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {/* Profile Header Card */}
           <div
@@ -219,7 +322,13 @@ export default function About() {
               }}
             />
             <div>
-              <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)' }}>
+              <h3
+                style={{
+                  fontSize: 18,
+                  fontWeight: 700,
+                  color: 'var(--text-primary)',
+                }}
+              >
                 {profileData.name}
               </h3>
               <p
@@ -300,7 +409,9 @@ export default function About() {
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       fontSize:
-                        stat.num.length > 7 ? 'clamp(18px, 2.2vw, 24px)' : undefined,
+                        stat.num.length > 7
+                          ? 'clamp(18px, 2.2vw, 24px)'
+                          : undefined,
                       whiteSpace: stat.num.length > 7 ? 'normal' : 'nowrap',
                       lineHeight: stat.num.length > 7 ? 1.2 : undefined,
                       marginBottom: stat.num.length > 7 ? 6 : undefined,
@@ -348,7 +459,7 @@ export default function About() {
                 stroke="currentColor"
                 style={{ color: 'var(--accent-primary)' }}
               />
-              <span>FORMAÇÃO</span>
+              <span>FORMAÇÃO ACADÊMICA</span>
             </p>
 
             {profileData.education.map((edu) => (
@@ -374,7 +485,11 @@ export default function About() {
                     {edu.institution}
                   </p>
                   <p
-                    style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 2 }}
+                    style={{
+                      fontSize: 11,
+                      color: 'var(--text-secondary)',
+                      marginTop: 2,
+                    }}
                   >
                     {edu.course}
                   </p>
@@ -413,11 +528,11 @@ export default function About() {
             </div>
           </div>
 
-          {/* Certifications */}
+          {/* Certifications with Issuer */}
           <div
             className="card reveal"
             style={{
-              padding: '20px 24px',
+              padding: '24px',
               transitionDelay: '340ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
@@ -425,7 +540,7 @@ export default function About() {
             <p
               className="s-label"
               style={{
-                marginBottom: 14,
+                marginBottom: 16,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
@@ -436,37 +551,107 @@ export default function About() {
                 stroke="currentColor"
                 style={{ color: 'var(--accent-primary)' }}
               />
-              <span>CERTIFICAÇÕES</span>
+              <span>CERTIFICAÇÕES COM EMISSOR</span>
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {profileData.certifications.map((cert, idx) => {
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+              }}
+            >
+              {profileData.certifications.map((cert) => {
                 const isObj = typeof cert === 'object' && cert !== null
                 const certName = isObj ? cert.name : cert
                 const certIssuer = isObj ? cert.issuer : null
+
+                const getIssuerStyle = (issuer) => {
+                  if (issuer?.includes('IBM')) {
+                    return {
+                      color: '#0f62fe',
+                      bg: 'rgba(15, 98, 254, 0.1)',
+                      border: 'rgba(15, 98, 254, 0.3)',
+                    }
+                  }
+                  if (issuer?.includes('FIAP')) {
+                    return {
+                      color: '#ed145b',
+                      bg: 'rgba(237, 20, 91, 0.1)',
+                      border: 'rgba(237, 20, 91, 0.3)',
+                    }
+                  }
+                  return {
+                    color: '#0284c7',
+                    bg: 'rgba(2, 132, 199, 0.1)',
+                    border: 'rgba(2, 132, 199, 0.3)',
+                  }
+                }
+
+                const style = getIssuerStyle(certIssuer)
+
                 return (
-                  <span
-                    key={isObj ? cert.name : idx}
-                    className="chip"
-                    title={certIssuer ? `Emissor: ${certIssuer}` : undefined}
+                  <div
+                    key={certName}
                     style={{
-                      display: 'inline-flex',
+                      display: 'flex',
+                      justifyContent: 'space-between',
                       alignItems: 'center',
-                      gap: 6,
+                      padding: '10px 14px',
+                      background: 'var(--bg-elevated)',
+                      borderRadius: 8,
+                      border: '1px solid var(--border-subtle)',
+                      gap: 12,
                     }}
                   >
-                    <span>{certName}</span>
-                    {certIssuer && (
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        minWidth: 0,
+                      }}
+                    >
+                      <CheckCircle2
+                        size={13}
+                        stroke="currentColor"
+                        style={{
+                          color: 'var(--accent-primary)',
+                          flexShrink: 0,
+                        }}
+                      />
                       <span
                         style={{
-                          fontSize: 9.5,
-                          opacity: 0.6,
-                          fontFamily: 'JetBrains Mono',
+                          fontSize: 13,
+                          fontWeight: 600,
+                          color: 'var(--text-primary)',
+                          lineHeight: 1.3,
                         }}
                       >
-                        · {certIssuer}
+                        {certName}
+                      </span>
+                    </div>
+
+                    {certIssuer && (
+                      <span
+                        className="f-mono"
+                        style={{
+                          fontSize: 9.5,
+                          fontWeight: 600,
+                          color: style.color,
+                          background: style.bg,
+                          border: `1px solid ${style.border}`,
+                          padding: '3px 8px',
+                          borderRadius: 4,
+                          whiteSpace: 'nowrap',
+                          flexShrink: 0,
+                          letterSpacing: '0.04em',
+                        }}
+                      >
+                        {certIssuer}
                       </span>
                     )}
-                  </span>
+                  </div>
                 )
               })}
             </div>

@@ -74,7 +74,7 @@ export default function Skills() {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: 14,
+          gap: 16,
         }}
       >
         {skillsData.map((category, idx) => {
@@ -94,14 +94,14 @@ export default function Skills() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 9,
+                  gap: 10,
                   marginBottom: 16,
                 }}
               >
                 <div
                   style={{
-                    width: 24,
-                    height: 24,
+                    width: 26,
+                    height: 26,
                     borderRadius: 6,
                     background: `${category.color}15`,
                     display: 'flex',
@@ -125,7 +125,7 @@ export default function Skills() {
                 </span>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {category.items.map((item, itemIdx) => {
                   const isObj = typeof item === 'object' && item !== null
                   const skillName = isObj ? item.name : item
@@ -135,31 +135,35 @@ export default function Skills() {
                     <span
                       key={isObj ? item.name : itemIdx}
                       className="chip"
-                      title={skillContext ? `Aplicado em: ${skillContext}` : undefined}
+                      title={
+                        skillContext
+                          ? `${skillName} • Utilizado em: ${skillContext}`
+                          : skillName
+                      }
                       style={{
                         borderColor: `${category.color}35`,
-                        color: category.color,
-                        background: `${category.color}0e`,
+                        color: 'var(--text-primary)',
+                        background: 'var(--bg-elevated)',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: 6,
+                        gap: 5,
+                        padding: '6px 11px',
+                        fontSize: 12.5,
                       }}
                     >
                       <span style={{ fontWeight: 600 }}>{skillName}</span>
                       {skillContext && (
                         <span
                           style={{
-                            fontSize: 9,
+                            fontSize: 10,
                             fontFamily: 'JetBrains Mono',
-                            opacity: 0.85,
-                            background: `${category.color}18`,
-                            border: `1px solid ${category.color}30`,
-                            padding: '1px 5px',
-                            borderRadius: 3,
-                            letterSpacing: '0.02em',
+                            color: category.color,
+                            opacity: 0.9,
+                            fontWeight: 500,
+                            whiteSpace: 'nowrap',
                           }}
                         >
-                          {skillContext}
+                          • {skillContext}
                         </span>
                       )}
                     </span>

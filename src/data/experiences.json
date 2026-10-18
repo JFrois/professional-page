@@ -7,7 +7,7 @@
     "color": "#e8963c",
     "bullets": [
       "Nexus-Status (Servidor MCP para IA): reduziu o tempo de obtenção de métricas pelos Center Leaders de 2h–4h de fila para geração instantânea via agentes de IA.",
-      "Cognos ETL Engine: plataforma de ingestão e qualidade de dados em PostgreSQL com 7 workflows (RH, Finanças e Operações), economizando 1 hora manual por arquivo a cada execução semanal/mensal.",
+      "Cognos ETL Engine: plataforma de ingestão e qualidade de dados em PostgreSQL com 7 workflows (RH, Finanças e Operações), economizando 1h/arquivo manual a cada execução semanal/mensal.",
       "BI Executivo & RPA: desenvolvimento de dashboards em Power BI, Cognos e Grafana para a liderança executiva e automações em Python, IBM RPA e Power Automate."
     ],
     "tech": [
@@ -30,7 +30,7 @@
     "current": false,
     "color": "#6e9ecf",
     "bullets": [
-      "Análises quantitativas e diagnóstico de causa raiz em SQL na operação 99Food (Brasil e SSL) para mapear atritos técnicos na jornada do usuário e priorizar correções de bugs junto à engenharia.",
+      "Análises quantitativas e diagnóstico de causa raiz em SQL (SQL root cause) na operação 99Food (Brasil e SSL) para mapear atritos técnicos na jornada do usuário e priorizar correções de bugs junto à engenharia.",
       "Estruturação do monitoramento e reporte de OKRs e KPIs de CX para stakeholders globais e escalabilidade de fluxos do Help Center."
     ],
     "tech": [
@@ -48,9 +48,9 @@
     "current": false,
     "color": "#c9622f",
     "bullets": [
-      "Redução superior a 90% no tempo de processamento manual das rotinas atendidas com aplicações Python, RPA e Power Platform.",
-      "Automatizador de Pedidos B2B: eliminou de 18h a 36h de trabalho manual por ciclo (3 dias úteis de 1 a 2 estagiários a 6h/dia reduzidos ao login).",
-      "BI Aftermarket: reduziu a análise de oportunidades por planta de ~3 horas para 10 a 20 minutos.",
+      "Redução de -93% no tempo de processamento manual das rotinas atendidas com aplicações Python, RPA e Power Platform.",
+      "Automatizador de Pedidos B2B: eliminou de 18h a 36h de trabalho manual por ciclo (18h–36h poupadas a cada rodada de pedidos reduzidos ao login).",
+      "BI Aftermarket: reduziu a análise de oportunidades por planta de 3h para 10–20min (de ~3 horas para 10 a 20 minutos).",
       "RPA TOTVS Protheus & Buscador VOSS: cadastro reduzido de 5 min para 20s por produto e consultas de estoque reduzidas de horas/dias para segundos."
     ],
     "tech": [
@@ -69,7 +69,7 @@
     "current": false,
     "color": "#6e9ecf",
     "bullets": [
-      "Desenvolvimento de scripts Python integrados via API para criação automática de casos internos e disparo de comunicações estruturadas em massa, além de manutenção de dashboards operacionais no Zendesk."
+      "Desenvolvimento de automação via API e scripts Python para criação automática de casos internos e disparo de comunicações estruturadas em massa, além de manutenção de dashboards operacionais no Zendesk."
     ],
     "tech": ["Python", "APIs REST", "Zendesk", "SQL", "Automação Operacional"]
   },
@@ -99,8 +99,8 @@
     "current": false,
     "color": "#7a7060",
     "bullets": [
-      "Implementação de fluxos automatizados de dados contratuais que reduziram em 50% o tempo de processamento operacional e geraram ganho de 10% em eficiência contratual.",
-      "Construção de pipelines e dashboards em Salesforce, Looker e Jira, elevando em 25% a precisão da análise de dados do setor."
+      "Implementação de fluxos automatizados de dados contratuais que reduziram em -50% o tempo de processamento operacional e geraram ganho de 10% em eficiência contratual.",
+      "Construção de pipelines e dashboards em Salesforce, Looker e Jira, elevando em +25% a precisão da análise de dados do setor."
     ],
     "tech": ["Salesforce", "Looker", "Jira", "Python", "Process & Insights"]
   }

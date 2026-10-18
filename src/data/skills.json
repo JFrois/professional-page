@@ -3,8 +3,8 @@
     "name": "Linguagens & Core",
     "color": "#e8963c",
     "items": [
-      { "name": "Python", "context": "IBM, VOSS, QuintoAndar" },
-      { "name": "SQL", "context": "IBM, 99, VOSS" },
+      { "name": "Python", "context": "IBM / VOSS / QuintoAndar" },
+      { "name": "SQL", "context": "IBM / 99 / VOSS" },
       { "name": "JavaScript", "context": null },
       { "name": "Java", "context": null }
     ]
@@ -15,10 +15,10 @@
     "items": [
       { "name": "PostgreSQL", "context": "IBM" },
       { "name": "SQL Server", "context": "VOSS" },
-      { "name": "Pandas", "context": "IBM, VOSS" },
+      { "name": "Pandas", "context": "IBM / VOSS" },
       { "name": "Pandera", "context": "IBM" },
       { "name": "SQLAlchemy", "context": "IBM" },
-      { "name": "Streamlit", "context": "IBM, VOSS" },
+      { "name": "Streamlit", "context": "IBM / VOSS" },
       { "name": "Power BI", "context": "IBM" },
       { "name": "IBM Cognos", "context": "IBM" },
       { "name": "Grafana", "context": "IBM" },
@@ -29,7 +29,7 @@
     "name": "IA, Backend & DevOps",
     "color": "#4589ff",
     "items": [
-      { "name": "FastMCP / Model Context Protocol", "context": "IBM" },
+      { "name": "FastMCP", "context": "IBM" },
       { "name": "asyncpg", "context": "IBM" },
       { "name": "Pydantic", "context": "IBM" },
       { "name": "Keycloak OAuth2/OIDC", "context": "IBM" },
@@ -46,9 +46,9 @@
     "color": "#c9622f",
     "items": [
       { "name": "IBM RPA", "context": "IBM" },
-      { "name": "Selenium WebDriver", "context": "VOSS" },
+      { "name": "Selenium", "context": "VOSS" },
       { "name": "CustomTkinter", "context": "VOSS" },
-      { "name": "Power Automate & Power Apps", "context": "IBM, VOSS" },
+      { "name": "Power Automate", "context": "IBM / VOSS" },
       { "name": "Zendesk & APIs REST", "context": "QuintoAndar" },
       { "name": "Salesforce & Jira", "context": "Loft" }
     ]

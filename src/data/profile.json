@@ -74,15 +74,15 @@
       "institution": "FIAP",
       "course": "Bacharelado em Ciência da Computação",
       "degree": "Bacharelado",
-      "period": "Fev 2025 – Dez 2028",
+      "period": "2025 – 2028",
       "status": "Em andamento",
       "current": true
     },
     {
       "institution": "UNINTER",
-      "course": "Tecnólogo em Análise e Desenvolvimento de Sistemas (ADS)",
+      "course": "Análise e Desenvolvimento de Sistemas (ADS)",
       "degree": "Tecnólogo",
-      "period": "Jul 2022 – Dez 2024",
+      "period": "2022 – 2024",
       "status": "Concluído",
       "current": false
     }
@@ -106,7 +106,7 @@
     },
     {
       "name": "User Experience (UX)",
-      "issuer": "FIAP / Alura"
+      "issuer": "FIAP"
     },
     {
       "name": "O Básico de Git e GitHub",
