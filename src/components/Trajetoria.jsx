@@ -162,9 +162,9 @@ export default function Trajetoria() {
                         <span
                           className="badge"
                           style={{
-                            background: 'rgba(139, 155, 180, 0.15)',
-                            color: '#8b9bb4',
-                            border: '1px solid rgba(139, 155, 180, 0.3)',
+                            background: 'var(--steel-dim)',
+                            color: 'var(--steel)',
+                            border: '1px solid var(--border-mid)',
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: 4,
@@ -175,14 +175,16 @@ export default function Trajetoria() {
                         </span>
                       )}
                     </div>
-                    <p style={{ fontSize: 13, color: 'var(--t2)' }}>{exp.role}</p>
+                    <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
+                      {exp.role}
+                    </p>
                   </div>
 
                   <span
                     className="f-mono tl-period"
                     style={{
                       fontSize: 10,
-                      color: 'var(--t3)',
+                      color: 'var(--text-muted)',
                       whiteSpace: 'nowrap',
                       paddingLeft: 16,
                     }}
@@ -196,7 +198,7 @@ export default function Trajetoria() {
                     style={{
                       marginTop: 16,
                       paddingTop: 16,
-                      borderTop: '1px solid var(--border)',
+                      borderTop: '1px solid var(--border-subtle)',
                     }}
                   >
                     <ul
@@ -214,7 +216,7 @@ export default function Trajetoria() {
                             display: 'flex',
                             gap: 10,
                             fontSize: 13,
-                            color: 'rgba(245,240,232,0.6)',
+                            color: 'var(--text-secondary)',
                             lineHeight: 1.55,
                           }}
                         >

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTheme } from './hooks/useTheme.js'
 import Cursor from './components/Cursor.jsx'
 import BackgroundCanvas from './components/BackgroundCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
@@ -11,6 +12,7 @@ import Contato from './components/Contato.jsx'
 import Footer from './components/Footer.jsx'
 
 export default function App() {
+  const { themeMode, setThemeMode, resolvedTheme } = useTheme()
   const [scrollPct, setScrollPct] = useState(0)
   const [activeSection, setActiveSection] = useState('hero')
   const heroContainerRef = useRef(null)
@@ -38,12 +40,25 @@ export default function App() {
   }, [])
 
   return (
-    <div className="grain" style={{ background: 'var(--void)', minHeight: '100vh' }}>
-      <Cursor />
-      <BackgroundCanvas scrollPct={scrollPct} />
+    <div
+      className="grain"
+      style={{
+        background: 'var(--bg-primary)',
+        color: 'var(--text-primary)',
+        minHeight: '100vh',
+        transition: 'background-color 0.3s ease, color 0.3s ease',
+      }}
+    >
+      <Cursor theme={resolvedTheme} />
+      <BackgroundCanvas scrollPct={scrollPct} theme={resolvedTheme} />
       <div className="vignette" aria-hidden="true" />
 
-      <Navbar active={activeSection} />
+      <Navbar
+        active={activeSection}
+        theme={resolvedTheme}
+        themeMode={themeMode}
+        onThemeChange={setThemeMode}
+      />
 
       {/* 400vh scroll container for the hero animation progression */}
       <div ref={heroContainerRef} style={{ height: '400vh', position: 'relative' }}>

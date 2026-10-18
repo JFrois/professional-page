@@ -41,7 +41,7 @@ export default function Hero({ scrollPct = 0 }) {
           className="f-serif"
           style={{
             fontSize: 'clamp(17px, 2vw, 22px)',
-            color: 'rgba(245,240,232,0.5)',
+            color: 'var(--text-secondary)',
             maxWidth: 540,
             margin: '0 auto 36px',
             lineHeight: 1.55,
@@ -110,7 +110,11 @@ export default function Hero({ scrollPct = 0 }) {
         >
           SCROLL
         </span>
-        <ChevronDown size={14} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+        <ChevronDown
+          size={14}
+          stroke="currentColor"
+          style={{ color: 'var(--accent-primary)' }}
+        />
       </div>
 
       {scrollPct > 0.62 && (

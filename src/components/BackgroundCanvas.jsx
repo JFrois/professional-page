@@ -1,11 +1,19 @@
 import { useEffect, useRef, useCallback } from 'react'
 import profileData from '../data/profile.json'
 
-export default function BackgroundCanvas({ scrollPct = 0 }) {
+const DARK_PARTICLE_COLORS = ['#94a3b8', '#60a5fa', '#38bdf8', '#cbd5e1', '#818cf8']
+const LIGHT_PARTICLE_COLORS = ['#475569', '#0f62fe', '#0284c7', '#64748b', '#2563eb']
+
+export default function BackgroundCanvas({ scrollPct = 0, theme = 'dark' }) {
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
   const animFrameRef = useRef(0)
   const initializedRef = useRef(false)
+  const themeRef = useRef(theme)
+
+  useEffect(() => {
+    themeRef.current = theme
+  }, [theme])
 
   const initParticles = useCallback(() => {
     const canvas = canvasRef.current
@@ -23,7 +31,6 @@ export default function BackgroundCanvas({ scrollPct = 0 }) {
             vy: 1.2 + Math.random() * 1.8,
             vx: (Math.random() - 0.5) * 0.3,
             char,
-            color: snippet.color,
             alpha: 0.5 + Math.random() * 0.4,
             size: 10 + Math.random() * 2,
             targetX: w * 0.08 + colIdx * 8.5,
@@ -69,6 +76,7 @@ export default function BackgroundCanvas({ scrollPct = 0 }) {
         return
       }
 
+      const isLight = themeRef.current === 'light'
       const p1 = Math.max(0, Math.min((scrollPct - 0.3) / 0.3, 1))
       const p2 = Math.max(0, Math.min((scrollPct - 0.6) / 0.25, 1))
       const p3 = Math.max(0, Math.min((scrollPct - 0.85) / 0.15, 1))
@@ -99,19 +107,25 @@ export default function BackgroundCanvas({ scrollPct = 0 }) {
           curY += ((p2 - 0.2) / 0.8) * (spreadY - curY)
         }
 
-        const finalAlpha = curAlpha * (1 - p3)
+        const opacityMultiplier = isLight ? 0.28 : 0.72
+        const finalAlpha = curAlpha * (1 - p3) * opacityMultiplier
         if (finalAlpha <= 0) return
 
         ctx.globalAlpha = Math.max(0, Math.min(1, finalAlpha))
 
         if (p2 > 0.6) {
           const factor = (p2 - 0.6) / 0.4
-          ctx.fillStyle = `hsl(${28 + factor * 12}, 85%, ${55 + factor * 15}%)`
+          if (isLight) {
+            ctx.fillStyle = `rgba(15, 98, 254, ${0.45 + factor * 0.5})`
+          } else {
+            ctx.fillStyle = `hsl(${205 + factor * 25}, 90%, ${60 + factor * 15}%)`
+          }
           ctx.beginPath()
           ctx.arc(curX, curY, 1.5, 0, Math.PI * 2)
           ctx.fill()
         } else {
-          ctx.fillStyle = p.color
+          const palette = isLight ? LIGHT_PARTICLE_COLORS : DARK_PARTICLE_COLORS
+          ctx.fillStyle = palette[idx % palette.length]
           ctx.fillText(p.char, curX, curY)
         }
       })
@@ -122,20 +136,27 @@ export default function BackgroundCanvas({ scrollPct = 0 }) {
         const time = Date.now() * 0.0018
 
         for (let r = 3; r >= 0; r--) {
-          const strokeAlpha = factor * (1 - r * 0.22)
+          const strokeAlpha = factor * (1 - r * 0.22) * (isLight ? 0.75 : 1)
           ctx.globalAlpha = Math.max(0, strokeAlpha)
 
           const grad = ctx.createLinearGradient(w * 0.06, 0, w * 0.94, 0)
           grad.addColorStop(0, 'transparent')
-          grad.addColorStop(0.15, '#c9622f')
-          grad.addColorStop(0.5, '#e8963c')
-          grad.addColorStop(0.85, '#c9622f')
+
+          if (isLight) {
+            grad.addColorStop(0.15, 'rgba(15, 98, 254, 0.4)')
+            grad.addColorStop(0.5, 'rgba(0, 67, 206, 0.85)')
+            grad.addColorStop(0.85, 'rgba(15, 98, 254, 0.4)')
+          } else {
+            grad.addColorStop(0.15, 'rgba(59, 130, 246, 0.75)')
+            grad.addColorStop(0.5, 'rgba(56, 189, 248, 0.95)')
+            grad.addColorStop(0.85, 'rgba(59, 130, 246, 0.75)')
+          }
           grad.addColorStop(1, 'transparent')
 
           ctx.strokeStyle = grad
-          ctx.lineWidth = r === 0 ? 1.5 : r * 2.5
-          ctx.shadowBlur = r > 0 ? r * 6 : 0
-          ctx.shadowColor = '#e8963c'
+          ctx.lineWidth = r === 0 ? 1.5 : r * 2.2
+          ctx.shadowBlur = r > 0 ? r * 5 : 0
+          ctx.shadowColor = isLight ? 'rgba(15, 98, 254, 0.35)' : '#38bdf8'
 
           ctx.beginPath()
           ctx.moveTo(w * 0.06, lineY)
@@ -158,17 +179,31 @@ export default function BackgroundCanvas({ scrollPct = 0 }) {
             Math.sin(sparkX * 0.014 + time) * 7 +
             Math.sin(sparkX * 0.028 + time * 1.6) * 3.5
 
-          ctx.globalAlpha = factor * 0.9
-          ctx.fillStyle = '#ffffff'
-          ctx.beginPath()
-          ctx.arc(sparkX, sparkY, 2.5, 0, Math.PI * 2)
-          ctx.fill()
+          if (isLight) {
+            ctx.globalAlpha = factor * 0.9
+            ctx.fillStyle = '#0f62fe'
+            ctx.beginPath()
+            ctx.arc(sparkX, sparkY, 2.5, 0, Math.PI * 2)
+            ctx.fill()
 
-          ctx.globalAlpha = factor * 0.35
-          ctx.fillStyle = '#e8963c'
-          ctx.beginPath()
-          ctx.arc(sparkX, sparkY, 7, 0, Math.PI * 2)
-          ctx.fill()
+            ctx.globalAlpha = factor * 0.3
+            ctx.fillStyle = '#0284c7'
+            ctx.beginPath()
+            ctx.arc(sparkX, sparkY, 6, 0, Math.PI * 2)
+            ctx.fill()
+          } else {
+            ctx.globalAlpha = factor * 0.95
+            ctx.fillStyle = '#ffffff'
+            ctx.beginPath()
+            ctx.arc(sparkX, sparkY, 2.5, 0, Math.PI * 2)
+            ctx.fill()
+
+            ctx.globalAlpha = factor * 0.4
+            ctx.fillStyle = '#38bdf8'
+            ctx.beginPath()
+            ctx.arc(sparkX, sparkY, 7, 0, Math.PI * 2)
+            ctx.fill()
+          }
         }
       }
 

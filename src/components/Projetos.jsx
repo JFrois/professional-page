@@ -49,7 +49,7 @@ export default function Projetos() {
         className="f-display reveal"
         style={{
           fontSize: 'clamp(28px, 3.5vw, 48px)',
-          color: '#f5f0e8',
+          color: 'var(--text-primary)',
           marginBottom: 12,
           transitionDelay: '80ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
@@ -66,7 +66,7 @@ export default function Projetos() {
         className="reveal"
         style={{
           fontSize: 15,
-          color: 'var(--t2)',
+          color: 'var(--text-secondary)',
           maxWidth: 540,
           marginBottom: 48,
           transitionDelay: '140ms',

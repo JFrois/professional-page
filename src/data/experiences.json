@@ -33,7 +33,13 @@
       "Análises quantitativas e diagnóstico de causa raiz em SQL na operação 99Food (Brasil e SSL) para mapear atritos técnicos na jornada do usuário e priorizar correções de bugs junto à engenharia.",
       "Estruturação do monitoramento e reporte de OKRs e KPIs de CX para stakeholders globais e escalabilidade de fluxos do Help Center."
     ],
-    "tech": ["SQL", "Product Operations", "Data Analysis", "KPIs & OKRs", "Root Cause Analysis"]
+    "tech": [
+      "SQL",
+      "Product Operations",
+      "Data Analysis",
+      "KPIs & OKRs",
+      "Root Cause Analysis"
+    ]
   },
   {
     "company": "VOSS Automotive Brasil",

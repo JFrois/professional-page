@@ -57,9 +57,9 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
             <span
               className="chip"
               style={{
-                borderColor: 'rgba(255,255,255,0.12)',
+                borderColor: 'var(--border-subtle)',
                 color: 'var(--text-muted)',
-                background: 'rgba(255,255,255,0.04)',
+                background: 'var(--bg-elevated)',
                 fontSize: 9,
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -74,9 +74,9 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
             <span
               className="chip"
               style={{
-                borderColor: 'rgba(110,158,207,0.3)',
+                borderColor: 'var(--border-mid)',
                 color: 'var(--accent-secondary)',
-                background: 'rgba(110,158,207,0.08)',
+                background: 'var(--steel-dim)',
                 fontSize: 9,
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -135,7 +135,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
           <div
             className="stat-num"
             style={{
-              background: `linear-gradient(135deg, #fff, ${project.accentColor})`,
+              background: `linear-gradient(135deg, var(--text-primary), ${project.accentColor})`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               fontSize: 'clamp(24px, 2.5vw, 32px)',
@@ -146,7 +146,11 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
           </div>
           <p
             className="f-mono"
-            style={{ fontSize: 11, color: 'var(--t2)', letterSpacing: '0.04em' }}
+            style={{
+              fontSize: 11,
+              color: 'var(--text-secondary)',
+              letterSpacing: '0.04em',
+            }}
           >
             {project.impactBadge || project.impactLabel}
           </p>
@@ -209,7 +213,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
         style={{
           fontSize: 13,
           lineHeight: 1.65,
-          color: 'rgba(245,240,232,0.65)',
+          color: 'var(--text-secondary)',
           marginBottom: 16,
         }}
       >
@@ -223,7 +227,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
             marginTop: 'auto',
             marginBottom: 18,
             padding: '12px 14px',
-            background: 'rgba(255,255,255,0.02)',
+            background: 'var(--bg-elevated)',
             borderLeft: `2px solid ${project.accentColor}66`,
             borderRadius: '0 6px 6px 0',
           }}
@@ -256,7 +260,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
                 key={i}
                 style={{
                   fontSize: 11.5,
-                  color: 'rgba(245,240,232,0.65)',
+                  color: 'var(--text-secondary)',
                   lineHeight: 1.5,
                   display: 'flex',
                   gap: 8,
@@ -275,7 +279,14 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
       )}
 
       {/* Tech Stack Chips */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: project.architectureHighlights ? 0 : 'auto' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 6,
+          marginTop: project.architectureHighlights ? 0 : 'auto',
+        }}
+      >
         {project.tech.map((t) => (
           <span
             key={t}

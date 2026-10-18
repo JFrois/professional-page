@@ -121,7 +121,10 @@
     { "text": "schema = DataFrameSchema({ 'kpi': Column(Float) })", "color": "#6e9ecf" },
     { "text": "validated_df = schema.validate(df)", "color": "#a8d98f" },
     { "text": "pipeline.execute_transaction(conn)", "color": "#e8963c" },
-    { "text": "metrics = calculate_speedup(before='4h', after='instant')", "color": "#c792ea" },
+    {
+      "text": "metrics = calculate_speedup(before='4h', after='instant')",
+      "color": "#c792ea"
+    },
     { "text": "# Nexus-Status MCP Server · IBM Watsonx", "color": "#4a4540" },
     { "text": "system.status = \"OPTIMIZED_NOMINAL\"", "color": "#a8d98f" },
     { "text": "bot = SeleniumRPA(target='Protheus ERP')", "color": "#6e9ecf" },

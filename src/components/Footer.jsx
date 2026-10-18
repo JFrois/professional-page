@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid var(--border)',
+        borderTop: '1px solid var(--border-subtle)',
         padding: '28px clamp(24px, 6vw, 80px)',
         display: 'flex',
         justifyContent: 'space-between',

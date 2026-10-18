@@ -71,7 +71,7 @@ export default function About() {
             className="f-display reveal"
             style={{
               fontSize: 'clamp(32px, 4.5vw, 58px)',
-              color: '#f5f0e8',
+              color: 'var(--text-primary)',
               marginBottom: 28,
               transitionDelay: '80ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
@@ -95,7 +95,7 @@ export default function About() {
               style={{
                 fontSize: 16,
                 lineHeight: 1.8,
-                color: 'rgba(245,240,232,0.65)',
+                color: 'var(--text-secondary)',
                 marginBottom: 18,
               }}
             >
@@ -107,12 +107,12 @@ export default function About() {
               style={{
                 fontSize: 16,
                 lineHeight: 1.8,
-                color: 'rgba(245,240,232,0.65)',
+                color: 'var(--text-secondary)',
                 marginBottom: 18,
               }}
             >
               Hoje atuo na interseção entre{' '}
-              <strong style={{ color: 'var(--amber)', fontWeight: 600 }}>
+              <strong style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>
                 Engenharia de Software
               </strong>{' '}
               e{' '}
@@ -126,7 +126,7 @@ export default function About() {
               style={{
                 fontSize: 16,
                 lineHeight: 1.8,
-                color: 'rgba(245,240,232,0.65)',
+                color: 'var(--text-secondary)',
               }}
             >
               Minha visão é híbrida: entendo o negócio, identifico o gargalo, e entrego a
@@ -163,7 +163,7 @@ export default function About() {
                 <span>GitHub ↗</span>
               </a>
               <a
-                href={profileData.links?.cvPt || "/curriculos/juan-frois-cv-pt.pdf"}
+                href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
                 download="juan-frois-cv-pt.pdf"
                 className="btn-ghost"
                 title="Baixar Currículo em PDF (Português)"
@@ -173,7 +173,7 @@ export default function About() {
                 <span>Currículo (PT)</span>
               </a>
               <a
-                href={profileData.links?.cvEn || "/curriculos/juan-frois-resume-en.pdf"}
+                href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
                 download="juan-frois-resume-en.pdf"
                 className="btn-ghost"
                 title="Download Resume in PDF (English)"
@@ -208,7 +208,7 @@ export default function About() {
                 borderRadius: '50%',
                 objectFit: 'cover',
                 border: '2px solid var(--border-mid)',
-                boxShadow: '0 0 20px rgba(232, 140, 74, 0.25)',
+                boxShadow: '0 0 20px var(--accent-glow)',
               }}
             />
             <div>
@@ -235,7 +235,11 @@ export default function About() {
                   gap: 4,
                 }}
               >
-                <MapPin size={12} stroke="currentColor" style={{ color: 'var(--accent-primary)', flexShrink: 0 }} />
+                <MapPin
+                  size={12}
+                  stroke="currentColor"
+                  style={{ color: 'var(--accent-primary)', flexShrink: 0 }}
+                />
                 <span>{profileData.location}</span>
               </p>
             </div>
@@ -253,8 +257,7 @@ export default function About() {
             }}
           >
             {profileData.stats.map((stat, sIdx) => {
-              const StatIcon =
-                sIdx === 0 ? TrendingUp : sIdx === 1 ? Zap : Clock
+              const StatIcon = sIdx === 0 ? TrendingUp : sIdx === 1 ? Zap : Clock
 
               return (
                 <div
@@ -286,10 +289,11 @@ export default function About() {
                   <div
                     className="stat-num"
                     style={{
-                      background: `linear-gradient(135deg, #fff, ${stat.color})`,
+                      background: `linear-gradient(135deg, var(--text-primary), ${stat.color})`,
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
-                      fontSize: stat.num.length > 7 ? 'clamp(18px, 2.2vw, 24px)' : undefined,
+                      fontSize:
+                        stat.num.length > 7 ? 'clamp(18px, 2.2vw, 24px)' : undefined,
                       whiteSpace: stat.num.length > 7 ? 'normal' : 'nowrap',
                       lineHeight: stat.num.length > 7 ? 1.2 : undefined,
                       marginBottom: stat.num.length > 7 ? 6 : undefined,
@@ -332,7 +336,11 @@ export default function About() {
                 gap: 6,
               }}
             >
-              <GraduationCap size={13} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+              <GraduationCap
+                size={13}
+                stroke="currentColor"
+                style={{ color: 'var(--accent-primary)' }}
+              />
               <span>FORMAÇÃO</span>
             </p>
 
@@ -349,10 +357,18 @@ export default function About() {
                 }}
               >
                 <div>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>
+                  <p
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: 'var(--text-primary)',
+                    }}
+                  >
                     {edu.institution}
                   </p>
-                  <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 2 }}>
+                  <p
+                    style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 2 }}
+                  >
                     {edu.course}
                   </p>
                 </div>
@@ -374,7 +390,11 @@ export default function About() {
                 gap: 6,
               }}
             >
-              <LanguagesIcon size={13} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+              <LanguagesIcon
+                size={13}
+                stroke="currentColor"
+                style={{ color: 'var(--accent-primary)' }}
+              />
               <span>IDIOMAS</span>
             </p>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -404,7 +424,11 @@ export default function About() {
                 gap: 6,
               }}
             >
-              <Award size={13} stroke="currentColor" style={{ color: 'var(--accent-primary)' }} />
+              <Award
+                size={13}
+                stroke="currentColor"
+                style={{ color: 'var(--accent-primary)' }}
+              />
               <span>CERTIFICAÇÕES</span>
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>

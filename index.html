@@ -8,7 +8,22 @@
       content="Juan de Lucas Frois — Desenvolvedor de Soluções | Automação RPA | Dados | Python · IBM · FIAP"
     />
     <meta name="author" content="Juan de Lucas Frois" />
-    <meta name="theme-color" content="#0a0908" />
+    <meta name="theme-color" content="#090d16" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      ;(function () {
+        try {
+          var mode = localStorage.getItem('theme-preference')
+          if (mode === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark')
+            document.documentElement.style.colorScheme = 'dark'
+          } else if (mode === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light')
+            document.documentElement.style.colorScheme = 'light'
+          }
+        } catch (e) {}
+      })()
+    </script>
 
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website" />

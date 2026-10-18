@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
 
@@ -99,7 +99,7 @@ export default function Contato() {
             className="f-display reveal"
             style={{
               fontSize: 'clamp(30px, 4vw, 56px)',
-              color: '#f5f0e8',
+              color: 'var(--text-primary)',
               marginBottom: 20,
               transitionDelay: '80ms',
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
@@ -117,7 +117,7 @@ export default function Contato() {
             style={{
               fontSize: 15,
               lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.55)',
+              color: 'var(--text-secondary)',
               maxWidth: 420,
               marginBottom: 32,
               transitionDelay: '140ms',
@@ -183,7 +183,9 @@ export default function Contato() {
                 paddingBottom: idx < contactDetails.length - 1 ? 16 : 0,
                 marginBottom: idx < contactDetails.length - 1 ? 16 : 0,
                 borderBottom:
-                  idx < contactDetails.length - 1 ? '1px solid var(--border)' : 'none',
+                  idx < contactDetails.length - 1
+                    ? '1px solid var(--border-subtle)'
+                    : 'none',
               }}
             >
               <span
@@ -214,7 +216,7 @@ export default function Contato() {
                   rel="noreferrer"
                   style={{
                     fontSize: 13,
-                    color: 'var(--amber)',
+                    color: 'var(--accent-primary)',
                     textDecoration: 'none',
                     fontWeight: 500,
                     transition: 'opacity 0.2s ease',
@@ -229,7 +231,9 @@ export default function Contato() {
                   {item.value}
                 </a>
               ) : (
-                <span style={{ fontSize: 13, color: 'var(--t2)' }}>{item.value}</span>
+                <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
+                  {item.value}
+                </span>
               )}
             </div>
           ))}
