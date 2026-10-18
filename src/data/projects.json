@@ -1,0 +1,75 @@
+[
+  {
+    "id": "aurora",
+    "layout": "featured",
+    "tag": "FIAP Global Solution 2026",
+    "name": "Projeto Aurora",
+    "subtitle": "Aurora Prime Control System",
+    "description": "Sistema autônomo de monitoramento de colônia marciana. 56 Sols simulados, quatro cenários operacionais — de nominal a recuperação orbital. Modelos de regressão ditam decisões energéticas em tempo real.",
+    "impact": "56 Sols",
+    "impactLabel": "Simulados",
+    "tech": [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Regressão Linear",
+      "FIAP"
+    ],
+    "accentColor": "#e8963c",
+    "team": "Flávia Pennachin · Pedro Toledo · Juan Frois"
+  },
+  {
+    "id": "aftermarket",
+    "layout": "wide",
+    "tag": "BI & Estratégia Comercial",
+    "name": "Análise Aftermarket",
+    "subtitle": "Inteligência de Mercado OEM",
+    "description": "Aplicação corporativa que cruza bases de dados de montadoras para revelar lacunas comerciais invisíveis. De ruído de dados a leads qualificados.",
+    "impact": "OEM × Reposição",
+    "impactLabel": "Cruzamento",
+    "tech": [
+      "Python",
+      "Streamlit",
+      "SQL",
+      "Pandas"
+    ],
+    "accentColor": "#6e9ecf",
+    "team": "VOSS Automotive"
+  },
+  {
+    "id": "rpa",
+    "layout": "tall",
+    "tag": "Automação & RPA",
+    "name": "Bot de Cadastro ERP",
+    "subtitle": "Automação Selenium + Protheus",
+    "description": "Bot escalável com tratamento robusto de exceções e logs estruturados. Leitura de Excel e input automático no ERP Protheus — zero intervenção manual.",
+    "impact": "100%",
+    "impactLabel": "Automatizado",
+    "tech": [
+      "Python",
+      "Selenium",
+      "Pandas",
+      "Protheus"
+    ],
+    "accentColor": "#c9622f",
+    "team": "Projeto independente"
+  },
+  {
+    "id": "voss-app",
+    "layout": "square",
+    "tag": "Desktop App & Scraping",
+    "name": "Buscador VOSS + PDF",
+    "subtitle": "Pipeline B2B em Desktop",
+    "description": "App CustomTkinter com busca inteligente e motor de scraping de PDFs B2B. Consolida, processa e exporta relatórios Excel com alertas automáticos.",
+    "impact": "B2B",
+    "impactLabel": "Pipeline Completo",
+    "tech": [
+      "CustomTkinter",
+      "PDF Scraping",
+      "Python",
+      "Email"
+    ],
+    "accentColor": "#6e9ecf",
+    "team": "VOSS Automotive"
+  }
+]

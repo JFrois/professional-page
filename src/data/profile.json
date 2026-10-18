@@ -1,0 +1,61 @@
+{
+  "name": "Juan de Lucas Frois",
+  "shortName": "Juan Frois",
+  "initials": "JF",
+  "headline": "Desenvolvedor de Soluções",
+  "subtitle": "Do operacional à engenharia. Automação, dados e arquitetura que geram resultado.",
+  "location": "Diadema, São Paulo — SP",
+  "email": "contatoJuanFrois@gmail.com",
+  "phone": "+55 (11) 98683-4909",
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/jfrois/",
+    "linkedinLabel": "linkedin.com/in/jfrois",
+    "github": "https://github.com/JFrois",
+    "githubLabel": "github.com/JFrois"
+  },
+  "stats": [
+    { "num": "5+", "label": "Empresas", "color": "#e8963c" },
+    { "num": "4", "label": "Projetos", "color": "#6e9ecf" },
+    { "num": "2028", "label": "FIAP", "color": "#c9622f" }
+  ],
+  "education": [
+    {
+      "institution": "FIAP",
+      "course": "Ciência da Computação",
+      "period": "2025 – 2028",
+      "current": true
+    },
+    {
+      "institution": "UNINTER",
+      "course": "Análise e Desenvolvimento de Sistemas",
+      "period": "2022 – 2024",
+      "current": false
+    }
+  ],
+  "languages": [
+    { "name": "Português", "level": "Nativo", "variant": "amber" },
+    { "name": "English", "level": "Advanced", "variant": "steel" }
+  ],
+  "certifications": [
+    "Python OOP",
+    "Git & GitHub",
+    "SQL",
+    "Agile Explorer",
+    "UX"
+  ],
+  "codeSnippets": [
+    { "text": "import pandas as pd", "color": "#c792ea" },
+    { "text": "import numpy as np", "color": "#c792ea" },
+    { "text": "df = pd.read_csv(\"colony_data.csv\")", "color": "#a8d98f" },
+    { "text": "model.fit(X_train, y_train)", "color": "#6e9ecf" },
+    { "text": "energy = predict_output(sol)", "color": "#e8963c" },
+    { "text": "if energy < threshold:", "color": "#c792ea" },
+    { "text": "    trigger_backup_cells()", "color": "#a8d98f" },
+    { "text": "for sol in range(56):", "color": "#c792ea" },
+    { "text": "    simulate_scenario(sol)", "color": "#e8963c" },
+    { "text": "# Aurora Prime Control System", "color": "#4a4540" },
+    { "text": "colony.status = \"NOMINAL\"", "color": "#a8d98f" },
+    { "text": "driver = webdriver.Chrome()", "color": "#6e9ecf" },
+    { "text": "df.to_excel(\"report.xlsx\")", "color": "#a8d98f" }
+  ]
+}

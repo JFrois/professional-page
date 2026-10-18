@@ -1,0 +1,211 @@
+import { useEffect, useRef, useState } from 'react'
+import profileData from '../data/profile.json'
+
+export default function Contato() {
+  const sectionRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  const contactDetails = [
+    {
+      label: 'Email',
+      value: profileData.email,
+      href: `mailto:${profileData.email}`,
+    },
+    {
+      label: 'Telefone',
+      value: profileData.phone,
+      href: `tel:${profileData.phone.replace(/[^0-9+]/g, '')}`,
+    },
+    {
+      label: 'Localização',
+      value: profileData.location,
+      href: undefined,
+    },
+    {
+      label: 'LinkedIn',
+      value: profileData.social.linkedinLabel,
+      href: profileData.social.linkedin,
+    },
+    {
+      label: 'GitHub',
+      value: profileData.social.githubLabel,
+      href: profileData.social.github,
+    },
+  ]
+
+  return (
+    <section
+      id="contact"
+      ref={sectionRef}
+      style={{
+        padding: 'clamp(80px, 10vh, 140px) clamp(24px, 6vw, 80px)',
+        position: 'relative',
+        zIndex: 5,
+        maxWidth: 1200,
+        margin: '0 auto',
+      }}
+    >
+      <div className="energy-line" style={{ maxWidth: 200, marginBottom: 64 }} />
+
+      <div
+        className="two-col"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 0.9fr)',
+          gap: 'clamp(40px, 6vw, 80px)',
+          alignItems: 'center',
+        }}
+      >
+        <div>
+          <p
+            className="s-label reveal"
+            style={{
+              marginBottom: 20,
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            04 — CONTATO
+          </p>
+
+          <h2
+            className="f-display reveal"
+            style={{
+              fontSize: 'clamp(30px, 4vw, 56px)',
+              color: '#f5f0e8',
+              marginBottom: 20,
+              transitionDelay: '80ms',
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            Entre em<br />
+            <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
+              contato
+            </span>
+          </h2>
+
+          <p
+            className="reveal"
+            style={{
+              fontSize: 15,
+              lineHeight: 1.75,
+              color: 'rgba(245,240,232,0.55)',
+              maxWidth: 420,
+              marginBottom: 32,
+              transitionDelay: '140ms',
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            Conecte-se comigo pelo LinkedIn — é o canal principal onde mantenho minha rede profissional e acompanho oportunidades.
+          </p>
+
+          <div
+            className="reveal"
+            style={{
+              display: 'flex',
+              gap: 12,
+              flexWrap: 'wrap',
+              transitionDelay: '200ms',
+              ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+            }}
+          >
+            <a
+              href={profileData.social.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary"
+            >
+              Ver perfil no LinkedIn ↗
+            </a>
+            <a
+              href={profileData.social.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost"
+            >
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+
+        <div
+          className="card reveal"
+          style={{
+            padding: '32px',
+            transitionDelay: '160ms',
+            ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
+          }}
+        >
+          <p className="s-label" style={{ marginBottom: 24 }}>
+            INFORMAÇÕES
+          </p>
+
+          {contactDetails.map((item, idx) => (
+            <div
+              key={item.label}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'baseline',
+                paddingBottom: idx < contactDetails.length - 1 ? 16 : 0,
+                marginBottom: idx < contactDetails.length - 1 ? 16 : 0,
+                borderBottom:
+                  idx < contactDetails.length - 1 ? '1px solid var(--border)' : 'none',
+              }}
+            >
+              <span
+                className="f-mono"
+                style={{ fontSize: 10, color: 'var(--t3)', letterSpacing: '0.1em' }}
+              >
+                {item.label.toUpperCase()}
+              </span>
+
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noreferrer"
+                  style={{
+                    fontSize: 13,
+                    color: 'var(--amber)',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    transition: 'opacity 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = '0.7'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = '1'
+                  }}
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <span style={{ fontSize: 13, color: 'var(--t2)' }}>
+                  {item.value}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
