@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { Mail, MapPin, Download, ExternalLink, Check, Copy, FileText } from 'lucide-react'
 import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 export default function Contato() {
+  const { isPt, t, localize } = useLanguage()
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [copiedEmail, setCopiedEmail] = useState(false)
@@ -57,7 +59,7 @@ export default function Contato() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            05 — CONTATO & CONEXÃO
+            {t('contact.sectionLabel')}
           </p>
 
           <h2
@@ -69,10 +71,10 @@ export default function Contato() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Vamos conversar e
+            {t('contact.titleLine1')}
             <br />
             <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
-              construir soluções
+              {t('contact.titleLine2')}
             </span>
           </h2>
 
@@ -88,9 +90,7 @@ export default function Contato() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Aberto a oportunidades profissionais, trocas técnicas e novos projetos em
-            Engenharia de Software, Engenharia de Dados, Automação (RPA) e Inteligência
-            Artificial.
+            {t('contact.description')}
           </p>
 
           <div
@@ -118,7 +118,7 @@ export default function Contato() {
               }}
             >
               <LinkedinIcon size={14} />
-              <span>Conectar no LinkedIn ↗</span>
+              <span>{t('contact.connectLinkedin')}</span>
             </a>
             <a
               href={`mailto:${profileData.email}`}
@@ -133,7 +133,7 @@ export default function Contato() {
               }}
             >
               <Mail size={14} stroke="currentColor" />
-              <span>Enviar E-mail</span>
+              <span>{t('contact.sendEmail')}</span>
             </a>
           </div>
         </div>
@@ -176,7 +176,7 @@ export default function Contato() {
                     letterSpacing: '0.08em',
                   }}
                 >
-                  E-MAIL DIRETO
+                  {t('contact.directEmail')}
                 </span>
                 <p className="email-address-text">
                   {profileData.email}
@@ -189,7 +189,7 @@ export default function Contato() {
                 type="button"
                 onClick={copyEmail}
                 className="chip touch-target"
-                title="Copiar endereço de e-mail"
+                title={t('contact.copy')}
                 style={{
                   padding: '8px 12px',
                   cursor: 'pointer',
@@ -203,7 +203,7 @@ export default function Contato() {
                 }}
               >
                 {copiedEmail ? <Check size={13} /> : <Copy size={13} />}
-                <span>{copiedEmail ? 'Copiado!' : 'Copiar'}</span>
+                <span>{copiedEmail ? t('contact.copied') : t('contact.copy')}</span>
               </button>
 
               <a
@@ -217,7 +217,7 @@ export default function Contato() {
                   gap: 5,
                 }}
               >
-                <span>Escrever</span>
+                <span>{t('contact.write')}</span>
                 <ExternalLink size={12} />
               </a>
             </div>
@@ -282,7 +282,7 @@ export default function Contato() {
                   gap: 5,
                 }}
               >
-                <span>Acessar Perfil</span>
+                <span>{t('contact.viewProfile')}</span>
                 <ExternalLink size={12} />
               </a>
             </div>
@@ -347,7 +347,7 @@ export default function Contato() {
                   gap: 5,
                 }}
               >
-                <span>Ver Repositórios</span>
+                <span>{t('contact.viewRepos')}</span>
                 <ExternalLink size={12} />
               </a>
             </div>
@@ -380,15 +380,15 @@ export default function Contato() {
                   letterSpacing: '0.08em',
                 }}
               >
-                DOWNLOAD DIRETO DO CURRÍCULO (PDF)
+                {t('contact.directDownload')}
               </span>
             </div>
 
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <a
-                href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
+                href="/curriculos/juan-frois-cv-pt.pdf"
                 download="juan-frois-cv-pt.pdf"
-                className="btn-primary touch-target"
+                className={`touch-target ${isPt ? 'btn-primary' : 'btn-ghost'}`}
                 style={{
                   flex: '1 1 140px',
                   display: 'inline-flex',
@@ -398,17 +398,18 @@ export default function Contato() {
                   fontSize: 12.5,
                   padding: '10px 16px',
                   minHeight: 44,
+                  textDecoration: 'none',
                 }}
               >
                 <span>🇧🇷</span>
                 <Download size={13} stroke="currentColor" />
-                <span>Currículo (PT)</span>
+                <span>{isPt ? 'Baixar CV (PT-BR)' : 'CV (PT-BR)'}</span>
               </a>
 
               <a
-                href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
+                href="/curriculos/juan-frois-resume-en.pdf"
                 download="juan-frois-resume-en.pdf"
-                className="btn-ghost touch-target"
+                className={`touch-target ${!isPt ? 'btn-primary' : 'btn-ghost'}`}
                 style={{
                   flex: '1 1 140px',
                   display: 'inline-flex',
@@ -418,11 +419,12 @@ export default function Contato() {
                   fontSize: 12.5,
                   padding: '10px 16px',
                   minHeight: 44,
+                  textDecoration: 'none',
                 }}
               >
                 <span>🇺🇸</span>
                 <Download size={13} stroke="currentColor" />
-                <span>Resume (EN)</span>
+                <span>{!isPt ? 'Download Resume (EN)' : 'Resume (EN)'}</span>
               </a>
             </div>
           </div>
@@ -443,7 +445,7 @@ export default function Contato() {
               stroke="currentColor"
               style={{ color: 'var(--accent-primary)', flexShrink: 0 }}
             />
-            <span>{profileData.location}</span>
+            <span>{localize(profileData.location)}</span>
           </div>
         </div>
       </div>

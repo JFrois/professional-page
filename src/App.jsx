@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTheme } from './hooks/useTheme.js'
+import { LanguageProvider } from './context/LanguageContext.jsx'
 import Cursor from './components/Cursor.jsx'
 import BackgroundCanvas from './components/BackgroundCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
@@ -11,7 +12,7 @@ import About from './components/About.jsx'
 import Contato from './components/Contato.jsx'
 import Footer from './components/Footer.jsx'
 
-export default function App() {
+function MainLayout() {
   const { setThemeMode, resolvedTheme } = useTheme()
   const [scrollPct, setScrollPct] = useState(0)
   const [activeSection, setActiveSection] = useState('hero')
@@ -84,3 +85,10 @@ export default function App() {
   )
 }
 
+export default function App() {
+  return (
+    <LanguageProvider>
+      <MainLayout />
+    </LanguageProvider>
+  )
+}

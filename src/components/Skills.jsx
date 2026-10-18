@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { Code2, Database, Cpu, Workflow } from 'lucide-react'
 import skillsData from '../data/skills.json'
+import { useLanguage } from '../hooks/useLanguage.js'
 
-const CATEGORY_ICONS = {
-  'Linguagens & Core': Code2,
-  'Engenharia de Dados & BI': Database,
-  'IA, Backend & DevOps': Cpu,
-  'Automação, RPA & Plataformas': Workflow,
+const ICON_MAP = {
+  code: Code2,
+  database: Database,
+  cpu: Cpu,
+  workflow: Workflow,
 }
 
 export default function Skills() {
+  const { t, localize } = useLanguage()
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -43,7 +45,7 @@ export default function Skills() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        03 — STACK TÉCNICO
+        {t('skills.sectionLabel')}
       </p>
 
       <h2
@@ -55,21 +57,22 @@ export default function Skills() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Ferramentas que
+        {t('skills.toolsInProduction')}
         <br />
         <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
-          operam em produção
+          {t('skills.operamEmProducao')}
         </span>
       </h2>
 
       {/* Responsive Skills Grid: 1 col on Mobile, 2 col on Tablet, 2x2 on Desktop */}
       <div className="skills-grid">
         {skillsData.map((category, idx) => {
-          const CategoryIcon = CATEGORY_ICONS[category.name] || Code2
+          const CategoryIcon = ICON_MAP[category.icon] || Code2
+          const categoryName = localize(category.name)
 
           return (
             <div
-              key={category.name}
+              key={category.id || idx}
               className="card reveal"
               style={{
                 padding: 'clamp(18px, 2.5vw, 24px)',
@@ -110,7 +113,7 @@ export default function Skills() {
                     fontWeight: 600,
                   }}
                 >
-                  {category.name.toUpperCase()}
+                  {categoryName.toUpperCase()}
                 </span>
               </div>
 
@@ -118,7 +121,7 @@ export default function Skills() {
                 {category.items.map((item, itemIdx) => {
                   const isObj = typeof item === 'object' && item !== null
                   const skillName = isObj ? item.name : item
-                  const skillContext = isObj ? item.context : null
+                  const skillContext = isObj && item.context ? localize(item.context) : null
 
                   return (
                     <span
@@ -126,7 +129,7 @@ export default function Skills() {
                       className="chip"
                       title={
                         skillContext
-                          ? `${skillName} • Utilizado em: ${skillContext}`
+                          ? `${skillName} • ${skillContext}`
                           : skillName
                       }
                       style={{

@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Sparkles, GraduationCap, ArrowRightLeft } from 'lucide-react'
 import experiencesData from '../data/experiences.json'
 import profileData from '../data/profile.json'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 function HighlightedBullet({ text, color }) {
-  // Regex to match specific impact metrics and numbers
+  // Regex to match specific impact metrics and numbers in both PT and EN
   const metricRegex =
-    /(2h–4h(?: de fila)? para geração instantânea|2h–4h para instantâneo|1h\/arquivo(?: manual)?|SQL root cause|diagnóstico de causa raiz em SQL|18h[–-]36h poupadas|18h a 36h|3h para 10[–-]20min|~3 horas para 10 a 20 minutos|-93% tempo|-93%|\+?90%|automação via API|-50% tempo|-50%|\+25% precisão|\+25%|5 min para 20s|7 workflows|10% em eficiência)/gi
+    /(2h–4h(?: de fila)? para geração instantânea|2h–4h queue to instant generation|2h–4h para instantâneo|1h\/arquivo(?: manual)?|1h per manual file|SQL root cause|diagnóstico de causa raiz em SQL|18h[–-]36h poupadas|18h to 36h saved|18h a 36h|3h para 10[–-]20min|3h down to 10[–-]20 min|~3 horas para 10 a 20 minutos|-93% tempo|-93% reduction|-93%|\+?90%|automação via API|API automations|-50% tempo|-50%|\+25% precisão|\+25%|5 min para 20s|5 min to 20s|7 workflows|10% em eficiência|10% in efficiency)/gi
 
   const parts = text.split(metricRegex)
 
@@ -43,6 +44,7 @@ function HighlightedBullet({ text, color }) {
 }
 
 export default function Trajetoria() {
+  const { t, localize } = useLanguage()
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [activeCompany, setActiveCompany] = useState('IBM')
@@ -81,7 +83,7 @@ export default function Trajetoria() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        02 — TRAJETÓRIA PROFISSIONAL
+        {t('trajetoria.sectionLabel')}
       </p>
 
       <h2
@@ -93,14 +95,18 @@ export default function Trajetoria() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        5 anos construindo
+        {t('trajetoria.titleLine1')}
         <br />
-        <span className="g-amber">soluções reais</span>
+        <span className="g-amber">{t('trajetoria.titleLine2')}</span>
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
         {experiencesData.map((exp, idx) => {
           const isExpanded = activeCompany === exp.company
+          const companyName = exp.companyLabel ? localize(exp.companyLabel) : exp.company
+          const roleTitle = localize(exp.role)
+          const periodText = localize(exp.period)
+          const bulletsList = localize(exp.bullets) || []
 
           return (
             <div
@@ -202,7 +208,7 @@ export default function Trajetoria() {
                           color: 'var(--text-primary)',
                         }}
                       >
-                        {exp.company}
+                        {companyName}
                       </span>
                       {exp.current && (
                         <span
@@ -214,7 +220,7 @@ export default function Trajetoria() {
                           }}
                         >
                           <Sparkles size={10} stroke="currentColor" />
-                          <span>ATUAL</span>
+                          <span>{t('trajetoria.currentBadge')}</span>
                         </span>
                       )}
                       {exp.isTransition && (
@@ -230,12 +236,12 @@ export default function Trajetoria() {
                           }}
                         >
                           <ArrowRightLeft size={10} stroke="currentColor" />
-                          <span>TRANSIÇÃO DE CARREIRA</span>
+                          <span>{t('trajetoria.careerTransitionBadge')}</span>
                         </span>
                       )}
                     </div>
                     <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
-                      {exp.role}
+                      {roleTitle}
                     </p>
                   </div>
 
@@ -248,7 +254,7 @@ export default function Trajetoria() {
                       flexShrink: 0,
                     }}
                   >
-                    {exp.period}
+                    {periodText}
                   </span>
                 </div>
 
@@ -270,7 +276,7 @@ export default function Trajetoria() {
                         margin: 0,
                       }}
                     >
-                      {exp.bullets.map((bullet) => (
+                      {bulletsList.map((bullet) => (
                         <li
                           key={bullet}
                           style={{
@@ -305,9 +311,9 @@ export default function Trajetoria() {
                         marginTop: 14,
                       }}
                     >
-                      {exp.tech.map((t) => (
+                      {exp.tech.map((tItem) => (
                         <span
-                          key={t}
+                          key={tItem}
                           className="chip"
                           style={{
                             borderColor: `${exp.color}44`,
@@ -315,7 +321,7 @@ export default function Trajetoria() {
                             background: `${exp.color}11`,
                           }}
                         >
-                          {t}
+                          {tItem}
                         </span>
                       ))}
                     </div>
@@ -359,7 +365,7 @@ export default function Trajetoria() {
               fontWeight: 600,
             }}
           >
-            FORMAÇÃO ACADÊMICA
+            {t('trajetoria.academicBackground')}
           </h3>
         </div>
 
@@ -413,7 +419,7 @@ export default function Trajetoria() {
                     fontWeight: 500,
                   }}
                 >
-                  {edu.course}
+                  {localize(edu.course)}
                 </p>
               </div>
 
@@ -440,7 +446,7 @@ export default function Trajetoria() {
                     background: edu.current ? 'var(--amber-glow)' : 'transparent',
                   }}
                 >
-                  {edu.status}
+                  {localize(edu.status)}
                 </span>
                 <span
                   style={{
@@ -448,7 +454,7 @@ export default function Trajetoria() {
                     color: 'var(--text-muted)',
                   }}
                 >
-                  {edu.degree}
+                  {localize(edu.degree)}
                 </span>
               </div>
             </div>

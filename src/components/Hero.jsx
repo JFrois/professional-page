@@ -14,30 +14,31 @@ import {
 } from 'lucide-react'
 import profileData from '../data/profile.json'
 import profilePic from '../assets/perfillinkedin.jpeg'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 const Hero = forwardRef(function Hero(_props, ref) {
-  const [cvLang, setCvLang] = useState('pt')
+  const { setLang, isPt, t, localize, activeCv } = useLanguage()
   const [isCvMenuOpen, setIsCvMenuOpen] = useState(false)
   const menuRef = useRef(null)
 
-  const cvFiles = {
-    pt: {
+  const cvFiles = [
+    {
+      key: 'pt-BR',
       url: '/curriculos/juan-frois-cv-pt.pdf',
       name: 'juan-frois-cv-pt.pdf',
       label: 'PT-BR',
-      title: 'Currículo em Português',
+      title: isPt ? 'Currículo em Português' : 'Resume in Portuguese',
       flag: '🇧🇷',
     },
-    en: {
+    {
+      key: 'en-US',
       url: '/curriculos/juan-frois-resume-en.pdf',
       name: 'juan-frois-resume-en.pdf',
       label: 'EN',
-      title: 'Resume in English',
+      title: isPt ? 'Resume em Inglês' : 'Resume in English',
       flag: '🇺🇸',
     },
-  }
-
-  const activeCv = cvFiles[cvLang]
+  ]
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -172,7 +173,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               }}
             >
               <Zap size={11} stroke="currentColor" />
-              <span>Em Produção</span>
+              <span>{t('hero.inProduction')}</span>
             </div>
 
             {/* Floating Bottom Badge */}
@@ -205,7 +206,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
                   boxShadow: '0 0 8px var(--accent-primary)',
                 }}
               />
-              <span>Full Lifecycle</span>
+              <span>{t('hero.fullLifecycle')}</span>
             </div>
           </div>
         </div>
@@ -251,7 +252,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
                 whiteSpace: 'nowrap',
               }}
             >
-              {profileData.shortName || profileData.name} · São Paulo, BR
+              {profileData.shortName || profileData.name} · {localize(profileData.locationShort)}
             </span>
           </div>
 
@@ -264,18 +265,37 @@ const Hero = forwardRef(function Hero(_props, ref) {
               fontWeight: 800,
             }}
           >
-            Desenvolvedor de{' '}
-            <span
-              style={{
-                background:
-                  'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-impact) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block',
-              }}
-            >
-              Soluções
-            </span>
+            {isPt ? (
+              <>
+                Desenvolvedor de{' '}
+                <span
+                  style={{
+                    background:
+                      'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-impact) 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    display: 'inline-block',
+                  }}
+                >
+                  Soluções
+                </span>
+              </>
+            ) : (
+              <>
+                Solutions{' '}
+                <span
+                  style={{
+                    background:
+                      'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-impact) 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    display: 'inline-block',
+                  }}
+                >
+                  Developer
+                </span>
+              </>
+            )}
           </h1>
 
           {/* Positioning Pill / Subtitle */}
@@ -290,7 +310,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
               letterSpacing: '-0.01em',
             }}
           >
-            Automação (RPA) &bull; Engenharia de Dados &bull; IA
+            {isPt
+              ? 'Automação (RPA) • Engenharia de Dados • IA'
+              : 'Automation (RPA) • Data Engineering • AI'}
           </p>
 
           {/* Impact Value Proposition */}
@@ -303,13 +325,27 @@ const Hero = forwardRef(function Hero(_props, ref) {
               marginBottom: 24,
             }}
           >
-            Transformo gargalos operacionais em{' '}
-            <strong style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>
-              ferramentas escaláveis em Python
-            </strong>
-            . Da observação prática da dor de negócio à engenharia: arquiteturas
-            assíncronas, servidores MCP com agentes autônomos e esteiras automatizadas
-            que poupam centenas de horas e eliminam erros manuais.
+            {isPt ? (
+              <>
+                Transformo gargalos operacionais em{' '}
+                <strong style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>
+                  ferramentas escaláveis em Python
+                </strong>
+                . Da observação prática da dor de negócio à engenharia: arquiteturas
+                assíncronas, servidores MCP com agentes autônomos e esteiras automatizadas
+                que poupam centenas de horas e eliminam erros manuais.
+              </>
+            ) : (
+              <>
+                I turn operational bottlenecks into{' '}
+                <strong style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>
+                  scalable Python tools
+                </strong>
+                . From direct observation of business friction to engineering: asynchronous
+                architectures, MCP servers with autonomous agents, and automated pipelines saving
+                hundreds of hours and eliminating manual errors.
+              </>
+            )}
           </p>
 
           {/* Stack Chips */}
@@ -351,7 +387,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               }}
             >
               <Sparkles size={12} stroke="currentColor" />
-              <span>Servidores MCP & IA</span>
+              <span>{t('hero.chipMcp')}</span>
             </span>
 
             <span
@@ -407,7 +443,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
                 minHeight: 46,
               }}
             >
-              <span>Ver Projetos em Produção</span>
+              <span>{t('hero.viewProjects')}</span>
               <ArrowDown size={15} stroke="currentColor" />
             </button>
 
@@ -428,9 +464,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
               >
                 <a
                   href={activeCv.url}
-                  download={activeCv.name}
+                  download={activeCv.filename}
                   className="btn-ghost-hero touch-target"
-                  title={`Baixar Currículo (${activeCv.title})`}
+                  title={`${activeCv.heroLabel} (${activeCv.fullTitle})`}
                   style={{
                     flex: 1,
                     display: 'inline-flex',
@@ -457,13 +493,13 @@ const Hero = forwardRef(function Hero(_props, ref) {
                   }}
                 >
                   <Download size={15} stroke="currentColor" />
-                  <span>Baixar Currículo (PDF)</span>
+                  <span>{activeCv.heroLabel}</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={() => setIsCvMenuOpen((prev) => !prev)}
-                  aria-label="Selecionar versão do currículo"
+                  aria-label={t('hero.cvMenuTitle')}
                   aria-expanded={isCvMenuOpen}
                   style={{
                     background: 'var(--bg-elevated)',
@@ -482,9 +518,9 @@ const Hero = forwardRef(function Hero(_props, ref) {
                     transition: 'background 0.2s ease',
                     minHeight: 46,
                   }}
-                  title="Alternar entre PT-BR e EN"
+                  title={isPt ? 'Alternar entre PT-BR e EN' : 'Switch between PT-BR and EN'}
                 >
-                  <span>{activeCv.label}</span>
+                  <span>{activeCv.shortLabel}</span>
                   <ChevronDown
                     size={12}
                     stroke="currentColor"
@@ -528,18 +564,18 @@ const Hero = forwardRef(function Hero(_props, ref) {
                       textTransform: 'uppercase',
                     }}
                   >
-                    Idioma do Currículo
+                    {t('hero.cvMenuTitle')}
                   </div>
 
-                  {Object.values(cvFiles).map((item) => {
-                    const isSelected = cvLang === item.label.toLowerCase().slice(0, 2)
+                  {cvFiles.map((item) => {
+                    const isSelected = (isPt && item.key === 'pt-BR') || (!isPt && item.key === 'en-US')
                     return (
                       <a
-                        key={item.label}
+                        key={item.key}
                         href={item.url}
                         download={item.name}
                         onClick={() => {
-                          setCvLang(item.label.toLowerCase().slice(0, 2))
+                          setLang(item.key)
                           setIsCvMenuOpen(false)
                         }}
                         role="menuitem"
@@ -630,7 +666,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               }}
             >
               <TrendingDown size={12} stroke="currentColor" />
-              <span>Eficiência Operacional</span>
+              <span>{t('hero.operationalEfficiency')}</span>
             </span>
           </div>
 
@@ -656,7 +692,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               marginTop: 2,
             }}
           >
-            +90% de redução em tempo de rotinas manuais
+            {t('hero.kpi1Title')}
           </p>
 
           <p
@@ -666,7 +702,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               lineHeight: 1.45,
             }}
           >
-            Rotinas de horas substituídas por robôs e pipelines estruturados em Python.
+            {localize(profileData.heroMetrics[0].label)}
           </p>
         </div>
 
@@ -706,7 +742,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               }}
             >
               <Sparkles size={12} stroke="currentColor" />
-              <span>Arquitetura de Dados & IA</span>
+              <span>{t('hero.dataAiArch')}</span>
             </span>
           </div>
 
@@ -720,7 +756,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            2h–4h → Seg
+            {localize(profileData.heroMetrics[1].metric)}
           </div>
 
           <p
@@ -732,7 +768,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               marginTop: 2,
             }}
           >
-            De 2h–4h para segundos com IA (MCP) e SQL
+            {t('hero.kpi2Title')}
           </p>
 
           <p
@@ -742,7 +778,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               lineHeight: 1.45,
             }}
           >
-            Servidor corporativo MCP conectando Watsonx Orchestrate a bancos analíticos.
+            {localize(profileData.heroMetrics[1].label)}
           </p>
         </div>
 
@@ -782,7 +818,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               }}
             >
               <Building2 size={12} stroke="currentColor" />
-              <span>Vivência Corporativa</span>
+              <span>{t('hero.companiesWorkedWith')}</span>
             </span>
           </div>
 
@@ -796,7 +832,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            5+ Marcas
+            {localize(profileData.heroMetrics[2].metric)}
           </div>
 
           <p
@@ -808,7 +844,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               marginTop: 2,
             }}
           >
-            IBM, 99 (DiDi), VOSS Automotive, QuintoAndar e Loft
+            {t('hero.kpi3Title')}
           </p>
 
           <p
@@ -818,7 +854,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               lineHeight: 1.45,
             }}
           >
-            Trajetória híbrida conectando dores de operações críticas à engenharia robusta.
+            {localize(profileData.heroMetrics[2].label)}
           </p>
         </div>
       </div>

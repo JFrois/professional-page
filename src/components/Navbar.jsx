@@ -11,45 +11,44 @@ import {
 } from 'lucide-react'
 import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
-
-const NAV_ITEMS = [
-  { id: 'projetos', label: 'PROJETOS' },
-  { id: 'trajetoria', label: 'TRAJETÓRIA' },
-  { id: 'skills', label: 'STACK' },
-  { id: 'sobre', label: 'SOBRE' },
-  { id: 'contato', label: 'CONTATO' },
-]
-
-const CV_OPTIONS = {
-  pt: {
-    key: 'pt',
-    label: 'PT-BR',
-    fullTitle: 'Português (Brasil)',
-    url: '/curriculos/juan-frois-cv-pt.pdf',
-    filename: 'juan-frois-cv-pt.pdf',
-    flag: '🇧🇷',
-  },
-  en: {
-    key: 'en',
-    label: 'EN',
-    fullTitle: 'English (US)',
-    url: '/curriculos/juan-frois-resume-en.pdf',
-    filename: 'juan-frois-resume-en.pdf',
-    flag: '🇺🇸',
-  },
-}
+import { useLanguage } from '../hooks/useLanguage.js'
 
 export default function Navbar({
   active = 'hero',
   theme = 'dark',
   onThemeChange,
 }) {
-  const [selectedLang, setSelectedLang] = useState('pt')
+  const { setLang, isPt, t, activeCv } = useLanguage()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const dropdownRef = useRef(null)
 
-  const activeCv = CV_OPTIONS[selectedLang]
+  const navItems = [
+    { id: 'projetos', label: t('nav.projects') },
+    { id: 'trajetoria', label: t('nav.experience') },
+    { id: 'skills', label: t('nav.skills') },
+    { id: 'sobre', label: t('nav.about') },
+    { id: 'contato', label: t('nav.contact') },
+  ]
+
+  const cvOptions = [
+    {
+      key: 'pt-BR',
+      label: 'PT-BR',
+      fullTitle: isPt ? 'Português (Brasil)' : 'Portuguese (Brazil)',
+      url: '/curriculos/juan-frois-cv-pt.pdf',
+      filename: 'juan-frois-cv-pt.pdf',
+      flag: '🇧🇷',
+    },
+    {
+      key: 'en-US',
+      label: 'EN',
+      fullTitle: isPt ? 'Inglês (EUA)' : 'English (US)',
+      url: '/curriculos/juan-frois-resume-en.pdf',
+      filename: 'juan-frois-resume-en.pdf',
+      flag: '🇺🇸',
+    },
+  ]
 
   const scrollTo = (id) => {
     const target =
@@ -150,7 +149,7 @@ export default function Navbar({
             padding: '6px 4px',
             minHeight: 44,
           }}
-          title="Voltar ao início"
+          title={t('nav.backToTop')}
         >
           <div
             style={{
@@ -194,7 +193,7 @@ export default function Navbar({
 
         {/* Desktop Navigation Links (>= 1024px) */}
         <div className="nav-desktop-links">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const isActive =
               active === item.id ||
               (item.id === 'sobre' && active === 'about') ||
@@ -211,7 +210,11 @@ export default function Navbar({
                   minHeight: 40,
                   display: 'inline-flex',
                   alignItems: 'center',
-                  padding: '6px 10px',
+                  padding: '6px 12px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  fontSize: 12.5,
+                  fontWeight: 600,
                 }}
               >
                 {item.label}
@@ -222,6 +225,32 @@ export default function Navbar({
 
         {/* Right Actions Container */}
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          {/* Language Selector Toggle (PT | EN) — ALWAYS VISIBLE on Desktop and Mobile */}
+          <div
+            className="lang-toggle-group"
+            role="group"
+            aria-label={t('nav.langAriaLabel')}
+          >
+            <button
+              type="button"
+              onClick={() => setLang('pt-BR')}
+              aria-pressed={isPt}
+              className={`lang-toggle-btn ${isPt ? 'active' : ''}`}
+              title="Mudar idioma para Português (Brasil)"
+            >
+              PT
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang('en-US')}
+              aria-pressed={!isPt}
+              className={`lang-toggle-btn ${!isPt ? 'active' : ''}`}
+              title="Switch language to English (US)"
+            >
+              EN
+            </button>
+          </div>
+
           {/* Desktop CV Download CTA with Language Picker (>= 1024px) */}
           <div ref={dropdownRef} className="nav-desktop-cv" style={{ position: 'relative' }}>
             <div
@@ -240,7 +269,7 @@ export default function Navbar({
                 href={activeCv.url}
                 download={activeCv.filename}
                 className="cv-main-btn"
-                title={`Baixar CV em PDF (${activeCv.fullTitle})`}
+                title={`${activeCv.label} (${activeCv.fullTitle})`}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -256,14 +285,14 @@ export default function Navbar({
                 }}
               >
                 <Download size={14} stroke="currentColor" />
-                <span>Baixar CV (PDF)</span>
+                <span>{activeCv.label}</span>
               </a>
 
               {/* Language Dropdown Trigger */}
               <button
                 type="button"
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
-                aria-label="Selecionar idioma do currículo"
+                aria-label={t('nav.cvVersion')}
                 aria-expanded={isDropdownOpen}
                 style={{
                   background: 'rgba(0, 0, 0, 0.18)',
@@ -280,9 +309,9 @@ export default function Navbar({
                   fontWeight: 600,
                   transition: 'background 0.2s ease',
                 }}
-                title="Alternar entre PT-BR e EN"
+                title={isPt ? 'Alternar entre PT-BR e EN' : 'Switch between PT-BR and EN'}
               >
-                <span>{activeCv.label}</span>
+                <span>{activeCv.shortLabel}</span>
                 <ChevronDown
                   size={12}
                   stroke="currentColor"
@@ -325,18 +354,18 @@ export default function Navbar({
                     textTransform: 'uppercase',
                   }}
                 >
-                  Versão do Currículo
+                  {t('nav.cvVersion')}
                 </div>
 
-                {Object.values(CV_OPTIONS).map((opt) => {
-                  const isSelected = selectedLang === opt.key
+                {cvOptions.map((opt) => {
+                  const isSelected = (isPt && opt.key === 'pt-BR') || (!isPt && opt.key === 'en-US')
                   return (
                     <a
                       key={opt.key}
                       href={opt.url}
                       download={opt.filename}
                       onClick={() => {
-                        setSelectedLang(opt.key)
+                        setLang(opt.key)
                         setIsDropdownOpen(false)
                       }}
                       role="menuitem"
@@ -386,16 +415,8 @@ export default function Navbar({
               type="button"
               onClick={handleToggleTheme}
               className="theme-toggle-btn touch-target"
-              title={
-                theme === 'dark'
-                  ? 'Mudar para Modo Claro (☀️)'
-                  : 'Mudar para Modo Escuro (🌙)'
-              }
-              aria-label={
-                theme === 'dark'
-                  ? 'Ativar modo claro'
-                  : 'Ativar modo escuro'
-              }
+              title={theme === 'dark' ? t('nav.toggleThemeLight') : t('nav.toggleThemeDark')}
+              aria-label={theme === 'dark' ? t('nav.toggleThemeLight') : t('nav.toggleThemeDark')}
               style={{
                 width: 44,
                 height: 44,
@@ -434,7 +455,7 @@ export default function Navbar({
               gap: 6,
               borderRadius: 9,
             }}
-            title="Abrir perfil no LinkedIn"
+            title={t('nav.openLinkedIn')}
           >
             <LinkedinIcon size={14} />
             <span>LinkedIn</span>
@@ -445,7 +466,7 @@ export default function Navbar({
             type="button"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             className="hamburger-btn touch-target"
-            aria-label={isMobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+            aria-label={isMobileMenuOpen ? t('nav.closeNavMenu') : t('nav.openNavMenu')}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-nav-drawer"
             style={{
@@ -479,7 +500,7 @@ export default function Navbar({
           id="mobile-nav-drawer"
           role="dialog"
           aria-modal="true"
-          aria-label="Menu de Navegação Mobile"
+          aria-label={t('nav.sections')}
           style={{
             position: 'fixed',
             top: 60,
@@ -501,21 +522,56 @@ export default function Navbar({
         >
           {/* Navigation Links List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <span
+            <div
               style={{
-                fontFamily: 'JetBrains Mono',
-                fontSize: 10,
-                color: 'var(--text-muted)',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                marginBottom: 8,
-                paddingLeft: 12,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: 10,
+                padding: '0 4px',
               }}
             >
-              Seções
-            </span>
+              <span
+                style={{
+                  fontFamily: 'JetBrains Mono',
+                  fontSize: 10,
+                  color: 'var(--text-muted)',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {t('nav.sections')}
+              </span>
 
-            {NAV_ITEMS.map((item) => {
+              {/* Mobile Drawer Language Switcher */}
+              <div
+                className="lang-toggle-group"
+                role="group"
+                aria-label={t('nav.langAriaLabel')}
+                style={{ height: 38 }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setLang('pt-BR')}
+                  aria-pressed={isPt}
+                  className={`lang-toggle-btn ${isPt ? 'active' : ''}`}
+                  style={{ height: 30, padding: '4px 8px' }}
+                >
+                  PT
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang('en-US')}
+                  aria-pressed={!isPt}
+                  className={`lang-toggle-btn ${!isPt ? 'active' : ''}`}
+                  style={{ height: 30, padding: '4px 8px' }}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
+
+            {navItems.map((item) => {
               const isActive =
                 active === item.id ||
                 (item.id === 'sobre' && active === 'about') ||
@@ -587,16 +643,16 @@ export default function Navbar({
                 paddingLeft: 4,
               }}
             >
-              Download do Currículo
+              {t('nav.cvDownload')}
             </span>
 
             {/* Direct CV Download Buttons inside Drawer */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
               <a
-                href={CV_OPTIONS.pt.url}
-                download={CV_OPTIONS.pt.filename}
+                href={cvOptions[0].url}
+                download={cvOptions[0].filename}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-primary"
+                className={isPt ? 'btn-primary' : 'btn-ghost'}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -616,10 +672,10 @@ export default function Navbar({
               </a>
 
               <a
-                href={CV_OPTIONS.en.url}
-                download={CV_OPTIONS.en.filename}
+                href={cvOptions[1].url}
+                download={cvOptions[1].filename}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-ghost"
+                className={!isPt ? 'btn-primary' : 'btn-ghost'}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -662,6 +718,7 @@ export default function Navbar({
                   fontSize: 12.5,
                   minHeight: 44,
                 }}
+                title={t('nav.openLinkedIn')}
               >
                 <LinkedinIcon size={14} />
                 <span>LinkedIn</span>
@@ -682,6 +739,7 @@ export default function Navbar({
                   fontSize: 12.5,
                   minHeight: 44,
                 }}
+                title={t('nav.openGitHub')}
               >
                 <GithubIcon size={14} />
                 <span>GitHub</span>

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import projectsData from '../data/projects.json'
 import ProjectCard from './ProjectCard.jsx'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 export default function Projetos() {
+  const { t } = useLanguage()
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -43,7 +45,7 @@ export default function Projetos() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        01 — PROJETOS EM PRODUÇÃO
+        {t('projects.sectionLabel')}
       </p>
 
       <h2
@@ -55,7 +57,7 @@ export default function Projetos() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Soluções que
+        {t('projects.titleLine1')}
         <br />
         <span
           className="f-serif"
@@ -67,7 +69,7 @@ export default function Projetos() {
             WebkitTextFillColor: 'transparent',
           }}
         >
-          operam em produção
+          {t('projects.titleLine2')}
         </span>
       </h2>
 
@@ -83,9 +85,7 @@ export default function Projetos() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Cada sistema nasceu de uma dor real — de um processo lento, de dados
-        invisíveis ou de horas de esforço manual. De servidores MCP corporativos para IA
-        a esteiras transacionais de Data Quality e robôs RPA industriais.
+        {t('projects.description')}
       </p>
 
       <div className="projects-grid">

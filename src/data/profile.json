@@ -2,18 +2,29 @@
   "name": "Juan de Lucas Frois",
   "shortName": "Juan Frois",
   "initials": "JF",
-  "headline": "Desenvolvedor de Soluções | Automação (RPA) | Engenharia de Dados & IA",
-  "title": {
-    "pt": "Desenvolvedor de Soluções | Automação (RPA) | Engenharia de Dados & IA",
-    "en": "Solutions Developer | Automation (RPA) | Data Engineering & AI"
+  "headline": {
+    "pt": "Desenvolvedor de Soluções | Automação (RPA) | Dados",
+    "en": "Solutions Developer | Automation (RPA) | Data"
   },
-  "titlePt": "Desenvolvedor de Soluções | Automação (RPA) | Engenharia de Dados & IA",
-  "titleEn": "Solutions Developer | Automation (RPA) | Data Engineering & AI",
-  "subtitle": "Do operacional à engenharia. Automação, dados e arquitetura que geram resultado.",
-  "location": "Diadema, São Paulo, Brasil",
-  "locationDetails": {
+  "summary": {
+    "pt": "Do operacional à engenharia: resolvo problemas complexos com tecnologia. Com visão híbrida entre Operações e Tecnologia, construída em IBM, 99, VOSS Automotive, QuintoAndar e Loft, identifico gargalos e desenvolvo ferramentas robustas para eliminá-los. Atuo na interseção entre Engenharia de Software e Inteligência de Dados, usando Python para criar automações (RPA), aplicações desktop, pipelines de dados e integrações de IA, com resultados medidos em horas economizadas.",
+    "en": "From operations to engineering: I solve complex problems with technology. With a hybrid view of Operations and Tech built at IBM, 99, VOSS Automotive, QuintoAndar and Loft, I identify bottlenecks and build robust tools to eliminate them. I work at the intersection of Software Engineering and Data Intelligence, using Python to build automations (RPA), desktop applications, data pipelines and AI integrations, with results measured in hours saved."
+  },
+  "title": {
+    "pt": "Desenvolvedor de Soluções | Automação (RPA) | Dados",
+    "en": "Solutions Developer | Automation (RPA) | Data"
+  },
+  "subtitle": {
+    "pt": "Do operacional à engenharia. Automação, dados e arquitetura que geram resultado.",
+    "en": "From operations to engineering. Automation, data, and architecture that drive results."
+  },
+  "location": {
     "pt": "Diadema, São Paulo, Brasil",
     "en": "Diadema, Sao Paulo, Brazil"
+  },
+  "locationShort": {
+    "pt": "São Paulo, BR",
+    "en": "Sao Paulo, BR"
   },
   "email": "contatoJuanFrois@gmail.com",
   "social": {
@@ -38,78 +49,161 @@
   "stats": [
     {
       "num": "+90%",
-      "label": "Redução no tempo de processos manuais com Python e RPA",
+      "label": {
+        "pt": "Redução no tempo de processamento manual nas rotinas atendidas",
+        "en": "Reduction in manual processing time across automated workflows"
+      },
       "color": "#e8963c"
     },
     {
-      "num": "2h–4h → Segundos",
-      "label": "Acesso instantâneo a métricas executivas com IA (MCP) e SQL",
+      "num": {
+        "pt": "2h–4h → Segundos",
+        "en": "2h–4h → Seconds"
+      },
+      "label": {
+        "pt": "Acesso instantâneo a métricas executivas com agentes de IA (MCP) e SQL",
+        "en": "Instant executive metrics access powered by AI agents (MCP) and SQL"
+      },
       "color": "#6e9ecf"
     },
     {
-      "num": "5+ Anos",
-      "label": "Experiência híbrida conectando Operações e Engenharia em IBM, 99, VOSS, QuintoAndar e Loft",
+      "num": {
+        "pt": "5+ Empresas",
+        "en": "5+ Companies"
+      },
+      "label": {
+        "pt": "Trajetória em IBM, 99 (DiDi), VOSS Automotive, QuintoAndar e Loft",
+        "en": "Track record at IBM, 99 (DiDi), VOSS Automotive, QuintoAndar, and Loft"
+      },
       "color": "#c9622f"
     }
   ],
   "heroMetrics": [
     {
       "metric": "+90%",
-      "label": "Redução no tempo de processos manuais com Python e RPA",
+      "label": {
+        "pt": "Redução no tempo de processamento manual nas rotinas atendidas",
+        "en": "Reduction in manual processing time across automated workflows"
+      },
       "color": "#e8963c"
     },
     {
-      "metric": "2h–4h → Segundos",
-      "label": "Acesso instantâneo a métricas executivas com IA (MCP) e SQL",
+      "metric": {
+        "pt": "2h–4h → Segundos",
+        "en": "2h–4h → Seconds"
+      },
+      "label": {
+        "pt": "Acesso instantâneo a métricas executivas com agentes de IA (MCP) e SQL",
+        "en": "Instant executive metrics access powered by AI agents (MCP) and SQL"
+      },
       "color": "#6e9ecf"
     },
     {
-      "metric": "5+ Anos",
-      "label": "Experiência híbrida conectando Operações e Engenharia em IBM, 99, VOSS, QuintoAndar e Loft",
+      "metric": {
+        "pt": "5+ Empresas",
+        "en": "5+ Companies"
+      },
+      "label": {
+        "pt": "Trajetória em IBM, 99 (DiDi), VOSS Automotive, QuintoAndar e Loft",
+        "en": "Track record at IBM, 99 (DiDi), VOSS Automotive, QuintoAndar, and Loft"
+      },
       "color": "#c9622f"
     }
   ],
   "education": [
     {
       "institution": "FIAP",
-      "course": "Bacharelado em Ciência da Computação",
-      "degree": "Bacharelado",
+      "course": {
+        "pt": "Ciência da Computação (conclusão prevista: dezembro de 2028)",
+        "en": "Computer Science (expected completion: December 2028)"
+      },
+      "degree": {
+        "pt": "Bacharelado",
+        "en": "Bachelor's Degree"
+      },
       "period": "2025 – 2028",
-      "status": "Em andamento",
+      "status": {
+        "pt": "Em andamento",
+        "en": "Expected completion"
+      },
       "current": true
     },
     {
       "institution": "UNINTER",
-      "course": "Análise e Desenvolvimento de Sistemas (ADS)",
-      "degree": "Tecnólogo",
+      "course": {
+        "pt": "Análise e Desenvolvimento de Sistemas (concluído em dezembro de 2024)",
+        "en": "Systems Analysis and Development (completed in December 2024)"
+      },
+      "degree": {
+        "pt": "Tecnólogo",
+        "en": "Associate Degree"
+      },
       "period": "2022 – 2024",
-      "status": "Concluído",
+      "status": {
+        "pt": "Concluído",
+        "en": "Completed"
+      },
       "current": false
     }
   ],
   "languages": [
-    { "name": "Português", "level": "Nativo", "variant": "amber" },
-    { "name": "English", "level": "Advanced (Profissional)", "variant": "steel" }
+    {
+      "name": {
+        "pt": "Português",
+        "en": "Portuguese"
+      },
+      "level": {
+        "pt": "Nativo",
+        "en": "Native"
+      },
+      "variant": "amber"
+    },
+    {
+      "name": {
+        "pt": "Inglês",
+        "en": "English"
+      },
+      "level": {
+        "pt": "Avançado",
+        "en": "Advanced"
+      },
+      "variant": "steel"
+    }
   ],
   "certifications": [
     {
-      "name": "Agile Explorer",
+      "name": {
+        "pt": "Python: Aplicando a Orientação a Objetos",
+        "en": "Python: Applying Object-Oriented Programming"
+      },
+      "issuer": "Alura"
+    },
+    {
+      "name": {
+        "pt": "SQL e Modelagem de Dados",
+        "en": "SQL"
+      },
+      "issuer": "Alura"
+    },
+    {
+      "name": {
+        "pt": "Agile Explorer",
+        "en": "Agile Explorer"
+      },
       "issuer": "IBM SkillsBuild"
     },
     {
-      "name": "Python: Aplicando a Orientação a Objetos",
-      "issuer": "Alura"
-    },
-    {
-      "name": "SQL e Modelagem de Dados",
-      "issuer": "Alura"
-    },
-    {
-      "name": "User Experience (UX)",
+      "name": {
+        "pt": "User Experience (UX)",
+        "en": "User Experience"
+      },
       "issuer": "FIAP"
     },
     {
-      "name": "O Básico de Git e GitHub",
+      "name": {
+        "pt": "O Básico de Git e GitHub",
+        "en": "Git and GitHub Basics"
+      },
       "issuer": "Alura"
     }
   ],

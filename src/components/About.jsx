@@ -13,8 +13,10 @@ import {
 import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
 import profilePic from '../assets/perfillinkedin.jpeg'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 export default function About() {
+  const { isPt, t, localize, activeCv } = useLanguage()
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -35,32 +37,7 @@ export default function About() {
     return () => observer.disconnect()
   }, [])
 
-  const narrativePillars = [
-    {
-      step: '01',
-      title: 'Origem Operacional & Negócio',
-      company: 'Loft',
-      color: '#7a7060',
-      description:
-        'Vivência direta em operações jurídicas e contratos imobiliários. Identificação na prática de ineficiências manuais e o aprendizado de Python para automatizar fluxos com -50% no tempo de processamento.',
-    },
-    {
-      step: '02',
-      title: 'Automação em Escala & RPA',
-      company: 'QuintoAndar & VOSS Automotive',
-      color: '#c9622f',
-      description:
-        'Transição definitiva para tecnologia: desenvolvimento de automações via API e robôs RPA que reduziram rotinas em até 93% e pouparam centenas de horas de trabalho repetitivo.',
-    },
-    {
-      step: '03',
-      title: 'Engenharia de Dados & Servidores de IA',
-      company: '99 (DiDi) & IBM',
-      color: '#e8963c',
-      description:
-        'Diagnóstico de causa raiz em SQL na operação crítica da 99Food e desenvolvimento de servidores MCP (FastMCP) para inteligência artificial e pipelines de dados com PostgreSQL e BI na IBM.',
-    },
-  ]
+  const narrativePillars = t('about.pillars') || []
 
   return (
     <section
@@ -83,7 +60,7 @@ export default function About() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        04 — SOBRE MIM
+        {t('about.sectionLabel')}
       </p>
 
       {/* Two Column Layout: 1 col on Mobile/Tablet, 2 col on Desktop */}
@@ -99,10 +76,10 @@ export default function About() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Do operacional
+            {t('about.titleLine1')}
             <br />
             <span className="f-serif g-amber" style={{ fontWeight: 400 }}>
-              à engenharia.
+              {t('about.titleLine2')}
             </span>
           </h2>
 
@@ -117,9 +94,7 @@ export default function About() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            Minha trajetória une o olhar analítico de quem viveu a dor operacional à
-            capacidade técnica de construir arquiteturas robustas em automação, dados e
-            inteligência artificial.
+            {t('about.narrativeIntro')}
           </p>
 
           {/* Scannable Narrative Cards */}
@@ -223,9 +198,10 @@ export default function About() {
                 margin: 0,
               }}
             >
-              <strong style={{ color: 'var(--accent-primary)' }}>Visão híbrida:</strong>{' '}
-              entendimento profundo da regra de negócio somado ao rigor de engenharia de
-              software para transformar gargalos em soluções automatizadas de alto impacto.
+              <strong style={{ color: 'var(--accent-primary)' }}>
+                {t('about.hybridVisionLabel')}
+              </strong>{' '}
+              {t('about.hybridVisionText')}
             </p>
           </div>
 
@@ -274,11 +250,12 @@ export default function About() {
               <GithubIcon size={14} />
               <span>GitHub ↗</span>
             </a>
+            {/* Dynamic Primary CV Download Button based on active language */}
             <a
-              href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
-              download="juan-frois-cv-pt.pdf"
+              href={activeCv.url}
+              download={activeCv.filename}
               className="btn-ghost touch-target"
-              title="Baixar Currículo em PDF (Português)"
+              title={`${activeCv.label} (${activeCv.fullTitle})`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -289,13 +266,14 @@ export default function About() {
               }}
             >
               <Download size={14} stroke="currentColor" />
-              <span>Currículo (PT)</span>
+              <span>{activeCv.label}</span>
             </a>
+            {/* Secondary alternative CV button */}
             <a
-              href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
-              download="juan-frois-resume-en.pdf"
+              href={isPt ? '/curriculos/juan-frois-resume-en.pdf' : '/curriculos/juan-frois-cv-pt.pdf'}
+              download={isPt ? 'juan-frois-resume-en.pdf' : 'juan-frois-cv-pt.pdf'}
               className="btn-ghost touch-target"
-              title="Download Resume in PDF (English)"
+              title={isPt ? 'Download Resume in English (PDF)' : 'Baixar Currículo em Português (PDF)'}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -305,8 +283,8 @@ export default function About() {
                 minHeight: 44,
               }}
             >
-              <Download size={14} stroke="currentColor" />
-              <span>Resume (EN)</span>
+              <span>{isPt ? '🇺🇸' : '🇧🇷'}</span>
+              <span>{isPt ? 'Resume (EN)' : 'Currículo (PT)'}</span>
             </a>
           </div>
         </div>
@@ -360,7 +338,7 @@ export default function About() {
                   textOverflow: 'ellipsis',
                 }}
               >
-                {profileData.headline}
+                {localize(profileData.headline)}
               </p>
               <p
                 style={{
@@ -377,7 +355,7 @@ export default function About() {
                   stroke="currentColor"
                   style={{ color: 'var(--accent-primary)', flexShrink: 0 }}
                 />
-                <span>{profileData.location}</span>
+                <span>{localize(profileData.location)}</span>
               </p>
             </div>
           </div>
@@ -395,10 +373,12 @@ export default function About() {
           >
             {profileData.stats.map((stat, sIdx) => {
               const StatIcon = sIdx === 0 ? TrendingUp : sIdx === 1 ? Zap : Clock
+              const statNum = localize(stat.num)
+              const statLabel = localize(stat.label)
 
               return (
                 <div
-                  key={stat.label}
+                  key={sIdx}
                   className="card"
                   style={{
                     padding: '14px 8px',
@@ -437,7 +417,7 @@ export default function About() {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    {stat.num}
+                    {statNum}
                   </div>
                   <p
                     style={{
@@ -449,7 +429,7 @@ export default function About() {
                       lineHeight: 1.3,
                     }}
                   >
-                    {stat.label}
+                    {statLabel}
                   </p>
                 </div>
               )
@@ -479,7 +459,7 @@ export default function About() {
                 stroke="currentColor"
                 style={{ color: 'var(--accent-primary)' }}
               />
-              <span>FORMAÇÃO ACADÊMICA</span>
+              <span>{t('about.academicBackground')}</span>
             </p>
 
             {profileData.education.map((edu) => (
@@ -513,7 +493,7 @@ export default function About() {
                       marginTop: 2,
                     }}
                   >
-                    {edu.course}
+                    {localize(edu.course)}
                   </p>
                 </div>
                 <span
@@ -539,14 +519,18 @@ export default function About() {
                 stroke="currentColor"
                 style={{ color: 'var(--accent-primary)' }}
               />
-              <span>IDIOMAS</span>
+              <span>{t('about.languages')}</span>
             </p>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {profileData.languages.map((lang) => (
-                <span key={lang.name} className={`chip ${lang.variant}`}>
-                  {lang.name} — {lang.level}
-                </span>
-              ))}
+              {profileData.languages.map((item) => {
+                const langName = localize(item.name)
+                const langLevel = localize(item.level)
+                return (
+                  <span key={langName} className={`chip ${item.variant}`}>
+                    {langName}: {langLevel}
+                  </span>
+                )
+              })}
             </div>
           </div>
 
@@ -573,7 +557,7 @@ export default function About() {
                 stroke="currentColor"
                 style={{ color: 'var(--accent-primary)' }}
               />
-              <span>CERTIFICAÇÕES COM EMISSOR</span>
+              <span>{t('about.certificationsWithIssuer')}</span>
             </p>
 
             <div
@@ -585,7 +569,7 @@ export default function About() {
             >
               {profileData.certifications.map((cert) => {
                 const isObj = typeof cert === 'object' && cert !== null
-                const certName = isObj ? cert.name : cert
+                const certName = isObj ? localize(cert.name) : cert
                 const certIssuer = isObj ? cert.issuer : null
 
                 const getIssuerStyle = (issuer) => {

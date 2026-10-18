@@ -2,13 +2,34 @@
   {
     "id": "nexus-status",
     "layout": "featured",
-    "tag": "Servidor MCP & Agentes de IA",
-    "name": "Nexus-Status",
-    "subtitle": "Servidor MCP Corporativo para Watsonx Orchestrate",
-    "description": "Servidor corporativo baseado no Model Context Protocol (MCP) projetado para conectar agentes autônomos de IA (Watsonx Orchestrate) diretamente a bancos PostgreSQL de forma estruturada, assíncrona e segura. Eliminou a espera de 2h a 4h na fila do time de dados para cada métrica solicitada pelos Center Leaders.",
-    "impact": "Instantâneo",
-    "impactLabel": "2h–4h fila → segundos",
-    "impactBadge": "⚡ De 2h–4h de fila para geração instantânea",
+    "tag": {
+      "pt": "Servidor MCP & Agentes de IA",
+      "en": "MCP Server & AI Agents"
+    },
+    "name": {
+      "pt": "Nexus-Status",
+      "en": "Nexus-Status"
+    },
+    "subtitle": {
+      "pt": "Servidor MCP Corporativo para Watsonx Orchestrate",
+      "en": "Enterprise MCP Server for Watsonx Orchestrate"
+    },
+    "description": {
+      "pt": "Servidor MCP que conecta agentes de IA (Watsonx Orchestrate) a bancos PostgreSQL de forma assíncrona e segura, com 31 índices otimizados, consultas somente SELECT parametrizadas, validação com Pydantic e autenticação OAuth2/OIDC via Keycloak. Líderes passaram a obter métricas instantaneamente sem depender da fila do time de dados.",
+      "en": "MCP server that connects AI agents (Watsonx Orchestrate) to PostgreSQL databases asynchronously and securely, featuring 31 optimized indexes, parameterized SELECT-only queries, Pydantic validation, and Keycloak OAuth2/OIDC authentication. Leaders now get metrics instantly without waiting in the data team's queue."
+    },
+    "impact": {
+      "pt": "Instantâneo",
+      "en": "Instant"
+    },
+    "impactLabel": {
+      "pt": "2h–4h fila → segundos",
+      "en": "2h–4h queue → seconds"
+    },
+    "impactBadge": {
+      "pt": "⚡ De 2h–4h de fila para acesso instantâneo",
+      "en": "⚡ From 2h–4h queue to instant access"
+    },
     "tech": [
       "Python 3.13",
       "FastMCP",
@@ -26,23 +47,52 @@
     "repoUrl": null,
     "githubUrl": null,
     "isPrivateEnterprise": true,
-    "architectureHighlights": [
-      "Arquitetura assíncrona de baixa latência em Python 3.13, FastMCP, pool de conexões com asyncpg e Streamable HTTP (Uvicorn).",
-      "Database Tuning com 31 índices otimizados sobre o schema de negócio para consultas analíticas complexas.",
-      "Governança com Keycloak (OAuth2/OIDC), restrição estrita a queries SELECT parametrizadas e validação com Pydantic.",
-      "Deploy corporativo em Red Hat OpenShift, conteinerização com Podman e gestão de pacotes via uv."
-    ]
+    "architectureHighlights": {
+      "pt": [
+        "Arquitetura assíncrona de baixa latência em Python 3.13, FastMCP, pool de conexões com asyncpg e Streamable HTTP (Uvicorn).",
+        "Database Tuning com 31 índices otimizados sobre o schema de negócio para consultas analíticas complexas.",
+        "Governança com Keycloak (OAuth2/OIDC), restrição estrita a queries SELECT parametrizadas e validação com Pydantic.",
+        "Deploy corporativo em Red Hat OpenShift, conteinerização com Podman e gestão de pacotes via uv."
+      ],
+      "en": [
+        "Low-latency asynchronous architecture built with Python 3.13, FastMCP, asyncpg connection pooling, and Streamable HTTP (Uvicorn).",
+        "Database tuning featuring 31 optimized indexes over the business schema for complex analytical queries.",
+        "Governance with Keycloak (OAuth2/OIDC), strict parameterized SELECT-only query constraints, and Pydantic validation.",
+        "Enterprise deployment on Red Hat OpenShift, containerization with Podman, and package management via uv."
+      ]
+    }
   },
   {
     "id": "cognos-etl",
     "layout": "wide",
-    "tag": "Engenharia de Dados & ETL",
-    "name": "Cognos ETL Engine",
-    "subtitle": "Plataforma de Ingestão e Data Quality",
-    "description": "Plataforma corporativa modular de Engenharia de Dados e Orquestração de ETL para ingestão, validação contratual de schema e carga transacional de planilhas heterogêneas (Excel, XLSB, CSV) em PostgreSQL, com interface em IBM Carbon Design System. Economiza 1 hora de trabalho manual por arquivo em cada execução (rotinas semanais e mensais).",
-    "impact": "1h poupada",
-    "impactLabel": "Por arquivo em 7 fluxos",
-    "impactBadge": "⏱️ 1h poupada por arquivo em 7 fluxos críticos",
+    "tag": {
+      "pt": "Engenharia de Dados & ETL",
+      "en": "Data Engineering & ETL"
+    },
+    "name": {
+      "pt": "Cognos ETL Engine",
+      "en": "Cognos ETL Engine"
+    },
+    "subtitle": {
+      "pt": "Plataforma de Ingestão e Data Quality",
+      "en": "Data Ingestion & Data Quality Platform"
+    },
+    "description": {
+      "pt": "Plataforma de ingestão e qualidade de dados para planilhas heterogêneas (Excel, XLSB, CSV) com contratos de dados (Pandera), transações atômicas com auto-rollback, trilha de auditoria e extração por rótulos imune a mudanças de layout em 7 fluxos de RH, Finanças e Operações.",
+      "en": "Data ingestion and quality platform for heterogeneous spreadsheets (Excel, XLSB, CSV) featuring Pandera data contracts, atomic transactions with auto-rollback, audit trail, and layout-resilient label-based extraction across 7 HR, Finance, and Operations workflows."
+    },
+    "impact": {
+      "pt": "1h economizada",
+      "en": "1h saved"
+    },
+    "impactLabel": {
+      "pt": "Por arquivo em 7 fluxos",
+      "en": "Per file across 7 workflows"
+    },
+    "impactBadge": {
+      "pt": "⏱️ 1h economizada por arquivo em 7 fluxos",
+      "en": "⏱️ 1h saved per file across 7 workflows"
+    },
     "tech": [
       "Python",
       "Streamlit",
@@ -60,23 +110,52 @@
     "repoUrl": null,
     "githubUrl": null,
     "isPrivateEnterprise": true,
-    "architectureHighlights": [
-      "Pipeline baseado no padrão Template Method com extração orientada a rótulos (Label-Based Extraction) imune a mudanças de layout.",
-      "Contratos estritos de Data Quality em pré-carga via Pandera e mapeamento dinâmico via information_schema (Override e Addition).",
-      "Transações atômicas ACID com auto-rollback, Audit Trail completo e sanitização contra SQL Injection e Path Traversal.",
-      "7 workflows de domínio em RH, Finanças e Operações (Demographics, Utilization, Span of Control, Finance Principal/Details, Return to Office) validados com Pytest."
-    ]
+    "architectureHighlights": {
+      "pt": [
+        "Pipeline baseado no padrão Template Method com extração orientada a rótulos (Label-Based Extraction) imune a mudanças de layout.",
+        "Contratos estritos de Data Quality em pré-carga via Pandera e mapeamento dinâmico via information_schema (Override e Addition).",
+        "Transações atômicas ACID com auto-rollback, Audit Trail completo e sanitização contra SQL Injection e Path Traversal.",
+        "7 workflows de domínio em RH, Finanças e Operações (Demographics, Utilization, Span of Control, Finance Principal/Details, Return to Office) validados com Pytest."
+      ],
+      "en": [
+        "Pipeline based on Template Method design pattern with label-based extraction resilient to spreadsheet layout changes.",
+        "Strict pre-load Data Quality contracts using Pandera and dynamic schema mapping via information_schema (Override & Addition).",
+        "ACID atomic transactions with auto-rollback, full audit trail, and sanitization against SQL Injection and Path Traversal.",
+        "7 domain workflows in HR, Finance, and Operations (Demographics, Utilization, Span of Control, Finance Principal/Details, Return to Office) validated with Pytest."
+      ]
+    }
   },
   {
     "id": "aftermarket",
     "layout": "square",
-    "tag": "BI & Inteligência Comercial",
-    "name": "Análise de Oportunidades Aftermarket",
-    "subtitle": "Inteligência de Mercado OEM",
-    "description": "Ferramenta de Business Intelligence que cruza dados de clientes industriais OEM (montadoras) para identificar produtos sem pedidos recentes ou previsões futuras após fim de ciclo de vida, gerando leads qualificados para o mercado de reposição (Aftermarket).",
-    "impact": "-90% tempo",
-    "impactLabel": "De ~3h para 10–20 min / planta",
-    "impactBadge": "⚡ De ~3h para 10–20 min por planta (-90% tempo)",
+    "tag": {
+      "pt": "BI & Inteligência Comercial",
+      "en": "BI & Commercial Intelligence"
+    },
+    "name": {
+      "pt": "Análise de Oportunidades Aftermarket",
+      "en": "Aftermarket Opportunities Analysis"
+    },
+    "subtitle": {
+      "pt": "Inteligência de Mercado OEM",
+      "en": "OEM Market Intelligence"
+    },
+    "description": {
+      "pt": "Ferramenta de BI (Python, Streamlit, SQL) que cruza dados de clientes OEM para identificar lacunas de vendas e gerar leads qualificados para o mercado de reposição.",
+      "en": "BI tool (Python, Streamlit, SQL) that cross-references OEM customer data to identify sales gaps and generate qualified leads for the aftermarket sector."
+    },
+    "impact": {
+      "pt": "-90% tempo",
+      "en": "-90% time"
+    },
+    "impactLabel": {
+      "pt": "De ~3h para 10–20 min / planta",
+      "en": "From ~3h to 10–20 min / plant"
+    },
+    "impactBadge": {
+      "pt": "⚡ De ~3h para 10–20 min por planta (-90%)",
+      "en": "⚡ From ~3h to 10–20 min per plant (-90%)"
+    },
     "tech": ["Python", "Streamlit", "SQL", "Pandas"],
     "accentColor": "#c9622f",
     "team": "VOSS Automotive",
@@ -84,21 +163,48 @@
     "repoUrl": null,
     "githubUrl": null,
     "isPrivateEnterprise": true,
-    "architectureHighlights": [
-      "Cruzamento automatizado de bases OEM industriais identificando fim de ciclo e ruptura de abastecimento.",
-      "Interface analítica em Streamlit para visualização rápida de margens e leads qualificados para o time comercial."
-    ]
+    "architectureHighlights": {
+      "pt": [
+        "Cruzamento automatizado de bases OEM industriais identificando fim de ciclo e ruptura de abastecimento.",
+        "Interface analítica em Streamlit para visualização rápida de margens e leads qualificados para o time comercial."
+      ],
+      "en": [
+        "Automated cross-referencing of industrial OEM customer databases identifying end-of-lifecycle and supply disruptions.",
+        "Analytical Streamlit interface for rapid visualization of margins and qualified leads for the sales team."
+      ]
+    }
   },
   {
     "id": "pedidos-b2b",
     "layout": "square",
-    "tag": "Desktop App & Automação B2B",
-    "name": "Automatizador de Processamento de Pedidos B2B",
-    "subtitle": "Pipeline de Extração de PDFs e E-mail",
-    "description": "Aplicação desktop que automatiza o download de Pedidos de Compra em portais B2B, extrai dados estruturados de PDFs, consolida relatórios em Excel e notifica usuários por e-mail via SMTP. Reduziu uma rotina manual de 3 dias úteis (1 a 2 estagiários dedicados 6h/dia) apenas ao preenchimento de login e senha.",
-    "impact": "18h a 36h",
-    "impactLabel": "Poupadas por ciclo (3 dias → seg)",
-    "impactBadge": "⏱️ 18h a 36h poupadas por ciclo (3 dias úteis → segundos)",
+    "tag": {
+      "pt": "Desktop App & Automação B2B",
+      "en": "Desktop App & B2B Automation"
+    },
+    "name": {
+      "pt": "Automatizador de Pedidos B2B",
+      "en": "B2B Order Processing Automation"
+    },
+    "subtitle": {
+      "pt": "Pipeline de Extração de PDFs e E-mail",
+      "en": "PDF Extraction Pipeline & Email Integration"
+    },
+    "description": {
+      "pt": "Aplicativo desktop que baixa pedidos de um portal B2B, extrai dados de PDFs, consolida em Excel e avisa o usuário por e-mail, reduzindo 3 dias úteis de trabalho manual (1 a 2 estagiários, 6h/dia) ao preenchimento de login e senha.",
+      "en": "Desktop app that downloads orders from a B2B portal, extracts PDF data, consolidates it in Excel, and notifies the user by email, reducing a 3-business-day manual routine (1 to 2 interns, 6h/day) to entering a login and password."
+    },
+    "impact": {
+      "pt": "18h a 36h",
+      "en": "18h to 36h"
+    },
+    "impactLabel": {
+      "pt": "Poupadas por ciclo (3 dias → seg)",
+      "en": "Saved per cycle (3 days → sec)"
+    },
+    "impactBadge": {
+      "pt": "⏱️ 18h a 36h poupadas por ciclo (3 dias → segundos)",
+      "en": "⏱️ 18h to 36h saved per cycle (3 days → seconds)"
+    },
     "tech": ["Python", "CustomTkinter", "PDF Scraping", "Excel", "SMTP"],
     "accentColor": "#6e9ecf",
     "team": "VOSS Automotive",
@@ -106,21 +212,48 @@
     "repoUrl": "https://github.com/JFrois/Automatizador-de-Ajuste-de-Pedidos",
     "githubUrl": "https://github.com/JFrois/Automatizador-de-Ajuste-de-Pedidos",
     "isPrivateEnterprise": false,
-    "architectureHighlights": [
-      "Engine de parsing e OCR/Regex para PDFs industriais heterogêneos de montadoras.",
-      "Orquestração local com interface gráfica em CustomTkinter e integração SMTP para notificações em tempo real."
-    ]
+    "architectureHighlights": {
+      "pt": [
+        "Engine de parsing e OCR/Regex para PDFs industriais heterogêneos de montadoras.",
+        "Orquestração local com interface gráfica em CustomTkinter e integração SMTP para notificações em tempo real."
+      ],
+      "en": [
+        "Parsing and OCR/Regex engine for heterogeneous industrial automotive OEM order PDFs.",
+        "Local orchestration featuring CustomTkinter GUI and SMTP integration for real-time dispatch alerts."
+      ]
+    }
   },
   {
     "id": "protheus-rpa",
     "layout": "square",
-    "tag": "Automação RPA & ERP",
-    "name": "Automação de Previsão de Vendas — TOTVS Protheus",
-    "subtitle": "RPA Selenium + CustomTkinter + Outlook",
-    "description": "Ferramenta RPA com interface gráfica em CustomTkinter e execução em segundo plano para cadastro automatizado de Previsão de Vendas no ERP TOTVS Protheus WebApp a partir de planilhas Excel, com notificação automática via Outlook.",
-    "impact": "-93% tempo",
-    "impactLabel": "De 5 min para 20s por produto",
-    "impactBadge": "⚡ De 5 min para 20s por produto (-93% tempo)",
+    "tag": {
+      "pt": "Automação RPA & ERP",
+      "en": "RPA & ERP Automation"
+    },
+    "name": {
+      "pt": "Previsão de Vendas no TOTVS Protheus",
+      "en": "Sales Forecast Registration for TOTVS Protheus"
+    },
+    "subtitle": {
+      "pt": "RPA Selenium + CustomTkinter + Outlook",
+      "en": "RPA Selenium + CustomTkinter + Outlook"
+    },
+    "description": {
+      "pt": "RPA em Python, Selenium e CustomTkinter com interface gráfica, execução em segundo plano e notificação por e-mail que reduziu o cadastro de previsão de vendas de 5 minutos para 20 segundos por produto.",
+      "en": "Python, Selenium, and CustomTkinter RPA featuring a GUI, background execution, and email notification that cut sales forecast registration from 5 minutes to 20 seconds per product."
+    },
+    "impact": {
+      "pt": "-93% tempo",
+      "en": "-93% time"
+    },
+    "impactLabel": {
+      "pt": "De 5 min para 20s por produto",
+      "en": "From 5 min to 20s per product"
+    },
+    "impactBadge": {
+      "pt": "⚡ De 5 min para 20s por produto (-93%)",
+      "en": "⚡ From 5 min to 20s per product (-93%)"
+    },
     "tech": ["Python", "Selenium WebDriver", "CustomTkinter", "Excel", "Outlook"],
     "accentColor": "#e8963c",
     "team": "VOSS Automotive",
@@ -128,21 +261,48 @@
     "repoUrl": "https://github.com/JFrois/Automacao-Cadastro-Previsao-Vendas-Protheus",
     "githubUrl": "https://github.com/JFrois/Automacao-Cadastro-Previsao-Vendas-Protheus",
     "isPrivateEnterprise": false,
-    "architectureHighlights": [
-      "Robô resiliente com esperas explícitas, tratamento de timeouts de sessão no ERP e validação linha a linha.",
-      "Integração com Outlook para envio de logs de auditoria e status de processamento da esteira comercial."
-    ]
+    "architectureHighlights": {
+      "pt": [
+        "Robô resiliente com esperas explícitas, tratamento de timeouts de sessão no ERP e validação linha a linha.",
+        "Integração com Outlook para envio de logs de auditoria e status de processamento da esteira comercial."
+      ],
+      "en": [
+        "Resilient bot with explicit waits, session timeout handling within the ERP WebApp, and row-by-row validation.",
+        "Outlook integration for sending audit logs and batch execution status to commercial stakeholders."
+      ]
+    }
   },
   {
     "id": "buscador-voss",
     "layout": "square",
-    "tag": "Desktop App & Banco de Dados",
-    "name": "Buscador VOSS — Consulta Centralizada de Estoque",
-    "subtitle": "Consulta Instantânea a Bancos Corporativos",
-    "description": "Aplicação desktop conectada diretamente aos bancos de dados corporativos para consulta instantânea e centralizada de peças e quantidades em estoque, substituindo verificações físicas e manuais que levavam de horas a dias.",
-    "impact": "Segundos",
-    "impactLabel": "Horas/dias → segundos",
-    "impactBadge": "⚡ De horas/dias para segundos",
+    "tag": {
+      "pt": "Desktop App & Banco de Dados",
+      "en": "Desktop App & Databases"
+    },
+    "name": {
+      "pt": "Buscador VOSS",
+      "en": "VOSS Search"
+    },
+    "subtitle": {
+      "pt": "Consulta Instantânea a Bancos Corporativos",
+      "en": "Instant Query to Corporate Databases"
+    },
+    "description": {
+      "pt": "Aplicação desktop em Python, CustomTkinter e SQL para busca centralizada de estoque nos bancos de dados da empresa, reduzindo consultas que levavam de horas a dias para segundos.",
+      "en": "Desktop app built with Python, CustomTkinter, and SQL for centralized inventory search across company databases, reducing lookups from hours or days to seconds."
+    },
+    "impact": {
+      "pt": "Segundos",
+      "en": "Seconds"
+    },
+    "impactLabel": {
+      "pt": "Horas/dias → segundos",
+      "en": "Hours/days → seconds"
+    },
+    "impactBadge": {
+      "pt": "⚡ De horas/dias para segundos",
+      "en": "⚡ From hours/days to seconds"
+    },
     "tech": ["Python", "CustomTkinter", "SQL"],
     "accentColor": "#6e9ecf",
     "team": "VOSS Automotive",
@@ -150,9 +310,15 @@
     "repoUrl": "https://github.com/JFrois/Buscador",
     "githubUrl": "https://github.com/JFrois/Buscador",
     "isPrivateEnterprise": false,
-    "architectureHighlights": [
-      "Conexão otimizada com pooling e queries indexadas para busca em múltiplos depósitos fabris simultaneamente.",
-      "Interface reativa construída em CustomTkinter para chão de fábrica e operações de logística."
-    ]
+    "architectureHighlights": {
+      "pt": [
+        "Conexão otimizada com pooling e queries indexadas para busca em múltiplos depósitos fabris simultaneamente.",
+        "Interface reativa construída em CustomTkinter para chão de fábrica e operações de logística."
+      ],
+      "en": [
+        "Optimized database connection pooling and indexed queries across multiple plant warehouses concurrently.",
+        "Reactive interface built in CustomTkinter for factory floor and logistics operations."
+      ]
+    }
   }
 ]

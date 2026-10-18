@@ -10,13 +10,22 @@ import {
   X,
 } from 'lucide-react'
 import { GithubIcon } from './Icons.jsx'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 export default function ProjectCard({ project, delay = 0, isVisible = false }) {
+  const { t, localize } = useLanguage()
   const [isHovered, setIsHovered] = useState(false)
   const [isArchExpanded, setIsArchExpanded] = useState(false)
 
   const isFeatured = project.layout === 'featured' || project.layout === 'wide'
   const companyIsIBM = project.company === 'IBM'
+
+  const projectName = localize(project.name)
+  const projectSubtitle = localize(project.subtitle)
+  const projectTag = localize(project.tag)
+  const projectDesc = localize(project.description)
+  const projectBadge = localize(project.impactBadge)
+  const projectArchHls = localize(project.architectureHighlights) || []
 
   return (
     <div
@@ -43,7 +52,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
       <div>
         {/* ======================================================== */}
         {/* BLOCO 1: CABEÇALHO DO CARD                               */}
-        {/* Badge da Empresa + Badge de Impacto com wrap seguro      */}
+        {/* Badge da Empresa + Badge de Impacto                      */}
         {/* ======================================================== */}
         <div
           style={{
@@ -91,12 +100,12 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
                 padding: '3px 8px',
               }}
             >
-              {project.tag}
+              {projectTag}
             </span>
           </div>
 
           {/* Badge de Impacto em Destaque */}
-          {project.impactBadge && (
+          {projectBadge && (
             <span
               className="f-mono"
               style={{
@@ -114,7 +123,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
                 boxShadow: '0 1px 4px rgba(16, 185, 129, 0.12)',
               }}
             >
-              <span>{project.impactBadge}</span>
+              <span>{projectBadge}</span>
             </span>
           )}
         </div>
@@ -135,7 +144,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
               lineHeight: 1.25,
             }}
           >
-            {project.name}
+            {projectName}
           </h3>
 
           <p
@@ -148,7 +157,7 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
               letterSpacing: '0.01em',
             }}
           >
-            {project.subtitle}
+            {projectSubtitle}
           </p>
 
           <p
@@ -159,112 +168,110 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
               margin: 0,
             }}
           >
-            {project.description}
+            {projectDesc}
           </p>
         </div>
 
         {/* Painel Expandido de Arquitetura & Engenharia com Scroll Seguro */}
-        {isArchExpanded &&
-          project.architectureHighlights &&
-          project.architectureHighlights.length > 0 && (
+        {isArchExpanded && projectArchHls.length > 0 && (
+          <div
+            id={`arch-details-${project.id}`}
+            style={{
+              marginBottom: 16,
+              padding: '12px 14px',
+              background: 'var(--bg-elevated)',
+              borderLeft: `3px solid ${project.accentColor || 'var(--accent-primary)'}`,
+              borderRadius: '0 8px 8px 0',
+              animation: 'fadeIn 0.25s ease',
+              maxHeight: 280,
+              overflowY: 'auto',
+            }}
+          >
             <div
-              id={`arch-details-${project.id}`}
               style={{
-                marginBottom: 16,
-                padding: '12px 14px',
-                background: 'var(--bg-elevated)',
-                borderLeft: `3px solid ${project.accentColor || 'var(--accent-primary)'}`,
-                borderRadius: '0 8px 8px 0',
-                animation: 'fadeIn 0.25s ease',
-                maxHeight: 280,
-                overflowY: 'auto',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: 8,
               }}
             >
-              <div
+              <p
+                className="f-mono"
                 style={{
+                  fontSize: 9.5,
+                  color: project.accentColor || 'var(--accent-primary)',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  fontWeight: 700,
                   display: 'flex',
-                  justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: 8,
-                }}
-              >
-                <p
-                  className="f-mono"
-                  style={{
-                    fontSize: 9.5,
-                    color: project.accentColor || 'var(--accent-primary)',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    fontWeight: 700,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 5,
-                    margin: 0,
-                  }}
-                >
-                  <Cpu size={12} stroke="currentColor" />
-                  <span>Destaques de Engenharia</span>
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => setIsArchExpanded(false)}
-                  aria-label="Fechar painel de arquitetura"
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: 'var(--text-muted)',
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 3,
-                    fontSize: 11,
-                    fontFamily: 'JetBrains Mono',
-                    padding: '2px 4px',
-                  }}
-                >
-                  <X size={11} stroke="currentColor" />
-                  <span>Fechar</span>
-                </button>
-              </div>
-
-              <ul
-                style={{
-                  listStyle: 'none',
-                  padding: 0,
+                  gap: 5,
                   margin: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 7,
                 }}
               >
-                {project.architectureHighlights.map((hl, i) => (
-                  <li
-                    key={i}
-                    style={{
-                      fontSize: 12,
-                      color: 'var(--text-secondary)',
-                      lineHeight: 1.5,
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: 7,
-                    }}
-                  >
-                    <ChevronRight
-                      size={12}
-                      stroke="currentColor"
-                      style={{
-                        color: project.accentColor || 'var(--accent-primary)',
-                        flexShrink: 0,
-                        marginTop: 2,
-                      }}
-                    />
-                    <span>{hl}</span>
-                  </li>
-                ))}
-              </ul>
+                <Cpu size={12} stroke="currentColor" />
+                <span>{t('projects.engHighlights')}</span>
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setIsArchExpanded(false)}
+                aria-label={t('projects.close')}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 3,
+                  fontSize: 11,
+                  fontFamily: 'JetBrains Mono',
+                  padding: '2px 4px',
+                }}
+              >
+                <X size={11} stroke="currentColor" />
+                <span>{t('projects.close')}</span>
+              </button>
             </div>
-          )}
+
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 7,
+              }}
+            >
+              {projectArchHls.map((hl, i) => (
+                <li
+                  key={i}
+                  style={{
+                    fontSize: 12,
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.5,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 7,
+                  }}
+                >
+                  <ChevronRight
+                    size={12}
+                    stroke="currentColor"
+                    style={{
+                      color: project.accentColor || 'var(--accent-primary)',
+                      flexShrink: 0,
+                      marginTop: 2,
+                    }}
+                  />
+                  <span>{hl}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* ======================================================== */}
         {/* BLOCO 3: STACK TÉCNICA (Chips)                           */}
@@ -327,55 +334,52 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
                 borderRadius: 6,
                 fontWeight: 500,
               }}
-              title="Projeto corporativo interno com código proprietário protegido"
             >
               <Lock size={10.5} stroke="currentColor" />
-              <span>🔒 Código Proprietário</span>
+              <span>{t('projects.internalEnterprise')}</span>
             </span>
 
-            {project.architectureHighlights &&
-              project.architectureHighlights.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setIsArchExpanded((prev) => !prev)}
-                  aria-expanded={isArchExpanded}
-                  aria-controls={`arch-details-${project.id}`}
-                  className="btn-ghost touch-target"
+            {projectArchHls.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setIsArchExpanded((prev) => !prev)}
+                aria-expanded={isArchExpanded}
+                aria-controls={`arch-details-${project.id}`}
+                className="btn-ghost touch-target"
+                style={{
+                  padding: '6px 12px',
+                  fontSize: 11.5,
+                  fontWeight: 600,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  cursor: 'pointer',
+                  borderRadius: 7,
+                  borderColor: isArchExpanded
+                    ? 'var(--accent-primary)'
+                    : 'var(--border-mid)',
+                  color: isArchExpanded
+                    ? 'var(--accent-primary)'
+                    : 'var(--text-primary)',
+                  background: isArchExpanded ? 'var(--bg-elevated)' : 'transparent',
+                  transition: 'all 0.2s ease',
+                  minHeight: 38,
+                }}
+              >
+                <Cpu size={12} stroke="currentColor" />
+                <span>
+                  {isArchExpanded ? t('projects.hideDetails') : t('projects.viewArch')}
+                </span>
+                <ChevronDown
+                  size={12}
+                  stroke="currentColor"
                   style={{
-                    padding: '6px 12px',
-                    fontSize: 11.5,
-                    fontWeight: 600,
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 5,
-                    cursor: 'pointer',
-                    borderRadius: 7,
-                    borderColor: isArchExpanded
-                      ? 'var(--accent-primary)'
-                      : 'var(--border-mid)',
-                    color: isArchExpanded
-                      ? 'var(--accent-primary)'
-                      : 'var(--text-primary)',
-                    background: isArchExpanded ? 'var(--bg-elevated)' : 'transparent',
-                    transition: 'all 0.2s ease',
-                    minHeight: 38,
+                    transform: isArchExpanded ? 'rotate(180deg)' : 'none',
+                    transition: 'transform 0.2s ease',
                   }}
-                  title="Ver detalhes de implementação técnica e arquitetura"
-                >
-                  <Cpu size={12} stroke="currentColor" />
-                  <span>
-                    {isArchExpanded ? 'Ocultar Arquitetura' : 'Ver Arquitetura & Engenharia'}
-                  </span>
-                  <ChevronDown
-                    size={12}
-                    stroke="currentColor"
-                    style={{
-                      transform: isArchExpanded ? 'rotate(180deg)' : 'none',
-                      transition: 'transform 0.2s ease',
-                    }}
-                  />
-                </button>
-              )}
+                />
+              </button>
+            )}
           </>
         ) : (
           /* Caso B: Projeto com Repositório no GitHub */
@@ -396,11 +400,11 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
               }}
             >
               <GitBranch size={10.5} stroke="currentColor" />
-              <span>Código Aberto</span>
+              <span>{t('projects.openSource')}</span>
             </span>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-              {project.architectureHighlights && (
+              {projectArchHls.length > 0 && (
                 <button
                   type="button"
                   onClick={() => setIsArchExpanded((prev) => !prev)}
@@ -424,9 +428,8 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
                     transition: 'color 0.2s ease',
                     minHeight: 38,
                   }}
-                  title="Ver detalhes da arquitetura"
                 >
-                  <span>{isArchExpanded ? 'Fechar' : 'Arquitetura'}</span>
+                  <span>{isArchExpanded ? t('projects.hideDetails') : t('projects.viewArch')}</span>
                   <ChevronDown
                     size={11}
                     stroke="currentColor"
@@ -459,10 +462,9 @@ export default function ProjectCard({ project, delay = 0, isVisible = false }) {
                     transition: 'all 0.2s ease',
                     minHeight: 38,
                   }}
-                  title="Abrir repositório público no GitHub"
                 >
                   <GithubIcon size={12} />
-                  <span>Ver Repositório no GitHub</span>
+                  <span>{t('projects.viewGithub')}</span>
                   <ExternalLink size={10} stroke="currentColor" />
                 </a>
               )}

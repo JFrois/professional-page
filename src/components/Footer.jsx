@@ -1,8 +1,12 @@
 import { Mail, Download } from 'lucide-react'
 import { LinkedinIcon, GithubIcon } from './Icons.jsx'
 import profileData from '../data/profile.json'
+import { useLanguage } from '../hooks/useLanguage.js'
 
 export default function Footer() {
+  const { isPt, t, localize } = useLanguage()
+  const headline = localize(profileData.headline)
+
   return (
     <footer
       style={{
@@ -34,7 +38,16 @@ export default function Footer() {
             letterSpacing: '0.04em',
           }}
         >
-          {profileData.headline.toUpperCase()}
+          {headline.toUpperCase()}
+        </span>
+        <span
+          style={{
+            fontSize: 11,
+            color: 'var(--text-muted)',
+            marginTop: 4,
+          }}
+        >
+          © {new Date().getFullYear()} {profileData.name}. {t('footer.allRightsReserved')}
         </span>
       </div>
 
@@ -45,6 +58,7 @@ export default function Footer() {
           alignItems: 'center',
           justifyContent: 'center',
           flexWrap: 'wrap',
+          marginTop: 16,
         }}
       >
         <a
@@ -121,12 +135,13 @@ export default function Footer() {
         />
 
         <a
-          href={profileData.links?.cvPt || '/curriculos/juan-frois-cv-pt.pdf'}
+          href="/curriculos/juan-frois-cv-pt.pdf"
           download="juan-frois-cv-pt.pdf"
           className="f-mono footer-link touch-target"
           style={{
             fontSize: 11,
-            color: 'var(--text-muted)',
+            color: isPt ? 'var(--accent-primary)' : 'var(--text-muted)',
+            fontWeight: isPt ? 700 : 500,
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
@@ -134,19 +149,20 @@ export default function Footer() {
             padding: '6px 8px',
             minHeight: 44,
           }}
-          title="Baixar Currículo em PDF (Português)"
+          title={isPt ? 'Baixar Currículo em PDF (Português)' : 'Download Resume in PDF (Portuguese)'}
         >
           <Download size={12} stroke="currentColor" />
-          <span>CV (PT)</span>
+          <span>{t('footer.cvPt')}</span>
         </a>
 
         <a
-          href={profileData.links?.cvEn || '/curriculos/juan-frois-resume-en.pdf'}
+          href="/curriculos/juan-frois-resume-en.pdf"
           download="juan-frois-resume-en.pdf"
           className="f-mono footer-link touch-target"
           style={{
             fontSize: 11,
-            color: 'var(--text-muted)',
+            color: !isPt ? 'var(--accent-primary)' : 'var(--text-muted)',
+            fontWeight: !isPt ? 700 : 500,
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
@@ -154,10 +170,10 @@ export default function Footer() {
             padding: '6px 8px',
             minHeight: 44,
           }}
-          title="Download Resume in PDF (English)"
+          title={isPt ? 'Baixar Resume em PDF (Inglês)' : 'Download Resume in PDF (English)'}
         >
           <Download size={12} stroke="currentColor" />
-          <span>CV (EN)</span>
+          <span>{t('footer.cvEn')}</span>
         </a>
       </div>
     </footer>

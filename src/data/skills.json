@@ -1,16 +1,32 @@
 [
   {
-    "name": "Linguagens & Core",
+    "id": "languages",
+    "icon": "code",
+    "name": {
+      "pt": "Linguagens",
+      "en": "Languages"
+    },
     "color": "#e8963c",
     "items": [
-      { "name": "Python", "context": "IBM / VOSS / QuintoAndar" },
+      {
+        "name": "Python",
+        "context": {
+          "pt": "foco em automação e dados",
+          "en": "focus on automation and data"
+        }
+      },
       { "name": "SQL", "context": "IBM / 99 / VOSS" },
       { "name": "JavaScript", "context": null },
       { "name": "Java", "context": null }
     ]
   },
   {
-    "name": "Engenharia de Dados & BI",
+    "id": "data",
+    "icon": "database",
+    "name": {
+      "pt": "Engenharia de Dados & BI",
+      "en": "Data & BI"
+    },
     "color": "#6e9ecf",
     "items": [
       { "name": "PostgreSQL", "context": "IBM" },
@@ -26,7 +42,12 @@
     ]
   },
   {
-    "name": "IA, Backend & DevOps",
+    "id": "ai-backend",
+    "icon": "cpu",
+    "name": {
+      "pt": "IA, Backend & DevOps",
+      "en": "AI, Backend & DevOps"
+    },
     "color": "#4589ff",
     "items": [
       { "name": "FastMCP", "context": "IBM" },
@@ -42,7 +63,12 @@
     ]
   },
   {
-    "name": "Automação, RPA & Plataformas",
+    "id": "automation",
+    "icon": "workflow",
+    "name": {
+      "pt": "Automação, RPA & Ferramentas",
+      "en": "Automation, RPA & Tools"
+    },
     "color": "#c9622f",
     "items": [
       { "name": "IBM RPA", "context": "IBM" },

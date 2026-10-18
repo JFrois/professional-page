@@ -2452,6 +2452,50 @@ h3,
   }
 }
 
+/* Seletor de Idioma Bilíngue Elegante (PT | EN) */
+.lang-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 3px;
+  box-shadow: var(--card-shadow);
+  gap: 2px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.lang-toggle-btn {
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  padding: 5px 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 34px;
+  user-select: none;
+}
+
+.lang-toggle-btn:hover {
+  color: var(--text-primary);
+}
+
+.lang-toggle-btn.active {
+  background: var(--accent-primary);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 6px var(--accent-glow);
+}
+
 /* 7. Hero Section Grid & Breakpoints */
 .hero-grid {
   display: flex;
