@@ -36,7 +36,7 @@ export default function About() {
 
   return (
     <section
-      id="about"
+      id="sobre"
       ref={sectionRef}
       style={{
         padding: 'clamp(100px, 12vh, 160px) clamp(24px, 6vw, 80px)',
@@ -46,6 +46,13 @@ export default function About() {
         margin: '0 auto',
       }}
     >
+      {/* Anchor for backward compatibility with #about */}
+      <span
+        id="about"
+        style={{ position: 'absolute', top: -80, pointerEvents: 'none' }}
+        aria-hidden="true"
+      />
+
       <p
         className="s-label reveal"
         style={{
@@ -54,7 +61,7 @@ export default function About() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        01 — SOBRE MIM
+        04 — SOBRE MIM
       </p>
 
       <div

@@ -47,7 +47,7 @@ export default function Trajetoria() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        TRAJETÓRIA PROFISSIONAL
+        02 — TRAJETÓRIA PROFISSIONAL
       </p>
 
       <h2

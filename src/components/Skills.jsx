@@ -49,7 +49,7 @@ export default function Skills() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        02 — STACK TÉCNICO
+        03 — STACK TÉCNICO
       </p>
 
       <h2

@@ -63,7 +63,7 @@ export default function Contato() {
 
   return (
     <section
-      id="contact"
+      id="contato"
       ref={sectionRef}
       style={{
         padding: 'clamp(80px, 10vh, 140px) clamp(24px, 6vw, 80px)',
@@ -73,6 +73,13 @@ export default function Contato() {
         margin: '0 auto',
       }}
     >
+      {/* Anchor for backward compatibility with #contact */}
+      <span
+        id="contact"
+        style={{ position: 'absolute', top: -80, pointerEvents: 'none' }}
+        aria-hidden="true"
+      />
+
       <div className="energy-line" style={{ maxWidth: 200, marginBottom: 64 }} />
 
       <div
@@ -92,7 +99,7 @@ export default function Contato() {
               ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
             }}
           >
-            04 — CONTATO
+            05 — CONTATO
           </p>
 
           <h2

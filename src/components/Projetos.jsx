@@ -25,7 +25,7 @@ export default function Projetos() {
 
   return (
     <section
-      id="projects"
+      id="projetos"
       ref={sectionRef}
       style={{
         padding: 'clamp(80px, 10vh, 120px) clamp(24px, 6vw, 80px)',
@@ -35,6 +35,13 @@ export default function Projetos() {
         margin: '0 auto',
       }}
     >
+      {/* Anchor for backward compatibility with #projects */}
+      <span
+        id="projects"
+        style={{ position: 'absolute', top: -80, pointerEvents: 'none' }}
+        aria-hidden="true"
+      />
+
       <p
         className="s-label reveal"
         style={{
@@ -42,7 +49,7 @@ export default function Projetos() {
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        03 — PROJETOS
+        01 — PROJETOS EM PRODUÇÃO
       </p>
 
       <h2
@@ -57,7 +64,16 @@ export default function Projetos() {
       >
         Soluções que
         <br />
-        <span className="g-amber f-serif" style={{ fontWeight: 400 }}>
+        <span
+          className="f-serif"
+          style={{
+            fontWeight: 400,
+            background:
+              'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-impact) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
           operam em produção
         </span>
       </h2>
@@ -65,16 +81,18 @@ export default function Projetos() {
       <p
         className="reveal"
         style={{
-          fontSize: 15,
+          fontSize: 15.5,
           color: 'var(--text-secondary)',
-          maxWidth: 540,
+          maxWidth: 600,
+          lineHeight: 1.65,
           marginBottom: 48,
           transitionDelay: '140ms',
           ...(isVisible ? { opacity: 1, transform: 'none' } : {}),
         }}
       >
-        Cada sistema nasceu de uma dor real — de um processo lento, de dados invisíveis,
-        de horas de trabalho manual.
+        Cada sistema nasceu de uma dor real — de um processo lento, de dados
+        invisíveis ou de horas de esforço manual. De servidores MCP corporativos para IA
+        a esteiras transacionais de Data Quality e robôs RPA industriais.
       </p>
 
       <div
@@ -83,14 +101,14 @@ export default function Projetos() {
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gridAutoRows: 'auto',
-          gap: 14,
+          gap: 16,
         }}
       >
         {projectsData.map((project, idx) => (
           <ProjectCard
             key={project.id}
             project={project}
-            delay={idx * 90}
+            delay={idx * 80}
             isVisible={isVisible}
           />
         ))}
@@ -98,3 +116,4 @@ export default function Projetos() {
     </section>
   )
 }
+
